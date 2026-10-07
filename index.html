@@ -261,6 +261,18 @@
         .emploi-table tr:hover td {
             background: #e8dcc8;
         }
+        #emploi .emploi-table input {
+    width: 100%;
+    min-width: 90px;
+    margin: 0;
+    padding: 8px;
+    border: 1px solid #111111;
+    background: #fffaf2;
+}
+
+#emploi .emploi-table td {
+    min-width: 120px;
+}
 
         /* =========================
            QUIZ
@@ -600,76 +612,178 @@
          EMPLOI DU TEMPS
     ====================================================== -->
 
-    <section id="emploi" class="page">
+   <section id="emploi" class="page">
 
-        <div class="accueil">
+    <div class="accueil">
 
-            <div class="cadre">
+        <div class="cadre">
 
-                <div class="contenu">
+            <div class="contenu">
 
-                    <p class="petit-texte">
-                        ORGANISATION
-                    </p>
+                <p class="petit-texte">
+                    ORGANISATION
+                </p>
 
-                    <h2>
-                        Emploi du temps
-                    </h2>
+                <h2>
+                    Emploi du temps
+                </h2>
 
-                    <div class="ligne"></div>
+                <div class="ligne"></div>
 
-                    <p class="slogan">
-                        Organise tes cours.
-                    </p>
+                <p class="slogan">
+                    Crée ton emploi du temps personnalisé.
+                </p>
 
-                    <table class="emploi-table">
+                <table class="emploi-table">
 
-                        <tr>
-                            <th>Jour</th>
-                            <th>Matin</th>
-                            <th>Après-midi</th>
-                        </tr>
+                    <tr>
+                        <th>Heure</th>
+                        <th>Lundi</th>
+                        <th>Mardi</th>
+                        <th>Mercredi</th>
+                        <th>Jeudi</th>
+                        <th>Vendredi</th>
+                    </tr>
 
-                        <tr>
-                            <td>Lundi</td>
-                            <td>Mathématiques</td>
-                            <td>Français</td>
-                        </tr>
+                    <tr>
+                        <th>08h - 10h</th>
 
-                        <tr>
-                            <td>Mardi</td>
-                            <td>Anglais</td>
-                            <td>Histoire</td>
-                        </tr>
+                        <td>
+                            <input
+                                type="text"
+                                placeholder="Matière"
+                            >
+                        </td>
 
-                        <tr>
-                            <td>Mercredi</td>
-                            <td>SVT</td>
-                            <td>Mathématiques</td>
-                        </tr>
+                        <td>
+                            <input
+                                type="text"
+                                placeholder="Matière"
+                            >
+                        </td>
 
-                        <tr>
-                            <td>Jeudi</td>
-                            <td>Géographie</td>
-                            <td>Physique-Chimie</td>
-                        </tr>
+                        <td>
+                            <input
+                                type="text"
+                                placeholder="Matière"
+                            >
+                        </td>
 
-                        <tr>
-                            <td>Vendredi</td>
-                            <td>Français</td>
-                            <td>Anglais</td>
-                        </tr>
+                        <td>
+                            <input
+                                type="text"
+                                placeholder="Matière"
+                            >
+                        </td>
 
-                    </table>
+                        <td>
+                            <input
+                                type="text"
+                                placeholder="Matière"
+                            >
+                        </td>
+                    </tr>
 
-                </div>
+                    <tr>
+                        <th>10h - 12h</th>
+
+                        <td>
+                            <input type="text" placeholder="Matière">
+                        </td>
+
+                        <td>
+                            <input type="text" placeholder="Matière">
+                        </td>
+
+                        <td>
+                            <input type="text" placeholder="Matière">
+                        </td>
+
+                        <td>
+                            <input type="text" placeholder="Matière">
+                        </td>
+
+                        <td>
+                            <input type="text" placeholder="Matière">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>14h - 16h</th>
+
+                        <td>
+                            <input type="text" placeholder="Matière">
+                        </td>
+
+                        <td>
+                            <input type="text" placeholder="Matière">
+                        </td>
+
+                        <td>
+                            <input type="text" placeholder="Matière">
+                        </td>
+
+                        <td>
+                            <input type="text" placeholder="Matière">
+                        </td>
+
+                        <td>
+                            <input type="text" placeholder="Matière">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>16h - 18h</th>
+
+                        <td>
+                            <input type="text" placeholder="Matière">
+                        </td>
+
+                        <td>
+                            <input type="text" placeholder="Matière">
+                        </td>
+
+                        <td>
+                            <input type="text" placeholder="Matière">
+                        </td>
+
+                        <td>
+                            <input type="text" placeholder="Matière">
+                        </td>
+
+                        <td>
+                            <input type="text" placeholder="Matière">
+                        </td>
+                    </tr>
+
+                </table>
+
+                <button
+                    class="bouton"
+                    onclick="sauvegarderEmploi()"
+                >
+                    💾 Sauvegarder
+                </button>
+
+                <button
+                    class="bouton"
+                    onclick="effacerEmploi()"
+                >
+                    🗑️ Effacer
+                </button>
+
+                <div
+                    id="messageEmploi"
+                    class="message"
+                ></div>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
     <!-- =====================================================
          TACHES
@@ -2748,6 +2862,83 @@
             `;
         }
 
+        function sauvegarderEmploi() {
+
+    const champs =
+        document.querySelectorAll(
+            "#emploi input"
+        );
+
+    const valeurs = [];
+
+    champs.forEach(function(champ) {
+        valeurs.push(champ.value);
+    });
+
+    localStorage.setItem(
+        "emploiStudySpace",
+        JSON.stringify(valeurs)
+    );
+
+    document.getElementById(
+        "messageEmploi"
+    ).textContent =
+        "✅ Emploi du temps sauvegardé.";
+}
+
+
+function chargerEmploi() {
+
+    const sauvegarde =
+        localStorage.getItem(
+            "emploiStudySpace"
+        );
+
+    if (!sauvegarde) {
+        return;
+    }
+
+    const valeurs =
+        JSON.parse(sauvegarde);
+
+    const champs =
+        document.querySelectorAll(
+            "#emploi input"
+        );
+
+    champs.forEach(function(champ, index) {
+
+        if (valeurs[index] !== undefined) {
+            champ.value = valeurs[index];
+        }
+
+    });
+}
+
+
+function effacerEmploi() {
+
+    const champs =
+        document.querySelectorAll(
+            "#emploi input"
+        );
+
+    champs.forEach(function(champ) {
+        champ.value = "";
+    });
+
+    localStorage.removeItem(
+        "emploiStudySpace"
+    );
+
+    document.getElementById(
+        "messageEmploi"
+    ).textContent =
+        "🗑️ Emploi du temps effacé.";
+}
+
+
+chargerEmploi();
     </script>
 
 </body>
