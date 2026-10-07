@@ -3,22 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudySpace</title>
-</head>
-
-<body>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>StudySpace</title>
 
     <style>
+
+        /* =========================
+           STYLE GÉNÉRAL
+        ========================= */
 
         * {
             box-sizing: border-box;
@@ -33,8 +25,58 @@
             min-height: 100vh;
         }
 
+
+        /* =========================
+           MENU
+        ========================= */
+
+        nav {
+            width: 100%;
+            padding: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: #e8dcc8;
+        }
+
+        nav button {
+            background: #111111;
+            color: #f1e7d5;
+            border: none;
+            padding: 11px 18px;
+            border-radius: 25px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        nav button:hover {
+            transform: translateY(-3px);
+            background: #2b2b2b;
+        }
+
+
+        /* =========================
+           PAGES
+        ========================= */
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+
+        /* =========================
+           CADRE PRINCIPAL
+        ========================= */
+
         .accueil {
-            min-height: 100vh;
+            min-height: calc(100vh - 80px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -44,49 +86,75 @@
         .cadre {
             position: relative;
             width: 850px;
+            max-width: 100%;
             min-height: 520px;
+
             background: #f1e7d5;
+
             border: 3px solid #111111;
             border-radius: 35px;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             text-align: center;
+
+            padding: 40px;
+
             overflow: hidden;
-        }
-
-        /* OREILLE GAUCHE */
-
-        .oreille-gauche {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            background: #f1e7d5;
-            border-left: 3px solid #111111;
-            border-top: 3px solid #111111;
-            transform: rotate(45deg);
-            top: -75px;
-            left: 90px;
-        }
-
-        /* OREILLE DROITE */
-
-        .oreille-droite {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            background: #f1e7d5;
-            border-right: 3px solid #111111;
-            border-top: 3px solid #111111;
-            transform: rotate(-45deg);
-            top: -75px;
-            right: 90px;
         }
 
         .contenu {
             position: relative;
             z-index: 2;
+            width: 100%;
+            max-width: 650px;
         }
+
+
+        /* =========================
+           OREILLES DE CHAT
+        ========================= */
+
+        .oreille-gauche {
+            position: absolute;
+
+            width: 150px;
+            height: 150px;
+
+            background: #f1e7d5;
+
+            border-left: 3px solid #111111;
+            border-top: 3px solid #111111;
+
+            transform: rotate(45deg);
+
+            top: -75px;
+            left: 90px;
+        }
+
+        .oreille-droite {
+            position: absolute;
+
+            width: 150px;
+            height: 150px;
+
+            background: #f1e7d5;
+
+            border-right: 3px solid #111111;
+            border-top: 3px solid #111111;
+
+            transform: rotate(-45deg);
+
+            top: -75px;
+            right: 90px;
+        }
+
+
+        /* =========================
+           TEXTES
+        ========================= */
 
         .petit-texte {
             font-size: 14px;
@@ -100,10 +168,17 @@
             letter-spacing: 2px;
         }
 
+        h2 {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
         .ligne {
             width: 90px;
             height: 3px;
+
             background: #111111;
+
             margin: 22px auto;
         }
 
@@ -113,14 +188,25 @@
             margin-bottom: 30px;
         }
 
+
+        /* =========================
+           BOUTONS
+        ========================= */
+
         .bouton {
             background: #111111;
             color: #f1e7d5;
+
             border: none;
-            padding: 14px 32px;
+
+            padding: 14px 30px;
+
             border-radius: 30px;
+
             font-size: 16px;
+
             cursor: pointer;
+
             transition: 0.25s;
         }
 
@@ -129,7 +215,151 @@
             background: #2b2b2b;
         }
 
+
+        /* =========================
+           CHAMPS
+        ========================= */
+
+        input {
+            width: 100%;
+
+            padding: 13px;
+
+            margin-bottom: 12px;
+
+            border: 2px solid #111111;
+
+            border-radius: 12px;
+
+            background: #fffaf2;
+
+            color: #111111;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        input:focus {
+            background: #ffffff;
+        }
+
+
+        /* =========================
+           RÉSULTAT MOYENNE
+        ========================= */
+
+        #resultatMoyenne {
+            margin-top: 20px;
+
+            font-size: 20px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           LISTE DES RÉVISIONS
+        ========================= */
+
+        #listeRevision {
+            margin-top: 25px;
+        }
+
+        .task {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            width: 100%;
+
+            padding: 13px;
+
+            margin-bottom: 10px;
+
+            background: #fffaf2;
+
+            border: 2px solid #111111;
+
+            border-radius: 12px;
+
+            text-align: left;
+        }
+
+        .task input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .task span {
+            flex: 1;
+        }
+
+        .task button {
+            background: #111111;
+            color: #ffffff;
+
+            border: none;
+
+            padding: 7px 10px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           EMPLOI DU TEMPS
+        ========================= */
+
+        .emploi-table {
+            width: 100%;
+
+            margin-top: 20px;
+
+            border-collapse: collapse;
+        }
+
+        .emploi-table th,
+        .emploi-table td {
+            border: 2px solid #111111;
+
+            padding: 14px 10px;
+
+            text-align: center;
+        }
+
+        .emploi-table th {
+            background: #111111;
+            color: #f1e7d5;
+        }
+
+        .emploi-table td {
+            background: #f8f0e3;
+        }
+
+        .emploi-table tr:hover td {
+            background: #e8dcc8;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
         @media (max-width: 600px) {
+
+            nav {
+                padding: 12px;
+            }
+
+            nav button {
+                font-size: 13px;
+                padding: 9px 13px;
+            }
 
             .accueil {
                 padding: 15px;
@@ -137,10 +367,15 @@
 
             .cadre {
                 min-height: 500px;
+                padding: 25px 18px;
             }
 
             h1 {
                 font-size: 42px;
+            }
+
+            h2 {
+                font-size: 28px;
             }
 
             .oreille-gauche {
@@ -151,40 +386,87 @@
                 right: 20px;
             }
 
+            .emploi-table th,
+            .emploi-table td {
+                padding: 9px 5px;
+                font-size: 13px;
+            }
         }
 
     </style>
 </head>
 
+
 <body>
 
-    <section class="accueil">
 
-        <div class="cadre">
+    <!-- =========================
+         MENU
+    ========================= -->
 
-            <div class="oreille-gauche"></div>
-            <div class="oreille-droite"></div>
+    <nav>
 
-            <div class="contenu">
+        <button onclick="showPage('accueil')">
+            🏠 Accueil
+        </button>
 
-                <p class="petit-texte">
-                    BIENVENUE DANS
-                </p>
+        <button onclick="showPage('moyenne')">
+            🧮 Moyenne
+        </button>
 
-                <h1>
-                    StudySpace
-                </h1>
+        <button onclick="showPage('revision')">
+            📚 Révisions
+        </button>
 
-                <div class="ligne"></div>
+        <button onclick="showPage('emploi')">
+            🗓️ Emploi du temps
+        </button>
 
-                <p class="slogan">
-                    Ton espace pour apprendre,<br>
-                    t'organiser et progresser.
-                </p>
+        <button onclick="showPage('taches')">
+            ✅ Tâches
+        </button>
 
-                <button class="bouton">
-                    Commencer ♡
-                </button>
+    </nav>
+
+
+    <!-- =========================
+         ACCUEIL
+    ========================= -->
+
+    <section id="accueil" class="page active">
+
+        <div class="accueil">
+
+            <div class="cadre">
+
+                <div class="oreille-gauche"></div>
+                <div class="oreille-droite"></div>
+
+                <div class="contenu">
+
+                    <p class="petit-texte">
+                        BIENVENUE DANS
+                    </p>
+
+                    <h1>
+                        StudySpace
+                    </h1>
+
+                    <div class="ligne"></div>
+
+                    <p class="slogan">
+                        Ton espace pour apprendre,<br>
+                        t'organiser et progresser.
+                    </p>
+
+                    <button
+                        class="bouton"
+                        onclick="showPage('moyenne')"
+                    >
+                        Commencer ♡
+                    </button>
+
+                </div>
 
             </div>
 
@@ -192,511 +474,551 @@
 
     </section>
 
+
+    <!-- =========================
+         MOYENNE
+    ========================= -->
+
+    <section id="moyenne" class="page">
+
+        <div class="accueil">
+
+            <div class="cadre">
+
+                <div class="contenu">
+
+                    <p class="petit-texte">
+                        CALCULATEUR
+                    </p>
+
+                    <h2>
+                        Moyenne
+                    </h2>
+
+                    <div class="ligne"></div>
+
+                    <p class="slogan">
+                        Calcule ta moyenne pour une matière.
+                    </p>
+
+                    <input
+                        type="text"
+                        id="matiereMoyenne"
+                        placeholder="Matière"
+                    >
+
+                    <input
+                        type="number"
+                        id="devoir1"
+                        placeholder="Devoir 1 / 20"
+                        min="0"
+                        max="20"
+                    >
+
+                    <input
+                        type="number"
+                        id="devoir2"
+                        placeholder="Devoir 2 / 20"
+                        min="0"
+                        max="20"
+                    >
+
+                    <input
+                        type="number"
+                        id="composition"
+                        placeholder="Composition / 20"
+                        min="0"
+                        max="20"
+                    >
+
+                    <input
+                        type="number"
+                        id="coefficient"
+                        placeholder="Coefficient"
+                        min="1"
+                    >
+
+                    <button
+                        class="bouton"
+                        onclick="calculerMoyenne()"
+                    >
+                        Calculer ♡
+                    </button>
+
+                    <p id="resultatMoyenne"></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         RÉVISIONS
+    ========================= -->
+
+    <section id="revision" class="page">
+
+        <div class="accueil">
+
+            <div class="cadre">
+
+                <div class="contenu">
+
+                    <p class="petit-texte">
+                        ORGANISATION
+                    </p>
+
+                    <h2>
+                        Révisions
+                    </h2>
+
+                    <div class="ligne"></div>
+
+                    <p class="slogan">
+                        Ajoute ce que tu dois réviser.
+                    </p>
+
+                    <input
+                        type="text"
+                        id="matiereRevision"
+                        placeholder="Matière"
+                    >
+
+                    <input
+                        type="text"
+                        id="chapitreRevision"
+                        placeholder="Chapitre"
+                    >
+
+                    <button
+                        class="bouton"
+                        onclick="ajouterRevision()"
+                    >
+                        Ajouter ♡
+                    </button>
+
+                    <div id="listeRevision"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EMPLOI DU TEMPS
+    ========================= -->
+
+    <section id="emploi" class="page">
+
+        <div class="accueil">
+
+            <div class="cadre">
+
+                <div class="contenu">
+
+                    <p class="petit-texte">
+                        ORGANISATION
+                    </p>
+
+                    <h2>
+                        Emploi du temps
+                    </h2>
+
+                    <div class="ligne"></div>
+
+                    <p class="slogan">
+                        Organise tes cours pour toute la semaine.
+                    </p>
+
+                    <table class="emploi-table">
+
+                        <tr>
+                            <th>Jour</th>
+                            <th>Matin</th>
+                            <th>Après-midi</th>
+                        </tr>
+
+                        <tr>
+                            <td>Lundi</td>
+                            <td>Mathématiques</td>
+                            <td>Français</td>
+                        </tr>
+
+                        <tr>
+                            <td>Mardi</td>
+                            <td>Anglais</td>
+                            <td>Histoire</td>
+                        </tr>
+
+                        <tr>
+                            <td>Mercredi</td>
+                            <td>SVT</td>
+                            <td>Mathématiques</td>
+                        </tr>
+
+                        <tr>
+                            <td>Jeudi</td>
+                            <td>Géographie</td>
+                            <td>Physique-Chimie</td>
+                        </tr>
+
+                        <tr>
+                            <td>Vendredi</td>
+                            <td>Français</td>
+                            <td>Anglais</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TÂCHES
+    ========================= -->
+
+    <section id="taches" class="page">
+
+        <div class="accueil">
+
+            <div class="cadre">
+
+                <div class="contenu">
+
+                    <p class="petit-texte">
+                        ORGANISATION
+                    </p>
+
+                    <h2>
+                        Tâches
+                    </h2>
+
+                    <div class="ligne"></div>
+
+                    <p class="slogan">
+                        Note les devoirs et les choses à faire.
+                    </p>
+
+                    <input
+                        type="text"
+                        id="nouvelleTache"
+                        placeholder="Ex : Faire les exercices de maths"
+                    >
+
+                    <button
+                        class="bouton"
+                        onclick="ajouterTache()"
+                    >
+                        Ajouter ♡
+                    </button>
+
+                    <div id="listeTaches"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        function showPage(pageId) {
+
+            const pages =
+                document.querySelectorAll(".page");
+
+            pages.forEach(function(page) {
+
+                page.classList.remove("active");
+
+            });
+
+            const page =
+                document.getElementById(pageId);
+
+            if (page) {
+
+                page.classList.add("active");
+
+            }
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+
+        /* =========================
+           MOYENNE
+        ========================= */
+
+        function calculerMoyenne() {
+
+            const devoir1 =
+                parseFloat(
+                    document.getElementById("devoir1").value
+                );
+
+            const devoir2 =
+                parseFloat(
+                    document.getElementById("devoir2").value
+                );
+
+            const composition =
+                parseFloat(
+                    document.getElementById("composition").value
+                );
+
+            if (
+                isNaN(devoir1) ||
+                isNaN(devoir2) ||
+                isNaN(composition)
+            ) {
+
+                document.getElementById(
+                    "resultatMoyenne"
+                ).textContent =
+                    "⚠️ Remplis toutes les notes.";
+
+                return;
+            }
+
+            const moyenneDevoirs =
+                (devoir1 + devoir2) / 2;
+
+            const moyenneMatiere =
+                (moyenneDevoirs + composition) / 2;
+
+            document.getElementById(
+                "resultatMoyenne"
+            ).textContent =
+                "🌸 Ta moyenne est : " +
+                moyenneMatiere.toFixed(2) +
+                " / 20";
+
+        }
+
+
+        /* =========================
+           RÉVISIONS
+        ========================= */
+
+        function ajouterRevision() {
+
+            const matiere =
+                document
+                    .getElementById("matiereRevision")
+                    .value
+                    .trim();
+
+            const chapitre =
+                document
+                    .getElementById("chapitreRevision")
+                    .value
+                    .trim();
+
+            if (
+                matiere === "" ||
+                chapitre === ""
+            ) {
+
+                alert(
+                    "⚠️ Remplis la matière et le chapitre."
+                );
+
+                return;
+            }
+
+            const revision =
+                document.createElement("div");
+
+            revision.className = "task";
+
+            revision.innerHTML = `
+
+                <input
+                    type="checkbox"
+                    onchange="terminerRevision(this)"
+                >
+
+                <span>
+                    <strong>${matiere}</strong>
+                    — ${chapitre}
+                </span>
+
+                <button
+                    onclick="supprimerRevision(this)"
+                >
+                    🗑️
+                </button>
+
+            `;
+
+            document
+                .getElementById("listeRevision")
+                .appendChild(revision);
+
+            document
+                .getElementById("matiereRevision")
+                .value = "";
+
+            document
+                .getElementById("chapitreRevision")
+                .value = "";
+
+        }
+
+
+        function terminerRevision(checkbox) {
+
+            const texte =
+                checkbox.nextElementSibling;
+
+            if (checkbox.checked) {
+
+                texte.style.textDecoration =
+                    "line-through";
+
+                texte.style.opacity =
+                    "0.5";
+
+            } else {
+
+                texte.style.textDecoration =
+                    "none";
+
+                texte.style.opacity =
+                    "1";
+
+            }
+
+        }
+
+
+        function supprimerRevision(bouton) {
+
+            bouton.parentElement.remove();
+
+        }
+
+
+        /* =========================
+           TÂCHES
+        ========================= */
+
+        function ajouterTache() {
+
+            const texte =
+                document
+                    .getElementById("nouvelleTache")
+                    .value
+                    .trim();
+
+            if (texte === "") {
+
+                alert(
+                    "⚠️ Écris une tâche."
+                );
+
+                return;
+            }
+
+            const tache =
+                document.createElement("div");
+
+            tache.className = "task";
+
+            tache.innerHTML = `
+
+                <input
+                    type="checkbox"
+                    onchange="terminerTache(this)"
+                >
+
+                <span>
+                    ${texte}
+                </span>
+
+                <button
+                    onclick="supprimerTache(this)"
+                >
+                    🗑️
+                </button>
+
+            `;
+
+            document
+                .getElementById("listeTaches")
+                .appendChild(tache);
+
+            document
+                .getElementById("nouvelleTache")
+                .value = "";
+
+        }
+
+
+        function terminerTache(checkbox) {
+
+            const texte =
+                checkbox.nextElementSibling;
+
+            if (checkbox.checked) {
+
+                texte.style.textDecoration =
+                    "line-through";
+
+                texte.style.opacity =
+                    "0.5";
+
+            } else {
+
+                texte.style.textDecoration =
+                    "none";
+
+                texte.style.opacity =
+                    "1";
+
+            }
+
+        }
+
+
+        function supprimerTache(bouton) {
+
+            bouton.parentElement.remove();
+
+        }
+
+    </script>
+
 </body>
 </html>
-<nav>
-    <button onclick="showPage('accueil')">🏠 Accueil</button>
-    <button onclick="showPage('moyenne')">🧮 Moyenne</button>
-    <button onclick="showPage('revision')">📚 Révisions</button>
-    <button onclick="showPage('emploi')">🗓️ Emploi du temps</button>
-    <button onclick="showPage('taches')">✅ Tâches</button>
-    <button onclick="showPage('quiz')">🧠 Quiz</button>
-</nav>
-<script>
-function showPage(pageId) {
-
-    const pages = document.querySelectorAll(".page");
-
-    pages.forEach(page => {
-        page.style.display = "none";
-    });
-
-    document.getElementById(pageId).style.display = "block";
-}
-</script>
-<section id="moyenne" class="page">
-
-    <div class="cadre">
-
-        <div class="contenu">
-
-            <p class="petit-texte">
-                CALCULATEUR
-            </p>
-
-            <h1>Moyenne</h1>
-
-            <div class="ligne"></div>
-
-            <p class="slogan">
-                Calcule facilement ta moyenne scolaire.
-            </p>
-
-            <input type="text" id="matiere" placeholder="Matière">
-
-            <input
-                type="number"
-                id="devoir1"
-                placeholder="Devoir 1 / 20"
-                min="0"
-                max="20"
-            >
-
-            <input
-                type="number"
-                id="devoir2"
-                placeholder="Devoir 2 / 20"
-                min="0"
-                max="20"
-            >
-
-            <input
-                type="number"
-                id="composition"
-                placeholder="Composition / 20"
-                min="0"
-                max="20"
-            >
-
-            <input
-                type="number"
-                id="coefficient"
-                placeholder="Coefficient"
-                min="1"
-            >
-
-            <button class="bouton" onclick="calculerMoyenne()">
-                Calculer ♡
-            </button>
-
-            <p id="resultatMoyenne"></p>
-
-        </div>
-
-    </div>
-
-</section>
-function calculerMoyenne() {
-
-    const devoir1 =
-        parseFloat(document.getElementById("devoir1").value);
-
-    const devoir2 =
-        parseFloat(document.getElementById("devoir2").value);
-
-    const composition =
-        parseFloat(document.getElementById("composition").value);
-
-    if (
-        isNaN(devoir1) ||
-        isNaN(devoir2) ||
-        isNaN(composition)
-    ) {
-        document.getElementById("resultatMoyenne").textContent =
-            "Remplis toutes les notes.";
-        return;
-    }
-
-    const moyenneDevoirs =
-        (devoir1 + devoir2) / 2;
-
-    const moyenneMatiere =
-        (moyenneDevoirs + composition) / 2;
-
-    document.getElementById("resultatMoyenne").textContent =
-        "Ta moyenne : " +
-        moyenneMatiere.toFixed(2) +
-        " / 20";
-}*
-<section id="revision" class="page">
-
-    <div class="cadre">
-
-        <div class="contenu">
-
-            <p class="petit-texte">
-                ORGANISATION
-            </p>
-
-            <h1>Révisions</h1>
-
-            <div class="ligne"></div>
-
-            <p class="slogan">
-                Ajoute ce que tu dois réviser.
-            </p>
-
-            <input
-                type="text"
-                id="matiereRevision"
-                placeholder="Matière"
-            >
-
-            <input
-                type="text"
-                id="chapitreRevision"
-                placeholder="Chapitre"
-            >
-
-            <button class="bouton" onclick="ajouterRevision()">
-                Ajouter ♡
-            </button>
-
-            <div id="listeRevision"></div>
-
-        </div>
-
-    </div>
-
-</section>
-function ajouterRevision() {
-
-    const matiere =
-        document.getElementById("matiereRevision").value.trim();
-
-    const chapitre =
-        document.getElementById("chapitreRevision").value.trim();
-
-    if (matiere === "" || chapitre === "") {
-        alert("Remplis la matière et le chapitre.");
-        return;
-    }
-
-    const revision =
-        document.createElement("div");
-
-    revision.className = "task";
-
-    revision.innerHTML = `
-        <input
-            type="checkbox"
-            onchange="terminerRevision(this)"
-        >
-
-        <span>
-            <strong>${matiere}</strong>
-            — ${chapitre}
-        </span>
-
-        <button onclick="supprimerRevision(this)">
-            🗑️
-        </button>
-    `;
-
-    document
-        .getElementById("listeRevision")
-        .appendChild(revision);
-
-    document.getElementById("matiereRevision").value = "";
-    document.getElementById("chapitreRevision").value = "";
-}
-
-
-function terminerRevision(checkbox) {
-
-    const texte =
-        checkbox.nextElementSibling;
-
-    if (checkbox.checked) {
-
-        texte.style.textDecoration = "line-through";
-        texte.style.opacity = "0.5";
-
-    } else {
-
-        texte.style.textDecoration = "none";
-        texte.style.opacity = "1";
-    }
-}
-
-
-function supprimerRevision(bouton) {
-
-    bouton.parentElement.remove();
-}
-<section id="revision" class="page">
-
-    <div class="cadre">
-
-        <div class="contenu">
-
-            <p class="petit-texte">
-                ORGANISATION
-            </p>
-
-            <h1>Révisions</h1>
-
-            <div class="ligne"></div>
-
-            <p class="slogan">
-                Ajoute ce que tu dois réviser.
-            </p>
-
-            <input
-                type="text"
-                id="matiereRevision"
-                placeholder="Matière"
-            >
-
-            <input
-                type="text"
-                id="chapitreRevision"
-                placeholder="Chapitre"
-            >
-
-            <button class="bouton" onclick="ajouterRevision()">
-                Ajouter ♡
-            </button>
-
-            <div id="listeRevision"></div>
-
-        </div>
-
-    </div>
-
-</section>
-function ajouterRevision() {
-
-    const matiere =
-        document.getElementById("matiereRevision").value.trim();
-
-    const chapitre =
-        document.getElementById("chapitreRevision").value.trim();
-
-    if (matiere === "" || chapitre === "") {
-        alert("Remplis la matière et le chapitre.");
-        return;
-    }
-
-    const revision = document.createElement("div");
-
-    revision.className = "task";
-
-    revision.innerHTML = `
-        <input
-            type="checkbox"
-            onchange="terminerRevision(this)"
-        >
-
-        <span>
-            <strong>${matiere}</strong> — ${chapitre}
-        </span>
-
-        <button onclick="supprimerRevision(this)">
-            🗑️
-        </button>
-    `;
-
-    document
-        .getElementById("listeRevision")
-        .appendChild(revision);
-
-    document.getElementById("matiereRevision").value = "";
-    document.getElementById("chapitreRevision").value = "";
-}
-
-
-function terminerRevision(checkbox) {
-
-    const texte = checkbox.nextElementSibling;
-
-    if (checkbox.checked) {
-        texte.style.textDecoration = "line-through";
-        texte.style.opacity = "0.5";
-    } else {
-        texte.style.textDecoration = "none";
-        texte.style.opacity = "1";
-    }
-}
-
-
-function supprimerRevision(bouton) {
-    bouton.parentElement.remove();
-}
-<button onclick="showPage('revision')">📚 Révisions</button>
-<section id="emploi" class="page">
-
-    <div class="cadre">
-
-        <div class="contenu">
-
-            <p class="petit-texte">
-                ORGANISATION
-            </p>
-
-            <h1>Emploi du temps</h1>
-
-            <div class="ligne"></div>
-
-            <p class="slogan">
-                Organise tes cours pour toute la semaine.
-            </p>
-
-            <table class="emploi-table">
-
-                <tr>
-                    <th>Jour</th>
-                    <th>Matin</th>
-                    <th>Après-midi</th>
-                </tr>
-
-                <tr>
-                    <td>Lundi</td>
-                    <td>Mathématiques</td>
-                    <td>Français</td>
-                </tr>
-
-                <tr>
-                    <td>Mardi</td>
-                    <td>Anglais</td>
-                    <td>Histoire</td>
-                </tr>
-
-                <tr>
-                    <td>Mercredi</td>
-                    <td>SVT</td>
-                    <td>Mathématiques</td>
-                </tr>
-
-                <tr>
-                    <td>Jeudi</td>
-                    <td>Géographie</td>
-                    <td>Physique-Chimie</td>
-                </tr>
-
-                <tr>
-                    <td>Vendredi</td>
-                    <td>Français</td>
-                    <td>Anglais</td>
-                </tr>
-
-            </table>
-
-        </div>
-
-    </div>
-
-</section>
-.emploi-table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-}
-
-.emploi-table th,
-.emploi-table td {
-    border: 2px solid #111111;
-    padding: 14px 10px;
-    text-align: center;
-}
-
-.emploi-table th {
-    background: #111111;
-    color: #f1e7d5;
-}
-
-.emploi-table td {
-    background: #f8f0e3;
-}
-
-.emploi-table tr:hover td {
-    background: #e8dcc8;
-}
-<button onclick="showPage('emploi')">
-    🗓️ Emploi du temps
-</button>
-<section id="taches" class="page">
-
-    <div class="cadre">
-
-        <div class="contenu">
-
-            <p class="petit-texte">
-                ORGANISATION
-            </p>
-
-            <h1>Tâches</h1>
-
-            <div class="ligne"></div>
-
-            <p class="slogan">
-                Note les devoirs et les choses à faire.
-            </p>
-
-            <input
-                type="text"
-                id="nouvelleTache"
-                placeholder="Ex : Faire les exercices de maths"
-            >
-
-            <button class="bouton" onclick="ajouterTache()">
-                Ajouter ♡
-            </button>
-
-            <div id="listeTaches"></div>
-
-        </div>
-
-    </div>
-
-</section>
-function ajouterTache() {
-
-    const texte =
-        document.getElementById("nouvelleTache").value.trim();
-
-    if (texte === "") {
-        alert("Écris une tâche.");
-        return;
-    }
-
-    const tache = document.createElement("div");
-
-    tache.className = "task";
-
-    tache.innerHTML = `
-        <input
-            type="checkbox"
-            onchange="terminerTache(this)"
-        >
-
-        <span>${texte}</span>
-
-        <button onclick="supprimerTache(this)">
-            🗑️
-        </button>
-    `;
-
-    document
-        .getElementById("listeTaches")
-        .appendChild(tache);
-
-    document.getElementById("nouvelleTache").value = "";
-}
-
-
-function terminerTache(checkbox) {
-
-    const texte =
-        checkbox.nextElementSibling;
-
-    if (checkbox.checked) {
-
-        texte.style.textDecoration = "line-through";
-        texte.style.opacity = "0.5";
-
-    } else {
-
-        texte.style.textDecoration = "none";
-        texte.style.opacity = "1";
-    }
-}
-
-
-function supprimerTache(bouton) {
-
-    bouton.parentElement.remove();
-}
-<button onclick="showPage('taches')">
-    ✅ Tâches
-</button>
