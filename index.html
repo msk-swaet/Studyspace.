@@ -69,6 +69,11 @@
     }
 
 }
+        /* Bouton du menu actuellement sélectionné */
+nav button.actif {
+    background: #111111;
+    color: #f1e7d5;
+}
 
         /* =========================
            NAVIGATION
@@ -1195,88 +1200,33 @@
            NAVIGATION
         ====================================================== */
 
-        function showPage(pageId) {
+        <script>
+function showPage(pageId) {
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
 
-            const pages =
-                document.querySelectorAll(".page");
+    const page = document.getElementById(pageId);
+    if (page) {
+        page.classList.add("active");
+    }
 
-            pages.forEach(function(page) {
-                page.classList.remove("active");
-            });
+    document.querySelectorAll("nav button").forEach(button => {
+        button.classList.remove("actif");
+    });
 
-            const page =
-                document.getElementById(pageId);
-
-            if (page) {
-                page.classList.add("active");
-            }
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+    document.querySelectorAll("nav button").forEach(button => {
+        if (button.getAttribute("onclick")?.includes("'" + pageId + "'")) {
+            button.classList.add("actif");
         }
+    });
 
-
-        /* =====================================================
-           MOYENNE
-        ====================================================== */
-
-        function ajouterMatiereMoyenne() {
-
-            const liste =
-                document.getElementById("listeMatieresMoyenne");
-
-            const bloc =
-                document.createElement("div");
-
-            bloc.className = "matiere-moyenne";
-
-            bloc.innerHTML = `
-
-                <input
-                    type="text"
-                    placeholder="Matière"
-                    class="nomMatiere"
-                >
-
-                <input
-                    type="number"
-                    placeholder="Devoir 1 / 20"
-                    min="0"
-                    max="20"
-                    class="devoir1"
-                >
-
-                <input
-                    type="number"
-                    placeholder="Devoir 2 / 20"
-                    min="0"
-                    max="20"
-                    class="devoir2"
-                >
-
-                <input
-                    type="number"
-                    placeholder="Composition / 20"
-                    min="0"
-                    max="20"
-                    class="composition"
-                >
-
-                <input
-                    type="number"
-                    placeholder="Coefficient"
-                    min="1"
-                    value="1"
-                    class="coefficient"
-                >
-
-            `;
-
-            liste.appendChild(bloc);
-        }
-
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+</script>
 
         function calculerMoyenneGenerale() {
 
@@ -4638,6 +4588,97 @@ function effacerEmploi() {
 remplirMatieresEmploi();
 chargerEmploi();
     </script>
+    <script>
+/* ================================
+   SAUVEGARDE AUTOMATIQUE STUDYSPACE
+================================ */
+
+const CLE_SAUVEGARDE = "studyspace_auto_save";
+
+function obtenirEtat() {
+    const etat = {};
+
+    document.querySelectorAll(".page").forEach(section => {
+        const idSection = section.id || "section";
+
+        section.querySelectorAll("input, select, textarea").forEach((element, index) => {
+            if (element.type === "file") return;
+
+            const cle = idSection + "_" + index;
+
+            etat[cle] = {
+                valeur: element.value,
+                coche: element.checked
+            };
+        });
+    });
+
+    return etat;
+}
+
+function sauvegarderEtat() {
+    try {
+        localStorage.setItem(
+            CLE_SAUVEGARDE,
+            JSON.stringify(obtenirEtat())
+        );
+    } catch (erreur) {
+        console.log("Sauvegarde impossible :", erreur);
+    }
+}
+
+function restaurerEtat() {
+    try {
+        const sauvegarde = localStorage.getItem(CLE_SAUVEGARDE);
+
+        if (!sauvegarde) return;
+
+        const etat = JSON.parse(sauvegarde);
+
+        document.querySelectorAll(".page").forEach(section => {
+            const idSection = section.id || "section";
+
+            section.querySelectorAll("input, select, textarea").forEach((element, index) => {
+                if (element.type === "file") return;
+
+                const cle = idSection + "_" + index;
+
+                if (!etat[cle]) return;
+
+                if (element.type === "checkbox" || element.type === "radio") {
+                    element.checked = etat[cle].coche;
+                } else {
+                    element.value = etat[cle].valeur;
+                }
+            });
+        });
+    } catch (erreur) {
+        console.log("Restauration impossible :", erreur);
+    }
+}
+
+/* Sauvegarde dès qu'on modifie quelque chose */
+document.addEventListener("input", sauvegarderEtat);
+document.addEventListener("change", sauvegarderEtat);
+
+/* Sauvegarde aussi avant de fermer */
+window.addEventListener("beforeunload", sauvegarderEtat);
+
+/* Restaure les données au chargement */
+window.addEventListener("load", () => {
+    setTimeout(restaurerEtat, 500);
+});
+
+/* Surveille les éléments ajoutés dynamiquement */
+const observateur = new MutationObserver(() => {
+    restaurerEtat();
+});
+
+observateur.observe(document.body, {
+    childList: true,
+    subtree: true
+});
+</script>
 
 </body>
 </html>
