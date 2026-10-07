@@ -6,6 +6,15 @@
 
     <title>StudySpace</title>
 
+    <!-- PWA -->
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" href="./icon-192.svg">
+
+    <meta name="theme-color" content="#111111">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="StudySpace">
+
     <style>
         * {
             box-sizing: border-box;
@@ -164,6 +173,16 @@
         .bouton:hover {
             background: transparent;
             color: #111111;
+        }
+
+        .bouton-installer {
+            background: transparent;
+            color: #111111;
+        }
+
+        .bouton-installer:hover {
+            background: #111111;
+            color: #f1e7d5;
         }
 
         .raccourcis {
@@ -526,7 +545,6 @@
             margin-top: 20px;
             display: flex;
             justify-content: center;
-            gap: 10px;
         }
 
         .score-final {
@@ -538,20 +556,20 @@
             margin-bottom: 10px;
         }
 
-        .score-final .gros-score {
-            font-size: 55px;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-
         .score-sur-100 {
             font-size: 18px;
             color: #555555;
             margin-bottom: 20px;
         }
 
+        .score-final .gros-score {
+            font-size: 55px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
         /* =========================
-           MESSAGE VIDE
+           VIDE
         ========================= */
 
         .vide {
@@ -603,6 +621,7 @@
     ========================= -->
 
     <nav>
+
         <button data-page="accueil" onclick="showPage('accueil')">
             Accueil
         </button>
@@ -626,6 +645,7 @@
         <button data-page="quiz" onclick="showPage('quiz')">
             Quiz
         </button>
+
     </nav>
 
 
@@ -661,6 +681,14 @@
                         onclick="showPage('moyenne')"
                     >
                         Commencer ♡
+                    </button>
+
+                    <button
+                        id="boutonInstaller"
+                        class="bouton bouton-installer"
+                        style="display:none; margin-top:12px;"
+                    >
+                        Installer StudySpace
                     </button>
 
                     <div class="raccourcis">
@@ -748,7 +776,7 @@
                     </div>
 
                     <p class="info-formule">
-                        Moyenne D1 et D2 → moyenne avec la composition →
+                        Moyenne de D1 et D2 → moyenne avec la composition →
                         coefficient.
                     </p>
 
@@ -932,52 +960,31 @@
 
                     <div class="choix-grid">
 
-                        <button
-                            class="choix"
-                            onclick="choisirClasse('6e')"
-                        >
+                        <button class="choix" onclick="choisirClasse('6e')">
                             6e
                         </button>
 
-                        <button
-                            class="choix"
-                            onclick="choisirClasse('5e')"
-                        >
+                        <button class="choix" onclick="choisirClasse('5e')">
                             5e
                         </button>
 
-                        <button
-                            class="choix"
-                            onclick="choisirClasse('4e')"
-                        >
+                        <button class="choix" onclick="choisirClasse('4e')">
                             4e
                         </button>
 
-                        <button
-                            class="choix"
-                            onclick="choisirClasse('3e')"
-                        >
+                        <button class="choix" onclick="choisirClasse('3e')">
                             3e
                         </button>
 
-                        <button
-                            class="choix"
-                            onclick="choisirClasse('2nde')"
-                        >
+                        <button class="choix" onclick="choisirClasse('2nde')">
                             2nde
                         </button>
 
-                        <button
-                            class="choix"
-                            onclick="choisirClasse('1ère')"
-                        >
+                        <button class="choix" onclick="choisirClasse('1ère')">
                             1ère
                         </button>
 
-                        <button
-                            class="choix"
-                            onclick="choisirClasse('Terminale')"
-                        >
+                        <button class="choix" onclick="choisirClasse('Terminale')">
                             Terminale
                         </button>
 
@@ -1226,7 +1233,7 @@
     <script>
 
         /* =====================================================
-           OUTIL HTML
+           OUTIL
         ===================================================== */
 
         function escapeHTML(texte) {
@@ -1240,10 +1247,6 @@
 
         }
 
-
-        /* =====================================================
-           MELANGE
-        ===================================================== */
 
         function melanger(tableau) {
 
@@ -1267,6 +1270,7 @@
                     copie[j],
                     copie[i]
                 ];
+
             }
 
             return copie;
@@ -1283,22 +1287,30 @@
                 .querySelectorAll(".page")
                 .forEach(page => {
 
-                    page.classList.remove("active");
+                    page.classList.remove(
+                        "active"
+                    );
 
                 });
 
             const page =
-                document.getElementById(pageId);
+                document.getElementById(
+                    pageId
+                );
 
             if (page) {
-                page.classList.add("active");
+                page.classList.add(
+                    "active"
+                );
             }
 
             document
                 .querySelectorAll("nav button")
                 .forEach(button => {
 
-                    button.classList.remove("actif");
+                    button.classList.remove(
+                        "actif"
+                    );
 
                 });
 
@@ -1310,7 +1322,9 @@
                 );
 
             if (boutonActif) {
-                boutonActif.classList.add("actif");
+                boutonActif.classList.add(
+                    "actif"
+                );
             }
 
             window.scrollTo({
@@ -1340,7 +1354,9 @@
                 );
 
             const ligne =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             ligne.className =
                 "ligne-matiere";
@@ -1402,7 +1418,9 @@
 
             `;
 
-            conteneur.appendChild(ligne);
+            conteneur.appendChild(
+                ligne
+            );
 
             ligne
                 .querySelector("button")
@@ -1421,19 +1439,22 @@
 
             ligne
                 .querySelectorAll("input")
-                .forEach(input => {
+                .forEach(
+                    input => {
 
-                    input.addEventListener(
-                        "input",
-                        () => {
+                        input.addEventListener(
+                            "input",
+                            () => {
 
-                            calculerMoyenne();
-                            sauvegarderEtat();
+                                calculerMoyenne();
 
-                        }
-                    );
+                                sauvegarderEtat();
 
-                });
+                            }
+                        );
+
+                    }
+                );
 
             calculerMoyenne();
         }
@@ -1447,34 +1468,36 @@
                         ".ligne-matiere"
                     )
                 )
-                .map(ligne => ({
+                .map(
+                    ligne => ({
 
-                    nom:
-                        ligne.querySelector(
-                            ".nomMatiere"
-                        ).value,
+                        nom:
+                            ligne.querySelector(
+                                ".nomMatiere"
+                            ).value,
 
-                    d1:
-                        ligne.querySelector(
-                            ".noteD1"
-                        ).value,
+                        d1:
+                            ligne.querySelector(
+                                ".noteD1"
+                            ).value,
 
-                    d2:
-                        ligne.querySelector(
-                            ".noteD2"
-                        ).value,
+                        d2:
+                            ligne.querySelector(
+                                ".noteD2"
+                            ).value,
 
-                    composition:
-                        ligne.querySelector(
-                            ".noteComposition"
-                        ).value,
+                        composition:
+                            ligne.querySelector(
+                                ".noteComposition"
+                            ).value,
 
-                    coefficient:
-                        ligne.querySelector(
-                            ".coefficient"
-                        ).value
+                        coefficient:
+                            ligne.querySelector(
+                                ".coefficient"
+                            ).value
 
-                }));
+                    })
+                );
         }
 
 
@@ -1486,64 +1509,67 @@
                 );
 
             let totalPoints = 0;
+
             let totalCoefficients = 0;
 
-            lignes.forEach(ligne => {
+            lignes.forEach(
+                ligne => {
 
-                const d1 =
-                    parseFloat(
-                        ligne.querySelector(
-                            ".noteD1"
-                        ).value
-                    );
+                    const d1 =
+                        parseFloat(
+                            ligne.querySelector(
+                                ".noteD1"
+                            ).value
+                        );
 
-                const d2 =
-                    parseFloat(
-                        ligne.querySelector(
-                            ".noteD2"
-                        ).value
-                    );
+                    const d2 =
+                        parseFloat(
+                            ligne.querySelector(
+                                ".noteD2"
+                            ).value
+                        );
 
-                const composition =
-                    parseFloat(
-                        ligne.querySelector(
-                            ".noteComposition"
-                        ).value
-                    );
+                    const composition =
+                        parseFloat(
+                            ligne.querySelector(
+                                ".noteComposition"
+                            ).value
+                        );
 
-                const coefficient =
-                    parseFloat(
-                        ligne.querySelector(
-                            ".coefficient"
-                        ).value
-                    );
+                    const coefficient =
+                        parseFloat(
+                            ligne.querySelector(
+                                ".coefficient"
+                            ).value
+                        );
 
-                if (
-                    !isNaN(d1) &&
-                    !isNaN(d2) &&
-                    !isNaN(composition) &&
-                    !isNaN(coefficient) &&
-                    coefficient > 0
-                ) {
+                    if (
+                        !isNaN(d1) &&
+                        !isNaN(d2) &&
+                        !isNaN(composition) &&
+                        !isNaN(coefficient) &&
+                        coefficient > 0
+                    ) {
 
-                    const moyenneD1D2 =
-                        (d1 + d2) / 2;
+                        const moyenneD1D2 =
+                            (d1 + d2) / 2;
 
-                    const moyenneMatiere =
-                        (
-                            moyenneD1D2 +
-                            composition
-                        ) / 2;
+                        const moyenneMatiere =
+                            (
+                                moyenneD1D2 +
+                                composition
+                            ) / 2;
 
-                    totalPoints +=
-                        moyenneMatiere *
-                        coefficient;
+                        totalPoints +=
+                            moyenneMatiere *
+                            coefficient;
 
-                    totalCoefficients +=
-                        coefficient;
+                        totalCoefficients +=
+                            coefficient;
+                    }
+
                 }
-
-            });
+            );
 
             const moyenne =
                 totalCoefficients > 0
@@ -1584,11 +1610,14 @@
 
             revisions.push({
 
-                id: Date.now(),
+                id:
+                    Date.now(),
 
-                texte: texte,
+                texte:
+                    texte,
 
-                termine: false
+                termine:
+                    false
 
             });
 
@@ -1609,7 +1638,9 @@
 
             liste.innerHTML = "";
 
-            if (revisions.length === 0) {
+            if (
+                revisions.length === 0
+            ) {
 
                 liste.innerHTML = `
                     <div class="vide">
@@ -1620,74 +1651,59 @@
                 return;
             }
 
-            revisions.forEach(revision => {
+            revisions.forEach(
+                revision => {
 
-                const element =
-                    document.createElement("div");
+                    const element =
+                        document.createElement(
+                            "div"
+                        );
 
-                element.className =
-                    "element" +
-                    (
-                        revision.termine
-                            ? " termine"
-                            : ""
-                    );
+                    element.className =
+                        "element" +
+                        (
+                            revision.termine
+                                ? " termine"
+                                : ""
+                        );
 
-                element.innerHTML = `
+                    element.innerHTML = `
 
-                    <div class="element-gauche">
+                        <div class="element-gauche">
 
-                        <input
-                            type="checkbox"
-                            ${revision.termine ? "checked" : ""}
+                            <input
+                                type="checkbox"
+                                ${revision.termine ? "checked" : ""}
+                            >
+
+                            <span class="texte">
+                                ${escapeHTML(
+                                    revision.texte
+                                )}
+                            </span>
+
+                        </div>
+
+                        <button
+                            class="petit-bouton danger"
+                            type="button"
                         >
+                            Supprimer
+                        </button>
 
-                        <span class="texte">
-                            ${escapeHTML(revision.texte)}
-                        </span>
+                    `;
 
-                    </div>
+                    const checkbox =
+                        element.querySelector(
+                            'input[type="checkbox"]'
+                        );
 
-                    <button
-                        class="petit-bouton danger"
-                        type="button"
-                    >
-                        Supprimer
-                    </button>
-
-                `;
-
-                const checkbox =
-                    element.querySelector(
-                        'input[type="checkbox"]'
-                    );
-
-                checkbox.addEventListener(
-                    "change",
-                    () => {
-
-                        revision.termine =
-                            checkbox.checked;
-
-                        afficherRevisions();
-
-                        sauvegarderEtat();
-
-                    }
-                );
-
-                element
-                    .querySelector("button")
-                    .addEventListener(
-                        "click",
+                    checkbox.addEventListener(
+                        "change",
                         () => {
 
-                            revisions =
-                                revisions.filter(
-                                    item =>
-                                        item.id !==
-                                        revision.id
-                                );
+                            revision.termine =
+                                checkbox.checked;
 
                             afficherRevisions();
 
@@ -1696,20 +1712,50 @@
                         }
                     );
 
-                liste.appendChild(element);
+                    element
+                        .querySelector("button")
+                        .addEventListener(
+                            "click",
+                            () => {
 
-            });
+                                revisions =
+                                    revisions.filter(
+                                        item =>
+                                            item.id !==
+                                            revision.id
+                                    );
+
+                                afficherRevisions();
+
+                                sauvegarderEtat();
+
+                            }
+                        );
+
+                    liste.appendChild(
+                        element
+                    );
+
+                }
+            );
         }
 
 
         document
-            .getElementById("revisionInput")
+            .getElementById(
+                "revisionInput"
+            )
             .addEventListener(
                 "keydown",
                 event => {
 
-                    if (event.key === "Enter") {
+                    if (
+                        event.key ===
+                        "Enter"
+                    ) {
+
                         ajouterRevision();
+
                     }
 
                 }
@@ -1751,7 +1797,11 @@
 
                         <option
                             value="${escapeHTML(matiere)}"
-                            ${matiere === valeur ? "selected" : ""}
+                            ${
+                                matiere === valeur
+                                    ? "selected"
+                                    : ""
+                            }
                         >
                             ${escapeHTML(matiere)}
                         </option>
@@ -1778,10 +1828,14 @@
             ) {
 
                 const ligne =
-                    document.createElement("tr");
+                    document.createElement(
+                        "tr"
+                    );
 
                 const celluleHeure =
-                    document.createElement("td");
+                    document.createElement(
+                        "td"
+                    );
 
                 celluleHeure.className =
                     "heure";
@@ -1800,10 +1854,14 @@
                 ) {
 
                     const cellule =
-                        document.createElement("td");
+                        document.createElement(
+                            "td"
+                        );
 
                     const select =
-                        document.createElement("select");
+                        document.createElement(
+                            "select"
+                        );
 
                     select.className =
                         "matiereEmploi";
@@ -1818,10 +1876,11 @@
                     ligne.appendChild(
                         cellule
                     );
-
                 }
 
-                tbody.appendChild(ligne);
+                tbody.appendChild(
+                    ligne
+                );
             }
         }
 
@@ -1841,7 +1900,9 @@
         }
 
 
-        function remplirEmploi(donnees) {
+        function remplirEmploi(
+            donnees
+        ) {
 
             const selects =
                 document.querySelectorAll(
@@ -1909,11 +1970,14 @@
 
             taches.push({
 
-                id: Date.now(),
+                id:
+                    Date.now(),
 
-                texte: texte,
+                texte:
+                    texte,
 
-                termine: false
+                termine:
+                    false
 
             });
 
@@ -1934,7 +1998,9 @@
 
             liste.innerHTML = "";
 
-            if (taches.length === 0) {
+            if (
+                taches.length === 0
+            ) {
 
                 liste.innerHTML = `
                     <div class="vide">
@@ -1945,74 +2011,59 @@
                 return;
             }
 
-            taches.forEach(tache => {
+            taches.forEach(
+                tache => {
 
-                const element =
-                    document.createElement("div");
+                    const element =
+                        document.createElement(
+                            "div"
+                        );
 
-                element.className =
-                    "tache" +
-                    (
-                        tache.termine
-                            ? " fini"
-                            : ""
-                    );
+                    element.className =
+                        "tache" +
+                        (
+                            tache.termine
+                                ? " fini"
+                                : ""
+                        );
 
-                element.innerHTML = `
+                    element.innerHTML = `
 
-                    <div class="tache-gauche">
+                        <div class="tache-gauche">
 
-                        <input
-                            type="checkbox"
-                            ${tache.termine ? "checked" : ""}
+                            <input
+                                type="checkbox"
+                                ${tache.termine ? "checked" : ""}
+                            >
+
+                            <span class="texte">
+                                ${escapeHTML(
+                                    tache.texte
+                                )}
+                            </span>
+
+                        </div>
+
+                        <button
+                            class="petit-bouton danger"
+                            type="button"
                         >
+                            Supprimer
+                        </button>
 
-                        <span class="texte">
-                            ${escapeHTML(tache.texte)}
-                        </span>
+                    `;
 
-                    </div>
+                    const checkbox =
+                        element.querySelector(
+                            'input[type="checkbox"]'
+                        );
 
-                    <button
-                        class="petit-bouton danger"
-                        type="button"
-                    >
-                        Supprimer
-                    </button>
-
-                `;
-
-                const checkbox =
-                    element.querySelector(
-                        'input[type="checkbox"]'
-                    );
-
-                checkbox.addEventListener(
-                    "change",
-                    () => {
-
-                        tache.termine =
-                            checkbox.checked;
-
-                        afficherTaches();
-
-                        sauvegarderEtat();
-
-                    }
-                );
-
-                element
-                    .querySelector("button")
-                    .addEventListener(
-                        "click",
+                    checkbox.addEventListener(
+                        "change",
                         () => {
 
-                            taches =
-                                taches.filter(
-                                    item =>
-                                        item.id !==
-                                        tache.id
-                                );
+                            tache.termine =
+                                checkbox.checked;
 
                             afficherTaches();
 
@@ -2021,20 +2072,52 @@
                         }
                     );
 
-                liste.appendChild(element);
+                    element
+                        .querySelector(
+                            "button"
+                        )
+                        .addEventListener(
+                            "click",
+                            () => {
 
-            });
+                                taches =
+                                    taches.filter(
+                                        item =>
+                                            item.id !==
+                                            tache.id
+                                    );
+
+                                afficherTaches();
+
+                                sauvegarderEtat();
+
+                            }
+                        );
+
+                    liste.appendChild(
+                        element
+                    );
+
+                }
+            );
         }
 
 
         document
-            .getElementById("tacheInput")
+            .getElementById(
+                "tacheInput"
+            )
             .addEventListener(
                 "keydown",
                 event => {
 
-                    if (event.key === "Enter") {
+                    if (
+                        event.key ===
+                        "Enter"
+                    ) {
+
                         ajouterTache();
+
                     }
 
                 }
@@ -2068,10 +2151,6 @@
         const POINTS_PAR_REPONSE = 10;
 
 
-        /* =====================================================
-           RACCOURCI POUR CRÉER UNE QUESTION
-        ===================================================== */
-
         function Q(
             niveau,
             question,
@@ -2081,13 +2160,10 @@
 
             return {
 
-                niveau: niveau,
-
-                question: question,
-
-                options: options,
-
-                answer: answer
+                niveau,
+                question,
+                options,
+                answer
 
             };
         }
@@ -2574,698 +2650,193 @@
 
             "Mathématiques": [
 
-                Q(
-                    "facile",
-                    "Quel est le résultat de 5² ?",
-                    ["10", "15", "20", "25"],
-                    3
-                ),
+                Q("facile", "Quel est le résultat de 5² ?", ["10", "15", "20", "25"], 3),
 
-                Q(
-                    "facile",
-                    "Quel est le résultat de √81 ?",
-                    ["7", "8", "9", "10"],
-                    2
-                ),
+                Q("facile", "Quel est le résultat de √81 ?", ["7", "8", "9", "10"], 2),
 
-                Q(
-                    "facile",
-                    "Résous : 2x = 14.",
-                    ["x = 5", "x = 6", "x = 7", "x = 8"],
-                    2
-                ),
+                Q("facile", "Résous : 2x = 14.", ["x = 5", "x = 6", "x = 7", "x = 8"], 2),
 
-                Q(
-                    "moyen",
-                    "Si 3x + 2 = 11, combien vaut x ?",
-                    ["2", "3", "4", "5"],
-                    1
-                ),
+                Q("moyen", "Si 3x + 2 = 11, combien vaut x ?", ["2", "3", "4", "5"], 1),
 
-                Q(
-                    "moyen",
-                    "Quel est le développement de (x + 3)² ?",
-                    [
-                        "x² + 3x + 9",
-                        "x² + 6x + 9",
-                        "x² + 9",
-                        "x² + 6x + 3"
-                    ],
-                    1
-                ),
+                Q("moyen", "Quel est le développement de (x + 3)² ?", ["x² + 3x + 9", "x² + 6x + 9", "x² + 9", "x² + 6x + 3"], 1),
 
-                Q(
-                    "moyen",
-                    "Combien vaut 4² + 3² ?",
-                    ["12", "16", "25", "49"],
-                    2
-                ),
+                Q("moyen", "Combien vaut 4² + 3² ?", ["12", "16", "25", "49"], 2),
 
-                Q(
-                    "difficile",
-                    "Quelle est la solution de 5x - 10 = 0 ?",
-                    ["x = 1", "x = 2", "x = 5", "x = 10"],
-                    1
-                ),
+                Q("difficile", "Quelle est la solution de 5x - 10 = 0 ?", ["x = 1", "x = 2", "x = 5", "x = 10"], 1),
 
-                Q(
-                    "difficile",
-                    "Quel est le développement de (x - 2)(x + 3) ?",
-                    [
-                        "x² + x - 6",
-                        "x² + 5x - 6",
-                        "x² - x + 6",
-                        "x² + x + 6"
-                    ],
-                    0
-                ),
+                Q("difficile", "Quel est le développement de (x - 2)(x + 3) ?", ["x² + x - 6", "x² + 5x - 6", "x² - x + 6", "x² + x + 6"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel est le coefficient directeur de y = 4x + 1 ?",
-                    ["1", "4", "-1", "-4"],
-                    1
-                ),
+                Q("difficile", "Quel est le coefficient directeur de y = 4x + 1 ?", ["1", "4", "-1", "-4"], 1),
 
-                Q(
-                    "difficile",
-                    "Quelle est l'aire d'un triangle de base 10 cm et de hauteur 6 cm ?",
-                    ["16 cm²", "30 cm²", "60 cm²", "120 cm²"],
-                    1
-                )
+                Q("difficile", "Quelle est l'aire d'un triangle de base 10 cm et de hauteur 6 cm ?", ["16 cm²", "30 cm²", "60 cm²", "120 cm²"], 1)
 
             ],
 
             "Français": [
 
-                Q(
-                    "facile",
-                    "Quel est le verbe dans « Marième lit un livre » ?",
-                    ["Marième", "lit", "livre", "un"],
-                    1
-                ),
+                Q("facile", "Quel est le verbe dans « Marième lit un livre » ?", ["Marième", "lit", "livre", "un"], 1),
 
-                Q(
-                    "facile",
-                    "Quel est le contraire de « commencer » ?",
-                    ["Finir", "Débuter", "Entrer", "Avancer"],
-                    0
-                ),
+                Q("facile", "Quel est le contraire de « commencer » ?", ["Finir", "Débuter", "Entrer", "Avancer"], 0),
 
-                Q(
-                    "facile",
-                    "Quel mot est un adjectif ?",
-                    ["rapidement", "grand", "courir", "maison"],
-                    1
-                ),
+                Q("facile", "Quel mot est un adjectif ?", ["rapidement", "grand", "courir", "maison"], 1),
 
-                Q(
-                    "moyen",
-                    "Quel temps est utilisé dans « Il avait terminé » ?",
-                    ["Présent", "Imparfait", "Plus-que-parfait", "Futur simple"],
-                    2
-                ),
+                Q("moyen", "Quel temps est utilisé dans « Il avait terminé » ?", ["Présent", "Imparfait", "Plus-que-parfait", "Futur simple"], 2),
 
-                Q(
-                    "moyen",
-                    "Dans « Je voudrais réussir », « voudrais » est à quel temps ?",
-                    ["Conditionnel présent", "Présent", "Futur simple", "Imparfait"],
-                    0
-                ),
+                Q("moyen", "Dans « Je voudrais réussir », « voudrais » est à quel temps ?", ["Conditionnel présent", "Présent", "Futur simple", "Imparfait"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel procédé rapproche deux éléments à l'aide de « comme » ?",
-                    ["Comparaison", "Métaphore", "Hyperbole", "Ellipse"],
-                    0
-                ),
+                Q("moyen", "Quel procédé rapproche deux éléments avec « comme » ?", ["Comparaison", "Métaphore", "Hyperbole", "Ellipse"], 0),
 
-                Q(
-                    "difficile",
-                    "Quelle proposition contient une métaphore ?",
-                    [
-                        "Il est un lion sur le terrain.",
-                        "Il court rapidement.",
-                        "Il mange une pomme.",
-                        "Il ouvre la porte."
-                    ],
-                    0
-                ),
+                Q("difficile", "Quelle proposition contient une métaphore ?", ["Il est un lion sur le terrain.", "Il court rapidement.", "Il mange une pomme.", "Il ouvre la porte."], 0),
 
-                Q(
-                    "difficile",
-                    "Quel procédé consiste à exagérer une idée ?",
-                    ["Hyperbole", "Comparaison", "Antithèse", "Ellipse"],
-                    0
-                ),
+                Q("difficile", "Quel procédé consiste à exagérer une idée ?", ["Hyperbole", "Comparaison", "Antithèse", "Ellipse"], 0),
 
-                Q(
-                    "difficile",
-                    "Dans « Les grandes maisons blanches », quel mot est un adjectif ?",
-                    ["Les", "grandes", "maisons", "blanches uniquement"],
-                    1
-                ),
+                Q("difficile", "Dans « Les grandes maisons blanches », quel mot est un adjectif ?", ["Les", "grandes", "maisons", "blanches uniquement"], 1),
 
-                Q(
-                    "difficile",
-                    "Quel mode verbal exprime souvent un ordre ?",
-                    ["Indicatif", "Impératif", "Conditionnel", "Infinitif"],
-                    1
-                )
+                Q("difficile", "Quel mode verbal exprime souvent un ordre ?", ["Indicatif", "Impératif", "Conditionnel", "Infinitif"], 1)
 
             ],
 
             "Anglais": [
 
-                Q(
-                    "facile",
-                    "Quel est le prétérit de « go » ?",
-                    ["goed", "went", "gone", "goes"],
-                    1
-                ),
+                Q("facile", "Quel est le prétérit de « go » ?", ["goed", "went", "gone", "goes"], 1),
 
-                Q(
-                    "facile",
-                    "Quel est le contraire de « expensive » ?",
-                    ["Cheap", "Large", "Strong", "Late"],
-                    0
-                ),
+                Q("facile", "Quel est le contraire de « expensive » ?", ["Cheap", "Large", "Strong", "Late"], 0),
 
-                Q(
-                    "facile",
-                    "Quel est le contraire de « old » ?",
-                    ["Young", "Tall", "Slow", "Dark"],
-                    0
-                ),
+                Q("facile", "Quel est le contraire de « old » ?", ["Young", "Tall", "Slow", "Dark"], 0),
 
-                Q(
-                    "moyen",
-                    "Complète : « She ___ to school every day. »",
-                    ["go", "goes", "going", "gone"],
-                    1
-                ),
+                Q("moyen", "Complète : « She ___ to school every day. »", ["go", "goes", "going", "gone"], 1),
 
-                Q(
-                    "moyen",
-                    "Complète : « If I had time, I ___ travel. »",
-                    ["will", "would", "am", "have"],
-                    1
-                ),
+                Q("moyen", "Complète : « If I had time, I ___ travel. »", ["will", "would", "am", "have"], 1),
 
-                Q(
-                    "moyen",
-                    "Quel est le prétérit de « see » ?",
-                    ["seed", "saw", "seen", "seeing"],
-                    1
-                ),
+                Q("moyen", "Quel est le prétérit de « see » ?", ["seed", "saw", "seen", "seeing"], 1),
 
-                Q(
-                    "difficile",
-                    "Quelle phrase est correcte ?",
-                    [
-                        "I have lived here since 2020.",
-                        "I live here since 2020.",
-                        "I am live here since 2020.",
-                        "I living here since 2020."
-                    ],
-                    0
-                ),
+                Q("difficile", "Quelle phrase est correcte ?", ["I have lived here since 2020.", "I live here since 2020.", "I am live here since 2020.", "I living here since 2020."], 0),
 
-                Q(
-                    "difficile",
-                    "Complète : « They ___ already finished. »",
-                    ["has", "have", "is", "was"],
-                    1
-                ),
+                Q("difficile", "Complète : « They ___ already finished. »", ["has", "have", "is", "was"], 1),
 
-                Q(
-                    "difficile",
-                    "Quel mot signifie « cependant » ?",
-                    ["However", "Because", "Before", "Although only"],
-                    0
-                ),
+                Q("difficile", "Quel mot signifie « cependant » ?", ["However", "Because", "Before", "During"], 0),
 
-                Q(
-                    "difficile",
-                    "Quelle forme est correcte ?",
-                    [
-                        "He doesn't like tea.",
-                        "He don't like tea.",
-                        "He doesn't likes tea.",
-                        "He not like tea."
-                    ],
-                    0
-                )
+                Q("difficile", "Quelle forme est correcte ?", ["He doesn't like tea.", "He don't like tea.", "He doesn't likes tea.", "He not like tea."], 0)
 
             ],
 
             "Histoire-Géographie": [
 
-                Q(
-                    "facile",
-                    "Quel océan borde la côte ouest du Sénégal ?",
-                    ["Océan Indien", "Océan Atlantique", "Océan Arctique", "Océan Pacifique"],
-                    1
-                ),
+                Q("facile", "Quel océan borde la côte ouest du Sénégal ?", ["Océan Indien", "Océan Atlantique", "Océan Arctique", "Océan Pacifique"], 1),
 
-                Q(
-                    "facile",
-                    "Quelle est la capitale du Sénégal ?",
-                    ["Saint-Louis", "Thiès", "Dakar", "Ziguinchor"],
-                    2
-                ),
+                Q("facile", "Quelle est la capitale du Sénégal ?", ["Saint-Louis", "Thiès", "Dakar", "Ziguinchor"], 2),
 
-                Q(
-                    "facile",
-                    "Quel phénomène désigne l'augmentation de la population vivant en ville ?",
-                    ["Urbanisation", "Déforestation", "Érosion", "Glaciation"],
-                    0
-                ),
+                Q("facile", "Quel phénomène désigne l'augmentation de la population vivant en ville ?", ["Urbanisation", "Déforestation", "Érosion", "Glaciation"], 0),
 
-                Q(
-                    "moyen",
-                    "La traite atlantique concernait principalement quels espaces ?",
-                    [
-                        "Europe, Afrique et Amériques",
-                        "Asie et Océanie uniquement",
-                        "Afrique et Antarctique",
-                        "Europe et Australie uniquement"
-                    ],
-                    0
-                ),
+                Q("moyen", "La traite atlantique concernait principalement quels espaces ?", ["Europe, Afrique et Amériques", "Asie et Océanie uniquement", "Afrique et Antarctique", "Europe et Australie uniquement"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel terme désigne la concentration des activités dans les grandes villes ?",
-                    ["Métropolisation", "Désertification", "Ruralisation", "Glaciation"],
-                    0
-                ),
+                Q("moyen", "Quel terme désigne la concentration des activités dans les grandes villes ?", ["Métropolisation", "Désertification", "Ruralisation", "Glaciation"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel grand océan sépare notamment l'Afrique et les Amériques ?",
-                    ["Atlantique", "Indien", "Pacifique", "Arctique"],
-                    0
-                ),
+                Q("moyen", "Quel grand océan sépare notamment l'Afrique et les Amériques ?", ["Atlantique", "Indien", "Pacifique", "Arctique"], 0),
 
-                Q(
-                    "difficile",
-                    "Pourquoi les littoraux sont-ils souvent des espaces très peuplés ?",
-                    [
-                        "Ils concentrent notamment des activités, des échanges et des villes",
-                        "Ils ne présentent jamais de risques",
-                        "Ils sont toujours agricoles",
-                        "Ils sont toujours montagneux"
-                    ],
-                    0
-                ),
+                Q("difficile", "Pourquoi les littoraux sont-ils souvent des espaces très peuplés ?", ["Ils concentrent notamment des activités, des échanges et des villes", "Ils ne présentent jamais de risques", "Ils sont toujours agricoles", "Ils sont toujours montagneux"], 0),
 
-                Q(
-                    "difficile",
-                    "Quelle organisation a remplacé la SDN après la Seconde Guerre mondiale ?",
-                    ["ONU", "OTAN", "CEE", "UA"],
-                    0
-                ),
+                Q("difficile", "Quelle organisation a remplacé la SDN après la Seconde Guerre mondiale ?", ["ONU", "OTAN", "CEE", "UA"], 0),
 
-                Q(
-                    "difficile",
-                    "En quelle année commence la Première Guerre mondiale ?",
-                    ["1912", "1914", "1916", "1918"],
-                    1
-                ),
+                Q("difficile", "En quelle année commence la Première Guerre mondiale ?", ["1912", "1914", "1916", "1918"], 1),
 
-                Q(
-                    "difficile",
-                    "En quelle année se termine la Seconde Guerre mondiale ?",
-                    ["1942", "1945", "1947", "1950"],
-                    1
-                )
+                Q("difficile", "En quelle année se termine la Seconde Guerre mondiale ?", ["1942", "1945", "1947", "1950"], 1)
 
             ],
 
             "SVT": [
 
-                Q(
-                    "facile",
-                    "Quel organe pompe le sang dans le corps ?",
-                    ["Le foie", "Le cœur", "Le poumon", "Le rein"],
-                    1
-                ),
+                Q("facile", "Quel organe pompe le sang dans le corps ?", ["Le foie", "Le cœur", "Le poumon", "Le rein"], 1),
 
-                Q(
-                    "facile",
-                    "Quel est le rôle principal de l'ADN ?",
-                    [
-                        "Stocker l'information génétique",
-                        "Pomper le sang",
-                        "Digérer les aliments",
-                        "Transporter l'oxygène"
-                    ],
-                    0
-                ),
+                Q("facile", "Quel est le rôle principal de l'ADN ?", ["Stocker l'information génétique", "Pomper le sang", "Digérer les aliments", "Transporter l'oxygène"], 0),
 
-                Q(
-                    "facile",
-                    "Quel gaz est principalement utilisé lors de la respiration ?",
-                    ["Azote", "Oxygène", "Hydrogène", "Hélium"],
-                    1
-                ),
+                Q("facile", "Quel gaz est principalement utilisé lors de la respiration ?", ["Azote", "Oxygène", "Hydrogène", "Hélium"], 1),
 
-                Q(
-                    "moyen",
-                    "Quelle structure porte l'information génétique dans une cellule ?",
-                    ["ADN", "Eau", "Glucose", "Calcium"],
-                    0
-                ),
+                Q("moyen", "Quelle structure porte l'information génétique dans une cellule ?", ["ADN", "Eau", "Glucose", "Calcium"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel organe assure principalement les échanges gazeux ?",
-                    ["Les poumons", "Le foie", "Le cœur", "L'estomac"],
-                    0
-                ),
+                Q("moyen", "Quel organe assure principalement les échanges gazeux ?", ["Les poumons", "Le foie", "Le cœur", "L'estomac"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel système transporte le sang ?",
-                    ["Système circulatoire", "Système osseux", "Système digestif", "Système nerveux"],
-                    0
-                ),
+                Q("moyen", "Quel système transporte le sang ?", ["Système circulatoire", "Système osseux", "Système digestif", "Système nerveux"], 0),
 
-                Q(
-                    "difficile",
-                    "Pourquoi les cellules ont-elles besoin de dioxygène ?",
-                    [
-                        "Il participe notamment à la production d'énergie lors de la respiration cellulaire",
-                        "Il fabrique les os directement",
-                        "Il remplace l'eau",
-                        "Il arrête toute activité cellulaire"
-                    ],
-                    0
-                ),
+                Q("difficile", "Pourquoi les cellules ont-elles besoin de dioxygène ?", ["Il participe notamment à la production d'énergie lors de la respiration cellulaire", "Il fabrique les os directement", "Il remplace l'eau", "Il arrête toute activité cellulaire"], 0),
 
-                Q(
-                    "difficile",
-                    "Une mutation touche principalement quelle molécule ?",
-                    ["ADN", "Eau", "Calcium", "Sodium"],
-                    0
-                ),
+                Q("difficile", "Une mutation touche principalement quelle molécule ?", ["ADN", "Eau", "Calcium", "Sodium"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel élément est transmis lors de la division cellulaire ?",
-                    ["Information génétique", "Uniquement l'eau", "Uniquement l'air", "Aucune information"],
-                    0
-                ),
+                Q("difficile", "Quel élément est transmis lors de la division cellulaire ?", ["Information génétique", "Uniquement l'eau", "Uniquement l'air", "Aucune information"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel mécanisme produit de l'énergie à partir de nutriments et de dioxygène ?",
-                    ["Respiration cellulaire", "Photosynthèse", "Digestion mécanique", "Transpiration"],
-                    0
-                )
+                Q("difficile", "Quel mécanisme produit de l'énergie à partir de nutriments et de dioxygène ?", ["Respiration cellulaire", "Photosynthèse", "Digestion mécanique", "Transpiration"], 0)
 
             ],
 
             "Physique-Chimie": [
 
-                Q(
-                    "facile",
-                    "Quelle unité mesure une durée ?",
-                    ["Le mètre", "La seconde", "Le kilogramme", "Le volt"],
-                    1
-                ),
+                Q("facile", "Quelle unité mesure une durée ?", ["Le mètre", "La seconde", "Le kilogramme", "Le volt"], 1),
 
-                Q(
-                    "facile",
-                    "Quel instrument mesure la température ?",
-                    ["Baromètre", "Thermomètre", "Balance", "Ampèremètre"],
-                    1
-                ),
+                Q("facile", "Quel instrument mesure la température ?", ["Baromètre", "Thermomètre", "Balance", "Ampèremètre"], 1),
 
-                Q(
-                    "facile",
-                    "Quelle unité mesure la masse ?",
-                    ["Kilogramme", "Volt", "Watt", "Newton"],
-                    0
-                ),
+                Q("facile", "Quelle unité mesure la masse ?", ["Kilogramme", "Volt", "Watt", "Newton"], 0),
 
-                Q(
-                    "moyen",
-                    "Quelle grandeur se mesure en volt ?",
-                    ["Tension électrique", "Masse", "Durée", "Longueur"],
-                    0
-                ),
+                Q("moyen", "Quelle grandeur se mesure en volt ?", ["Tension électrique", "Masse", "Durée", "Longueur"], 0),
 
-                Q(
-                    "moyen",
-                    "Quelle grandeur se mesure en kilogramme ?",
-                    ["Masse", "Tension", "Puissance", "Température"],
-                    0
-                ),
+                Q("moyen", "Quelle grandeur se mesure en kilogramme ?", ["Masse", "Tension", "Puissance", "Température"], 0),
 
-                Q(
-                    "moyen",
-                    "Quelle grandeur se mesure en newton ?",
-                    ["Force", "Masse", "Temps", "Énergie"],
-                    0
-                ),
+                Q("moyen", "Quelle grandeur se mesure en newton ?", ["Force", "Masse", "Temps", "Énergie"], 0),
 
-                Q(
-                    "difficile",
-                    "Quelle relation permet de calculer une vitesse ?",
-                    ["distance ÷ durée", "durée ÷ distance", "distance × durée", "distance + durée"],
-                    0
-                ),
+                Q("difficile", "Quelle relation permet de calculer une vitesse ?", ["distance ÷ durée", "durée ÷ distance", "distance × durée", "distance + durée"], 0),
 
-                Q(
-                    "difficile",
-                    "Quelle unité mesure une énergie ?",
-                    ["Joule", "Newton", "Volt", "Watt"],
-                    0
-                ),
+                Q("difficile", "Quelle unité mesure une énergie ?", ["Joule", "Newton", "Volt", "Watt"], 0),
 
-                Q(
-                    "difficile",
-                    "Quelle unité mesure une puissance ?",
-                    ["Watt", "Newton", "Joule", "Volt"],
-                    0
-                ),
+                Q("difficile", "Quelle unité mesure une puissance ?", ["Watt", "Newton", "Joule", "Volt"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel instrument mesure une masse ?",
-                    ["Balance", "Thermomètre", "Voltmètre", "Chronomètre"],
-                    0
-                )
+                Q("difficile", "Quel instrument mesure une masse ?", ["Balance", "Thermomètre", "Voltmètre", "Chronomètre"], 0)
 
             ],
 
             "Technologie": [
 
-                Q(
-                    "facile",
-                    "Quel objet permet de saisir du texte ?",
-                    ["Clavier", "Écran", "Webcam", "Haut-parleur"],
-                    0
-                ),
+                Q("facile", "Quel objet permet de saisir du texte ?", ["Clavier", "Écran", "Webcam", "Haut-parleur"], 0),
 
-                Q(
-                    "facile",
-                    "Quel composant sert à afficher des informations ?",
-                    ["Écran", "Clavier", "Souris", "Microphone"],
-                    0
-                ),
+                Q("facile", "Quel composant sert à afficher des informations ?", ["Écran", "Clavier", "Souris", "Microphone"], 0),
 
-                Q(
-                    "facile",
-                    "Quel périphérique permet de déplacer le pointeur ?",
-                    ["Souris", "Écran", "Imprimante", "Scanner"],
-                    0
-                ),
+                Q("facile", "Quel périphérique permet de déplacer le pointeur ?", ["Souris", "Écran", "Imprimante", "Scanner"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel composant permet de stocker des données ?",
-                    ["Disque de stockage", "Écran", "Clavier", "Souris"],
-                    0
-                ),
+                Q("moyen", "Quel composant permet de stocker des données ?", ["Disque de stockage", "Écran", "Clavier", "Souris"], 0),
 
-                Q(
-                    "moyen",
-                    "À quoi sert principalement un navigateur web ?",
-                    [
-                        "Consulter des sites internet",
-                        "Mesurer la température",
-                        "Charger une batterie",
-                        "Remplacer le clavier"
-                    ],
-                    0
-                ),
+                Q("moyen", "À quoi sert principalement un navigateur web ?", ["Consulter des sites internet", "Mesurer la température", "Charger une batterie", "Remplacer le clavier"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel appareil permet généralement d'imprimer un document ?",
-                    ["Imprimante", "Routeur", "Clavier", "Microphone"],
-                    0
-                ),
+                Q("moyen", "Quel appareil permet généralement d'imprimer un document ?", ["Imprimante", "Routeur", "Clavier", "Microphone"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel est le rôle général d'un système d'exploitation ?",
-                    [
-                        "Gérer notamment les ressources et les programmes de l'appareil",
-                        "Créer uniquement des images",
-                        "Mesurer la vitesse internet",
-                        "Remplacer le clavier"
-                    ],
-                    0
-                ),
+                Q("difficile", "Quel est le rôle général d'un système d'exploitation ?", ["Gérer notamment les ressources et les programmes de l'appareil", "Créer uniquement des images", "Mesurer la vitesse internet", "Remplacer le clavier"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel composant exécute principalement les instructions d'un ordinateur ?",
-                    ["Processeur", "Écran", "Clavier", "Souris"],
-                    0
-                ),
+                Q("difficile", "Quel composant exécute principalement les instructions d'un ordinateur ?", ["Processeur", "Écran", "Clavier", "Souris"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel élément sert à connecter plusieurs appareils à un réseau ?",
-                    ["Routeur", "Clavier", "Écran", "Casque"],
-                    0
-                ),
+                Q("difficile", "Quel élément sert à connecter plusieurs appareils à un réseau ?", ["Routeur", "Clavier", "Écran", "Casque"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel format est couramment utilisé pour un document portable ?",
-                    ["PDF", "MP3", "PNG uniquement", "EXE uniquement"],
-                    0
-                )
+                Q("difficile", "Quel format est couramment utilisé pour un document portable ?", ["PDF", "MP3", "PNG uniquement", "EXE uniquement"], 0)
 
             ],
 
             "Économie familiale": [
 
-                Q(
-                    "facile",
-                    "Quel élément est essentiel pour une alimentation équilibrée ?",
-                    [
-                        "Une alimentation variée",
-                        "Uniquement des sucreries",
-                        "Uniquement des boissons",
-                        "Aucun légume"
-                    ],
-                    0
-                ),
+                Q("facile", "Quel élément est essentiel pour une alimentation équilibrée ?", ["Une alimentation variée", "Uniquement des sucreries", "Uniquement des boissons", "Aucun légume"], 0),
 
-                Q(
-                    "facile",
-                    "Pourquoi conserver correctement les aliments ?",
-                    [
-                        "Pour limiter leur dégradation",
-                        "Pour les rendre plus lourds",
-                        "Pour supprimer toute cuisson",
-                        "Pour changer leur couleur"
-                    ],
-                    0
-                ),
+                Q("facile", "Pourquoi conserver correctement les aliments ?", ["Pour limiter leur dégradation", "Pour les rendre plus lourds", "Pour supprimer toute cuisson", "Pour changer leur couleur"], 0),
 
-                Q(
-                    "facile",
-                    "Pourquoi se laver les mains avant de cuisiner ?",
-                    [
-                        "Pour réduire la transmission de microbes",
-                        "Pour refroidir les aliments",
-                        "Pour changer leur goût",
-                        "Pour augmenter leur quantité"
-                    ],
-                    0
-                ),
+                Q("facile", "Pourquoi se laver les mains avant de cuisiner ?", ["Pour réduire la transmission de microbes", "Pour refroidir les aliments", "Pour changer leur goût", "Pour augmenter leur quantité"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel est l'intérêt de lire la date limite d'un aliment ?",
-                    [
-                        "Vérifier sa durée de consommation prévue",
-                        "Connaître sa couleur",
-                        "Modifier son goût",
-                        "Calculer sa masse"
-                    ],
-                    0
-                ),
+                Q("moyen", "Quel est l'intérêt de lire la date limite d'un aliment ?", ["Vérifier sa durée de consommation prévue", "Connaître sa couleur", "Modifier son goût", "Calculer sa masse"], 0),
 
-                Q(
-                    "moyen",
-                    "Pourquoi faut-il nettoyer les ustensiles de cuisine ?",
-                    [
-                        "Pour limiter les contaminations",
-                        "Pour les rendre plus lourds",
-                        "Pour changer les aliments",
-                        "Pour supprimer la cuisson"
-                    ],
-                    0
-                ),
+                Q("moyen", "Pourquoi faut-il nettoyer les ustensiles de cuisine ?", ["Pour limiter les contaminations", "Pour les rendre plus lourds", "Pour changer les aliments", "Pour supprimer la cuisson"], 0),
 
-                Q(
-                    "moyen",
-                    "Pourquoi varier les aliments ?",
-                    [
-                        "Pour apporter différents nutriments",
-                        "Pour supprimer l'eau",
-                        "Pour éviter tous les repas",
-                        "Pour manger uniquement des produits sucrés"
-                    ],
-                    0
-                ),
+                Q("moyen", "Pourquoi varier les aliments ?", ["Pour apporter différents nutriments", "Pour supprimer l'eau", "Pour éviter tous les repas", "Pour manger uniquement des produits sucrés"], 0),
 
-                Q(
-                    "difficile",
-                    "Pourquoi faut-il conserver certains aliments au réfrigérateur ?",
-                    [
-                        "La basse température ralentit notamment le développement de nombreux microbes",
-                        "Elle élimine toujours tous les microbes",
-                        "Elle transforme tous les aliments en eau",
-                        "Elle augmente automatiquement les vitamines"
-                    ],
-                    0
-                ),
+                Q("difficile", "Pourquoi faut-il conserver certains aliments au réfrigérateur ?", ["La basse température ralentit notamment le développement de nombreux microbes", "Elle élimine toujours tous les microbes", "Elle transforme tous les aliments en eau", "Elle augmente automatiquement les vitamines"], 0),
 
-                Q(
-                    "difficile",
-                    "Pourquoi séparer certains aliments crus des aliments cuits ?",
-                    [
-                        "Pour limiter les contaminations croisées",
-                        "Pour augmenter leur masse",
-                        "Pour changer leur couleur",
-                        "Pour supprimer le besoin de lavage"
-                    ],
-                    0
-                ),
+                Q("difficile", "Pourquoi séparer certains aliments crus des aliments cuits ?", ["Pour limiter les contaminations croisées", "Pour augmenter leur masse", "Pour changer leur couleur", "Pour supprimer le besoin de lavage"], 0),
 
-                Q(
-                    "difficile",
-                    "Quelle habitude aide à maintenir une bonne hygiène alimentaire ?",
-                    [
-                        "Nettoyer les mains et les surfaces",
-                        "Laisser les aliments à température ambiante pendant des jours",
-                        "Ne jamais laver les ustensiles",
-                        "Mélanger tous les aliments sans précaution"
-                    ],
-                    0
-                ),
+                Q("difficile", "Quelle habitude aide à maintenir une bonne hygiène alimentaire ?", ["Nettoyer les mains et les surfaces", "Laisser les aliments à température ambiante pendant des jours", "Ne jamais laver les ustensiles", "Mélanger tous les aliments sans précaution"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel élément aide à équilibrer un repas ?",
-                    [
-                        "Associer des aliments variés",
-                        "Supprimer toutes les protéines",
-                        "Manger uniquement du sucre",
-                        "Boire uniquement de l'eau"
-                    ],
-                    0
-                )
+                Q("difficile", "Quel élément aide à équilibrer un repas ?", ["Associer des aliments variés", "Supprimer toutes les protéines", "Manger uniquement du sucre", "Boire uniquement de l'eau"], 0)
 
             ]
 
@@ -3280,733 +2851,193 @@
 
             "Mathématiques": [
 
-                Q(
-                    "facile",
-                    "Quel est le coefficient directeur de y = 3x + 2 ?",
-                    ["2", "3", "-2", "-3"],
-                    1
-                ),
+                Q("facile", "Quel est le coefficient directeur de y = 3x + 2 ?", ["2", "3", "-2", "-3"], 1),
 
-                Q(
-                    "facile",
-                    "La dérivée de x² est :",
-                    ["x", "2x", "x²", "2"],
-                    1
-                ),
+                Q("facile", "La dérivée de x² est :", ["x", "2x", "x²", "2"], 1),
 
-                Q(
-                    "facile",
-                    "Combien vaut sin(0) ?",
-                    ["0", "1", "-1", "2"],
-                    0
-                ),
+                Q("facile", "Combien vaut sin(0) ?", ["0", "1", "-1", "2"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel est le développement de (x - 2)(x + 3) ?",
-                    [
-                        "x² + x - 6",
-                        "x² + 5x - 6",
-                        "x² - x + 6",
-                        "x² + x + 6"
-                    ],
-                    0
-                ),
+                Q("moyen", "Quel est le développement de (x - 2)(x + 3) ?", ["x² + x - 6", "x² + 5x - 6", "x² - x + 6", "x² + x + 6"], 0),
 
-                Q(
-                    "moyen",
-                    "Quelle est la dérivée de 3x ?",
-                    ["3", "x", "3x", "0"],
-                    0
-                ),
+                Q("moyen", "Quelle est la dérivée de 3x ?", ["3", "x", "3x", "0"], 0),
 
-                Q(
-                    "moyen",
-                    "Quelle est la dérivée de x³ ?",
-                    ["x²", "2x", "3x²", "3x"],
-                    2
-                ),
+                Q("moyen", "Quelle est la dérivée de x³ ?", ["x²", "2x", "3x²", "3x"], 2),
 
-                Q(
-                    "difficile",
-                    "Quelle est la dérivée de eˣ ?",
-                    ["eˣ", "xeˣ", "x²", "1"],
-                    0
-                ),
+                Q("difficile", "Quelle est la dérivée de eˣ ?", ["eˣ", "xeˣ", "x²", "1"], 0),
 
-                Q(
-                    "difficile",
-                    "Quelle est une primitive de 2x ?",
-                    ["x²", "2x²", "x + 2", "2"],
-                    0
-                ),
+                Q("difficile", "Quelle est une primitive de 2x ?", ["x²", "2x²", "x + 2", "2"], 0),
 
-                Q(
-                    "difficile",
-                    "Que vaut ln(1) ?",
-                    ["0", "1", "-1", "e"],
-                    0
-                ),
+                Q("difficile", "Que vaut ln(1) ?", ["0", "1", "-1", "e"], 0),
 
-                Q(
-                    "difficile",
-                    "Si f(x) = x², quelle est f(3) ?",
-                    ["3", "6", "9", "12"],
-                    2
-                )
+                Q("difficile", "Si f(x) = x², quelle est f(3) ?", ["3", "6", "9", "12"], 2)
 
             ],
 
             "Français": [
 
-                Q(
-                    "facile",
-                    "Quel est l'objectif principal d'une dissertation ?",
-                    [
-                        "Développer une réflexion argumentée",
-                        "Raconter uniquement une histoire",
-                        "Faire une liste de mots",
-                        "Écrire seulement un dialogue"
-                    ],
-                    0
-                ),
+                Q("facile", "Quel est l'objectif principal d'une dissertation ?", ["Développer une réflexion argumentée", "Raconter uniquement une histoire", "Faire une liste de mots", "Écrire seulement un dialogue"], 0),
 
-                Q(
-                    "facile",
-                    "Quel genre littéraire raconte généralement des événements ?",
-                    ["Narratif", "Administratif", "Scientifique", "Juridique"],
-                    0
-                ),
+                Q("facile", "Quel genre littéraire raconte généralement des événements ?", ["Narratif", "Administratif", "Scientifique", "Juridique"], 0),
 
-                Q(
-                    "facile",
-                    "Qu'est-ce qu'un argument ?",
-                    [
-                        "Une raison utilisée pour défendre une idée",
-                        "Un titre",
-                        "Une ponctuation",
-                        "Un mot isolé"
-                    ],
-                    0
-                ),
+                Q("facile", "Qu'est-ce qu'un argument ?", ["Une raison utilisée pour défendre une idée", "Un titre", "Une ponctuation", "Un mot isolé"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel procédé consiste à exagérer une idée ?",
-                    ["Hyperbole", "Comparaison", "Ellipse", "Antithèse"],
-                    0
-                ),
+                Q("moyen", "Quel procédé consiste à exagérer une idée ?", ["Hyperbole", "Comparaison", "Ellipse", "Antithèse"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel procédé rapproche deux éléments avec un outil comparatif ?",
-                    ["Comparaison", "Métaphore", "Ironie", "Ellipse"],
-                    0
-                ),
+                Q("moyen", "Quel procédé rapproche deux éléments avec un outil comparatif ?", ["Comparaison", "Métaphore", "Ironie", "Ellipse"], 0),
 
-                Q(
-                    "moyen",
-                    "Qu'est-ce qu'une problématique ?",
-                    [
-                        "Une question construite qui met en évidence un problème à examiner",
-                        "Une simple liste de mots",
-                        "Une conclusion",
-                        "Un titre sans rapport"
-                    ],
-                    0
-                ),
+                Q("moyen", "Qu'est-ce qu'une problématique ?", ["Une question construite qui met en évidence un problème à examiner", "Une simple liste de mots", "Une conclusion", "Un titre sans rapport"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel est l'intérêt principal d'une introduction de dissertation ?",
-                    [
-                        "Présenter le sujet, la problématique et la démarche",
-                        "Donner toute la conclusion",
-                        "Ajouter seulement des citations",
-                        "Éviter le sujet"
-                    ],
-                    0
-                ),
+                Q("difficile", "Quel est l'intérêt principal d'une introduction de dissertation ?", ["Présenter le sujet, la problématique et la démarche", "Donner toute la conclusion", "Ajouter seulement des citations", "Éviter le sujet"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel registre vise notamment à faire rire ?",
-                    ["Comique", "Tragique", "Épique", "Pathétique"],
-                    0
-                ),
+                Q("difficile", "Quel registre vise notamment à faire rire ?", ["Comique", "Tragique", "Épique", "Pathétique"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel registre cherche notamment à susciter la pitié ou la compassion ?",
-                    ["Pathétique", "Comique", "Ironique", "Épique"],
-                    0
-                ),
+                Q("difficile", "Quel registre cherche notamment à susciter la pitié ou la compassion ?", ["Pathétique", "Comique", "Ironique", "Épique"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel procédé oppose fortement deux idées ?",
-                    ["Antithèse", "Comparaison", "Hyperbole", "Personnification"],
-                    0
-                )
+                Q("difficile", "Quel procédé oppose fortement deux idées ?", ["Antithèse", "Comparaison", "Hyperbole", "Personnification"], 0)
 
             ],
 
             "Anglais": [
 
-                Q(
-                    "facile",
-                    "Quel auxiliaire utilise-t-on pour le présent continu ?",
-                    ["Be", "Have", "Do", "Will"],
-                    0
-                ),
+                Q("facile", "Quel auxiliaire utilise-t-on pour le présent continu ?", ["Be", "Have", "Do", "Will"], 0),
 
-                Q(
-                    "facile",
-                    "Quel modal exprime généralement la possibilité ?",
-                    ["May", "Must", "Should", "Have to"],
-                    0
-                ),
+                Q("facile", "Quel modal exprime généralement la possibilité ?", ["May", "Must", "Should", "Have to"], 0),
 
-                Q(
-                    "facile",
-                    "Quel modal exprime généralement l'obligation ?",
-                    ["May", "Must", "Could", "Might"],
-                    1
-                ),
+                Q("facile", "Quel modal exprime généralement l'obligation ?", ["May", "Must", "Could", "Might"], 1),
 
-                Q(
-                    "moyen",
-                    "Quel temps exprime souvent une action commencée dans le passé et liée au présent ?",
-                    ["Present perfect", "Simple past", "Future simple", "Past continuous"],
-                    0
-                ),
+                Q("moyen", "Quel temps exprime souvent une action commencée dans le passé et liée au présent ?", ["Present perfect", "Simple past", "Future simple", "Past continuous"], 0),
 
-                Q(
-                    "moyen",
-                    "Complète : « If I had money, I ___ travel. »",
-                    ["will", "would", "am", "have"],
-                    1
-                ),
+                Q("moyen", "Complète : « If I had money, I ___ travel. »", ["will", "would", "am", "have"], 1),
 
-                Q(
-                    "moyen",
-                    "Quel est le participe passé de « write » ?",
-                    ["wrote", "written", "writing", "writes"],
-                    1
-                ),
+                Q("moyen", "Quel est le participe passé de « write » ?", ["wrote", "written", "writing", "writes"], 1),
 
-                Q(
-                    "difficile",
-                    "Quelle phrase est correcte ?",
-                    [
-                        "She has been studying for two hours.",
-                        "She is study for two hours.",
-                        "She has study since two hours.",
-                        "She been studying two hours."
-                    ],
-                    0
-                ),
+                Q("difficile", "Quelle phrase est correcte ?", ["She has been studying for two hours.", "She is study for two hours.", "She has study since two hours.", "She been studying two hours."], 0),
 
-                Q(
-                    "difficile",
-                    "Complète : « By tomorrow, I ___ finished. »",
-                    ["have", "will have", "am", "was"],
-                    1
-                ),
+                Q("difficile", "Complète : « By tomorrow, I ___ finished. »", ["have", "will have", "am", "was"], 1),
 
-                Q(
-                    "difficile",
-                    "Quelle phrase est correcte ?",
-                    [
-                        "He doesn't like coffee.",
-                        "He don't likes coffee.",
-                        "He doesn't likes coffee.",
-                        "He not like coffee."
-                    ],
-                    0
-                ),
+                Q("difficile", "Quelle phrase est correcte ?", ["He doesn't like coffee.", "He don't likes coffee.", "He doesn't likes coffee.", "He not like coffee."], 0),
 
-                Q(
-                    "difficile",
-                    "Quel mot signifie « pourtant » ou « cependant » ?",
-                    ["However", "Because", "Before", "During"],
-                    0
-                )
+                Q("difficile", "Quel mot signifie « pourtant » ou « cependant » ?", ["However", "Because", "Before", "During"], 0)
 
             ],
 
             "Histoire": [
 
-                Q(
-                    "facile",
-                    "En quelle année commence la Première Guerre mondiale ?",
-                    ["1912", "1914", "1916", "1918"],
-                    1
-                ),
+                Q("facile", "En quelle année commence la Première Guerre mondiale ?", ["1912", "1914", "1916", "1918"], 1),
 
-                Q(
-                    "facile",
-                    "En quelle année se termine la Seconde Guerre mondiale ?",
-                    ["1942", "1945", "1947", "1950"],
-                    1
-                ),
+                Q("facile", "En quelle année se termine la Seconde Guerre mondiale ?", ["1942", "1945", "1947", "1950"], 1),
 
-                Q(
-                    "facile",
-                    "Quel événement est associé à la Révolution française en 1789 ?",
-                    [
-                        "Prise de la Bastille",
-                        "Chute de Rome",
-                        "Découverte de l'Amérique",
-                        "Traité de Versailles"
-                    ],
-                    0
-                ),
+                Q("facile", "Quel événement est associé à la Révolution française en 1789 ?", ["Prise de la Bastille", "Chute de Rome", "Découverte de l'Amérique", "Traité de Versailles"], 0),
 
-                Q(
-                    "moyen",
-                    "Quelle organisation internationale est créée en 1945 ?",
-                    ["ONU", "OTAN", "CEE", "UA"],
-                    0
-                ),
+                Q("moyen", "Quelle organisation internationale est créée en 1945 ?", ["ONU", "OTAN", "CEE", "UA"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel conflit oppose notamment les Alliés aux puissances de l'Axe ?",
-                    ["Seconde Guerre mondiale", "Guerre de Cent Ans", "Guerre froide", "Guerre de Crimée"],
-                    0
-                ),
+                Q("moyen", "Quel conflit oppose notamment les Alliés aux puissances de l'Axe ?", ["Seconde Guerre mondiale", "Guerre de Cent Ans", "Guerre froide", "Guerre de Crimée"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel événement marque la chute du mur de Berlin ?",
-                    ["1989", "1979", "1999", "1969"],
-                    0
-                ),
+                Q("moyen", "Quel événement marque la chute du mur de Berlin ?", ["1989", "1979", "1999", "1969"], 0),
 
-                Q(
-                    "difficile",
-                    "La guerre froide oppose principalement quels deux grands blocs ?",
-                    [
-                        "États-Unis et URSS",
-                        "France et Espagne",
-                        "Chine et Japon",
-                        "Italie et Allemagne"
-                    ],
-                    0
-                ),
+                Q("difficile", "La guerre froide oppose principalement quels deux grands blocs ?", ["États-Unis et URSS", "France et Espagne", "Chine et Japon", "Italie et Allemagne"], 0),
 
-                Q(
-                    "difficile",
-                    "Quelle année est généralement associée à la fin de la guerre froide avec la disparition de l'URSS ?",
-                    ["1989", "1991", "1995", "2001"],
-                    1
-                ),
+                Q("difficile", "Quelle année est généralement associée à la fin de la guerre froide avec la disparition de l'URSS ?", ["1989", "1991", "1995", "2001"], 1),
 
-                Q(
-                    "difficile",
-                    "Quel événement marque le début officiel de la Seconde Guerre mondiale en Europe ?",
-                    [
-                        "L'invasion de la Pologne en 1939",
-                        "La prise de la Bastille",
-                        "La chute du mur de Berlin",
-                        "Le traité de Rome"
-                    ],
-                    0
-                ),
+                Q("difficile", "Quel événement marque le début officiel de la Seconde Guerre mondiale en Europe ?", ["L'invasion de la Pologne en 1939", "La prise de la Bastille", "La chute du mur de Berlin", "Le traité de Rome"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel événement historique a lieu en 1944 en France ?",
-                    [
-                        "Débarquement de Normandie",
-                        "Révolution française",
-                        "Prise de Rome par les Gaulois",
-                        "Création de l'ONU"
-                    ],
-                    0
-                )
+                Q("difficile", "Quel événement historique a lieu en 1944 en France ?", ["Débarquement de Normandie", "Révolution française", "Prise de Rome par les Gaulois", "Création de l'ONU"], 0)
 
             ],
 
             "Géographie": [
 
-                Q(
-                    "facile",
-                    "Qu'est-ce que la mondialisation ?",
-                    [
-                        "L'intensification des échanges à l'échelle mondiale",
-                        "La disparition des villes",
-                        "La fin du commerce",
-                        "L'isolement des États"
-                    ],
-                    0
-                ),
+                Q("facile", "Qu'est-ce que la mondialisation ?", ["L'intensification des échanges à l'échelle mondiale", "La disparition des villes", "La fin du commerce", "L'isolement des États"], 0),
 
-                Q(
-                    "facile",
-                    "Quel phénomène correspond à l'augmentation de la population urbaine ?",
-                    ["Urbanisation", "Déforestation", "Désertification", "Ruralisation"],
-                    0
-                ),
+                Q("facile", "Quel phénomène correspond à l'augmentation de la population urbaine ?", ["Urbanisation", "Déforestation", "Désertification", "Ruralisation"], 0),
 
-                Q(
-                    "facile",
-                    "Quel continent compte la plus grande superficie ?",
-                    ["Afrique", "Asie", "Europe", "Océanie"],
-                    1
-                ),
+                Q("facile", "Quel continent compte la plus grande superficie ?", ["Afrique", "Asie", "Europe", "Océanie"], 1),
 
-                Q(
-                    "moyen",
-                    "Quelle notion décrit la concentration croissante des activités dans les grandes villes ?",
-                    ["Métropolisation", "Désertification", "Ruralisation", "Glaciation"],
-                    0
-                ),
+                Q("moyen", "Quelle notion décrit la concentration croissante des activités dans les grandes villes ?", ["Métropolisation", "Désertification", "Ruralisation", "Glaciation"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel élément favorise les échanges internationaux ?",
-                    [
-                        "Les réseaux de transport et de communication",
-                        "La fermeture complète des frontières",
-                        "La disparition des ports",
-                        "L'absence de routes"
-                    ],
-                    0
-                ),
+                Q("moyen", "Quel élément favorise les échanges internationaux ?", ["Les réseaux de transport et de communication", "La fermeture complète des frontières", "La disparition des ports", "L'absence de routes"], 0),
 
-                Q(
-                    "moyen",
-                    "Qu'est-ce qu'une métropole ?",
-                    [
-                        "Une grande ville exerçant des fonctions importantes",
-                        "Un petit village isolé",
-                        "Un désert",
-                        "Une montagne"
-                    ],
-                    0
-                ),
+                Q("moyen", "Qu'est-ce qu'une métropole ?", ["Une grande ville exerçant des fonctions importantes", "Un petit village isolé", "Un désert", "Une montagne"], 0),
 
-                Q(
-                    "difficile",
-                    "Pourquoi les grandes métropoles jouent-elles un rôle important dans la mondialisation ?",
-                    [
-                        "Elles concentrent souvent des fonctions économiques et de commandement",
-                        "Elles sont toutes rurales",
-                        "Elles ne possèdent aucune activité",
-                        "Elles sont toutes isolées"
-                    ],
-                    0
-                ),
+                Q("difficile", "Pourquoi les grandes métropoles jouent-elles un rôle important dans la mondialisation ?", ["Elles concentrent souvent des fonctions économiques et de commandement", "Elles sont toutes rurales", "Elles ne possèdent aucune activité", "Elles sont toutes isolées"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel espace est particulièrement important pour les échanges maritimes ?",
-                    ["Les grands ports", "Les sommets", "Les déserts", "Les glaciers"],
-                    0
-                ),
+                Q("difficile", "Quel espace est particulièrement important pour les échanges maritimes ?", ["Les grands ports", "Les sommets", "Les déserts", "Les glaciers"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel phénomène peut réduire la population de certaines campagnes ?",
-                    ["Exode rural", "Urbanisation", "Métropolisation", "Industrialisation uniquement"],
-                    0
-                ),
+                Q("difficile", "Quel phénomène peut réduire la population de certaines campagnes ?", ["Exode rural", "Urbanisation", "Métropolisation", "Industrialisation uniquement"], 0),
 
-                Q(
-                    "difficile",
-                    "Quelle activité est fortement liée aux littoraux ?",
-                    ["Commerce maritime", "Ski alpin uniquement", "Élevage de rennes uniquement", "Exploitation polaire uniquement"],
-                    0
-                )
+                Q("difficile", "Quelle activité est fortement liée aux littoraux ?", ["Commerce maritime", "Ski alpin uniquement", "Élevage de rennes uniquement", "Exploitation polaire uniquement"], 0)
 
             ],
 
             "SVT": [
 
-                Q(
-                    "facile",
-                    "Quelle molécule porte l'information génétique ?",
-                    ["ADN", "ATP", "Eau", "Oxygène"],
-                    0
-                ),
+                Q("facile", "Quelle molécule porte l'information génétique ?", ["ADN", "ATP", "Eau", "Oxygène"], 0),
 
-                Q(
-                    "facile",
-                    "Quel support contient l'information génétique ?",
-                    ["ADN", "Calcium", "Eau", "Lipide"],
-                    0
-                ),
+                Q("facile", "Quel support contient l'information génétique ?", ["ADN", "Calcium", "Eau", "Lipide"], 0),
 
-                Q(
-                    "facile",
-                    "Quel organe réalise principalement les échanges gazeux ?",
-                    ["Poumons", "Foie", "Estomac", "Reins"],
-                    0
-                ),
+                Q("facile", "Quel organe réalise principalement les échanges gazeux ?", ["Poumons", "Foie", "Estomac", "Reins"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel est le rôle général de l'ADN ?",
-                    [
-                        "Conserver l'information génétique",
-                        "Pomper le sang",
-                        "Digérer les aliments",
-                        "Transporter mécaniquement les os"
-                    ],
-                    0
-                ),
+                Q("moyen", "Quel est le rôle général de l'ADN ?", ["Conserver l'information génétique", "Pomper le sang", "Digérer les aliments", "Transporter mécaniquement les os"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel processus permet aux cellules d'obtenir de l'énergie à partir notamment de nutriments ?",
-                    [
-                        "Respiration cellulaire",
-                        "Photosynthèse animale",
-                        "Digestion des os",
-                        "Filtration sanguine"
-                    ],
-                    0
-                ),
+                Q("moyen", "Quel processus permet aux cellules d'obtenir de l'énergie à partir notamment de nutriments ?", ["Respiration cellulaire", "Photosynthèse animale", "Digestion des os", "Filtration sanguine"], 0),
 
-                Q(
-                    "moyen",
-                    "Quel élément peut modifier une séquence d'ADN ?",
-                    ["Mutation", "Température seule", "Eau seule", "Sang uniquement"],
-                    0
-                ),
+                Q("moyen", "Quel élément peut modifier une séquence d'ADN ?", ["Mutation", "Température seule", "Eau seule", "Sang uniquement"], 0),
 
-                Q(
-                    "difficile",
-                    "Pourquoi une mutation peut-elle modifier un caractère ?",
-                    [
-                        "Elle peut modifier une information génétique et parfois le fonctionnement d'un organisme",
-                        "Elle détruit toujours toutes les cellules",
-                        "Elle transforme automatiquement toute cellule en muscle",
-                        "Elle ne peut jamais avoir d'effet"
-                    ],
-                    0
-                ),
+                Q("difficile", "Pourquoi une mutation peut-elle modifier un caractère ?", ["Elle peut modifier une information génétique et parfois le fonctionnement d'un organisme", "Elle détruit toujours toutes les cellules", "Elle transforme automatiquement toute cellule en muscle", "Elle ne peut jamais avoir d'effet"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel processus permet la transmission de l'information génétique lors de la division cellulaire ?",
-                    ["Duplication et partage de l'ADN", "Digestion", "Photosynthèse", "Transpiration"],
-                    0
-                ),
+                Q("difficile", "Quel processus permet la transmission de l'information génétique lors de la division cellulaire ?", ["Duplication et partage de l'ADN", "Digestion", "Photosynthèse", "Transpiration"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel organite est souvent présenté comme le siège principal de l'ADN dans une cellule eucaryote ?",
-                    ["Noyau", "Membrane", "Vacuole", "Cytoplasme uniquement"],
-                    0
-                ),
+                Q("difficile", "Quel organite est souvent présenté comme le siège principal de l'ADN dans une cellule eucaryote ?", ["Noyau", "Membrane", "Vacuole", "Cytoplasme uniquement"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel facteur est indispensable à la respiration cellulaire aérobie ?",
-                    ["Dioxygène", "Hélium", "Azote seul", "Gaz carbonique uniquement"],
-                    0
-                )
+                Q("difficile", "Quel facteur est indispensable à la respiration cellulaire aérobie ?", ["Dioxygène", "Hélium", "Azote seul", "Gaz carbonique uniquement"], 0)
 
             ],
 
             "Physique-Chimie": [
 
-                Q(
-                    "facile",
-                    "Quelle unité est utilisée pour une force ?",
-                    ["Newton", "Joule", "Watt", "Volt"],
-                    0
-                ),
+                Q("facile", "Quelle unité est utilisée pour une force ?", ["Newton", "Joule", "Watt", "Volt"], 0),
 
-                Q(
-                    "facile",
-                    "Quelle grandeur se mesure en joules ?",
-                    ["Énergie", "Masse", "Température", "Tension"],
-                    0
-                ),
+                Q("facile", "Quelle grandeur se mesure en joules ?", ["Énergie", "Masse", "Température", "Tension"], 0),
 
-                Q(
-                    "facile",
-                    "Quelle unité mesure la puissance ?",
-                    ["Watt", "Newton", "Joule", "Volt"],
-                    0
-                ),
+                Q("facile", "Quelle unité mesure la puissance ?", ["Watt", "Newton", "Joule", "Volt"], 0),
 
-                Q(
-                    "moyen",
-                    "Quelle grandeur se mesure en volts ?",
-                    ["Tension électrique", "Masse", "Énergie", "Durée"],
-                    0
-                ),
+                Q("moyen", "Quelle grandeur se mesure en volts ?", ["Tension électrique", "Masse", "Énergie", "Durée"], 0),
 
-                Q(
-                    "moyen",
-                    "Quelle relation permet de calculer une vitesse ?",
-                    ["distance ÷ durée", "durée ÷ distance", "distance + durée", "distance × durée"],
-                    0
-                ),
+                Q("moyen", "Quelle relation permet de calculer une vitesse ?", ["distance ÷ durée", "durée ÷ distance", "distance + durée", "distance × durée"], 0),
 
-                Q(
-                    "moyen",
-                    "Quelle unité mesure une charge électrique ?",
-                    ["Coulomb", "Newton", "Watt", "Joule"],
-                    0
-                ),
+                Q("moyen", "Quelle unité mesure une charge électrique ?", ["Coulomb", "Newton", "Watt", "Joule"], 0),
 
-                Q(
-                    "difficile",
-                    "Dans un mouvement uniforme, la vitesse reste :",
-                    ["Constante", "Toujours nulle", "Toujours croissante", "Toujours décroissante"],
-                    0
-                ),
+                Q("difficile", "Dans un mouvement uniforme, la vitesse reste :", ["Constante", "Toujours nulle", "Toujours croissante", "Toujours décroissante"], 0),
 
-                Q(
-                    "difficile",
-                    "Quelle unité mesure une intensité électrique ?",
-                    ["Ampère", "Volt", "Ohm", "Watt"],
-                    0
-                ),
+                Q("difficile", "Quelle unité mesure une intensité électrique ?", ["Ampère", "Volt", "Ohm", "Watt"], 0),
 
-                Q(
-                    "difficile",
-                    "Quelle relation est correcte pour une puissance électrique ?",
-                    ["P = U × I", "P = U + I", "P = U ÷ I", "P = U - I"],
-                    0
-                ),
+                Q("difficile", "Quelle relation est correcte pour une puissance électrique ?", ["P = U × I", "P = U + I", "P = U ÷ I", "P = U - I"], 0),
 
-                Q(
-                    "difficile",
-                    "Quelle unité mesure une résistance électrique ?",
-                    ["Ohm", "Volt", "Ampère", "Joule"],
-                    0
-                )
+                Q("difficile", "Quelle unité mesure une résistance électrique ?", ["Ohm", "Volt", "Ampère", "Joule"], 0)
 
             ],
 
             "Philosophie": [
 
-                Q(
-                    "facile",
-                    "La philosophie cherche notamment à :",
-                    [
-                        "Réfléchir rationnellement sur les grandes questions",
-                        "Apprendre uniquement des dates",
-                        "Faire uniquement des calculs",
-                        "Mémoriser sans réfléchir"
-                    ],
-                    0
-                ),
+                Q("facile", "La philosophie cherche notamment à :", ["Réfléchir rationnellement sur les grandes questions", "Apprendre uniquement des dates", "Faire uniquement des calculs", "Mémoriser sans réfléchir"], 0),
 
-                Q(
-                    "facile",
-                    "Une question philosophique porte souvent sur :",
-                    [
-                        "Les notions fondamentales de l'existence et de la pensée",
-                        "Uniquement les recettes",
-                        "Uniquement les horaires",
-                        "Uniquement les mesures"
-                    ],
-                    0
-                ),
+                Q("facile", "Une question philosophique porte souvent sur :", ["Les notions fondamentales de l'existence et de la pensée", "Uniquement les recettes", "Uniquement les horaires", "Uniquement les mesures"], 0),
 
-                Q(
-                    "facile",
-                    "Qu'est-ce qu'une opinion ?",
-                    [
-                        "Une manière de considérer une idée ou une question",
-                        "Une preuve scientifique",
-                        "Une équation",
-                        "Une loi physique"
-                    ],
-                    0
-                ),
+                Q("facile", "Qu'est-ce qu'une opinion ?", ["Une manière de considérer une idée ou une question", "Une preuve scientifique", "Une équation", "Une loi physique"], 0),
 
-                Q(
-                    "moyen",
-                    "À quoi sert un argument en philosophie ?",
-                    [
-                        "À justifier rationnellement une idée",
-                        "À remplacer toutes les preuves",
-                        "À éviter toute réflexion",
-                        "À donner uniquement son opinion"
-                    ],
-                    0
-                ),
+                Q("moyen", "À quoi sert un argument en philosophie ?", ["À justifier rationnellement une idée", "À remplacer toutes les preuves", "À éviter toute réflexion", "À donner uniquement son opinion"], 0),
 
-                Q(
-                    "moyen",
-                    "Qu'est-ce qu'une problématique ?",
-                    [
-                        "Une question construite qui met en évidence un problème",
-                        "Une liste de mots",
-                        "Une conclusion",
-                        "Un titre"
-                    ],
-                    0
-                ),
+                Q("moyen", "Qu'est-ce qu'une problématique ?", ["Une question construite qui met en évidence un problème", "Une liste de mots", "Une conclusion", "Un titre"], 0),
 
-                Q(
-                    "moyen",
-                    "Pourquoi faut-il définir les termes d'un sujet ?",
-                    [
-                        "Pour préciser le sens des notions étudiées",
-                        "Pour éviter toute réflexion",
-                        "Pour remplacer la conclusion",
-                        "Pour ajouter des exemples uniquement"
-                    ],
-                    0
-                ),
+                Q("moyen", "Pourquoi faut-il définir les termes d'un sujet ?", ["Pour préciser le sens des notions étudiées", "Pour éviter toute réflexion", "Pour remplacer la conclusion", "Pour ajouter des exemples uniquement"], 0),
 
-                Q(
-                    "difficile",
-                    "Pourquoi faut-il distinguer une opinion d'un argument ?",
-                    [
-                        "Une opinion affirme une position, tandis qu'un argument cherche à la justifier",
-                        "Ils sont toujours identiques",
-                        "Une opinion est toujours prouvée",
-                        "Un argument n'a aucun rapport avec une idée"
-                    ],
-                    0
-                ),
+                Q("difficile", "Pourquoi faut-il distinguer une opinion d'un argument ?", ["Une opinion affirme une position, tandis qu'un argument cherche à la justifier", "Ils sont toujours identiques", "Une opinion est toujours prouvée", "Un argument n'a aucun rapport avec une idée"], 0),
 
-                Q(
-                    "difficile",
-                    "Quel rôle joue la problématique dans une dissertation ?",
-                    [
-                        "Elle organise le problème auquel la réflexion cherche à répondre",
-                        "Elle remplace tous les arguments",
-                        "Elle constitue uniquement la conclusion",
-                        "Elle n'a aucun rôle"
-                    ],
-                    0
-                ),
+                Q("difficile", "Quel rôle joue la problématique dans une dissertation ?", ["Elle organise le problème auquel la réflexion cherche à répondre", "Elle remplace tous les arguments", "Elle constitue uniquement la conclusion", "Elle n'a aucun rôle"], 0),
 
-                Q(
-                    "difficile",
-                    "Qu'est-ce qu'une thèse ?",
-                    [
-                        "Une position défendue dans une réflexion",
-                        "Une date",
-                        "Une mesure",
-                        "Une définition de dictionnaire uniquement"
-                    ],
-                    0
-                ),
+                Q("difficile", "Qu'est-ce qu'une thèse ?", ["Une position défendue dans une réflexion", "Une date", "Une mesure", "Une définition de dictionnaire uniquement"], 0),
 
-                Q(
-                    "difficile",
-                    "Pourquoi faut-il examiner plusieurs arguments ?",
-                    [
-                        "Pour confronter différentes positions et approfondir la réflexion",
-                        "Pour éviter de répondre au sujet",
-                        "Pour supprimer toute conclusion",
-                        "Pour ne garder qu'une opinion non justifiée"
-                    ],
-                    0
-                )
+                Q("difficile", "Pourquoi faut-il examiner plusieurs arguments ?", ["Pour confronter différentes positions et approfondir la réflexion", "Pour éviter de répondre au sujet", "Pour supprimer toute conclusion", "Pour ne garder qu'une opinion non justifiée"], 0)
 
             ]
 
@@ -4014,43 +3045,22 @@
 
 
         /* =====================================================
-           MATIÈRES PAR CLASSE
+           BANQUE UNIFIÉE
         ===================================================== */
 
-        function obtenirGroupeClasse(classe) {
+        function obtenirBanque(classe) {
 
             if (
                 classe === "6e" ||
                 classe === "5e"
             ) {
-
-                return "collegeDebut";
-
+                return banqueCollegeDebut;
             }
 
             if (
                 classe === "4e" ||
                 classe === "3e"
             ) {
-
-                return "collegeAvance";
-
-            }
-
-            return "lycee";
-        }
-
-
-        function obtenirBanque(classe) {
-
-            const groupe =
-                obtenirGroupeClasse(classe);
-
-            if (groupe === "collegeDebut") {
-                return banqueCollegeDebut;
-            }
-
-            if (groupe === "collegeAvance") {
                 return banqueCollegeAvance;
             }
 
@@ -4069,12 +3079,6 @@
             let liste =
                 Object.keys(banque);
 
-            /*
-               Les matières BST supplémentaires
-               sont disponibles seulement pour
-               les 4e et 3e en parcours BST.
-            */
-
             if (
                 (classe === "4e" ||
                  classe === "3e") &&
@@ -4089,14 +3093,12 @@
                             matiere !==
                                 "Économie familiale"
                     );
+
             }
 
-            /*
-               En 2nde, on ne propose pas Philosophie
-               dans cette version.
-            */
-
-            if (classe === "2nde") {
+            if (
+                classe === "2nde"
+            ) {
 
                 liste =
                     liste.filter(
@@ -4112,20 +3114,22 @@
 
 
         /* =====================================================
-           ÉTAPES DU QUIZ
+           ÉTAPES
         ===================================================== */
 
         function montrerEtape(id) {
 
             document
                 .querySelectorAll(".etape")
-                .forEach(etape => {
+                .forEach(
+                    etape => {
 
-                    etape.classList.remove(
-                        "active"
-                    );
+                        etape.classList.remove(
+                            "active"
+                        );
 
-                });
+                    }
+                );
 
             const etape =
                 document.getElementById(id);
@@ -4237,7 +3241,7 @@
 
 
         /* =====================================================
-           FABRICATION DES 10 QUESTIONS
+           CONSTRUIRE LES 10 QUESTIONS
         ===================================================== */
 
         function construireQuiz(
@@ -4245,15 +3249,7 @@
             niveauChoisi
         ) {
 
-            if (!questions.length) {
-                return [];
-            }
-
-            /*
-               On privilégie le niveau choisi.
-            */
-
-            const principales =
+            const niveau =
                 melanger(
                     questions.filter(
                         question =>
@@ -4261,10 +3257,6 @@
                             niveauChoisi
                     )
                 );
-
-            /*
-               Puis on complète avec les autres niveaux.
-            */
 
             const autres =
                 melanger(
@@ -4275,54 +3267,51 @@
                     )
                 );
 
-            let choisies = [
-                ...principales,
+            let resultat = [
+                ...niveau,
                 ...autres
             ];
 
-            /*
-               Une matière possède normalement
-               10 questions différentes.
-
-               On prend exactement 10.
-            */
-
-            choisies =
-                choisies.slice(
+            resultat =
+                resultat.slice(
                     0,
                     NB_QUESTIONS
                 );
 
             /*
-               Sécurité :
-               si jamais une matière avait moins
-               de 10 questions dans le futur,
-               on complète automatiquement.
+                Sécurité : une matière possède
+                actuellement au moins 10 questions.
             */
 
-            let position = 0;
-
-            while (
-                choisies.length <
+            if (
+                resultat.length <
                 NB_QUESTIONS
             ) {
 
-                choisies.push(
-                    questions[
-                        position %
-                        questions.length
-                    ]
-                );
+                const supplement =
+                    questions.filter(
+                        question =>
+                            !resultat.includes(
+                                question
+                            )
+                    );
 
-                position++;
+                resultat =
+                    [
+                        ...resultat,
+                        ...supplement
+                    ].slice(
+                        0,
+                        NB_QUESTIONS
+                    );
             }
 
-            return melanger(choisies);
+            return melanger(resultat);
         }
 
 
         /* =====================================================
-           COMMENCER LE QUIZ
+           COMMENCER
         ===================================================== */
 
         function commencerQuiz() {
@@ -4337,7 +3326,10 @@
                     quizEtat.matiere
                 ] || [];
 
-            if (!questions.length) {
+            if (
+                questions.length <
+                NB_QUESTIONS
+            ) {
 
                 afficherErreurQuiz();
 
@@ -4501,16 +3493,10 @@
                 }
             );
 
-
             if (
                 index ===
                 question.answer
             ) {
-
-                /*
-                   Chaque bonne réponse
-                   vaut exactement 10 points.
-                */
 
                 quizScore +=
                     POINTS_PAR_REPONSE;
@@ -4525,20 +3511,21 @@
                     "incorrect"
                 );
 
-                const bonneReponse =
+                if (
                     boutons[
                         question.answer
-                    ];
+                    ]
+                ) {
 
-                if (bonneReponse) {
-
-                    bonneReponse.classList.add(
+                    boutons[
+                        question.answer
+                    ].classList.add(
                         "correct"
                     );
+
                 }
 
             }
-
 
             const feedback =
                 document.getElementById(
@@ -4547,7 +3534,6 @@
 
             feedback.style.display =
                 "block";
-
 
             if (
                 index ===
@@ -4567,7 +3553,6 @@
 
             }
 
-
             document.getElementById(
                 "boutonSuivant"
             ).style.display =
@@ -4576,7 +3561,7 @@
 
 
         /* =====================================================
-           QUESTION SUIVANTE
+           SUIVANT
         ===================================================== */
 
         function questionSuivante() {
@@ -4598,48 +3583,45 @@
 
 
         /* =====================================================
-           FIN DU QUIZ
+           FIN
         ===================================================== */
 
         function terminerQuiz() {
 
-            /*
-               10 questions × 10 points
-               = 100 points maximum.
-            */
+            const scoreSur100 =
+                quizScore;
 
             document.getElementById(
                 "scoreFinal"
             ).textContent =
-                quizScore +
+                scoreSur100 +
                 " / 100";
-
 
             let message = "";
 
             if (
-                quizScore === 100
+                scoreSur100 === 100
             ) {
 
                 message =
                     "Parfait ! 100/100 🎉";
 
             } else if (
-                quizScore >= 80
+                scoreSur100 >= 80
             ) {
 
                 message =
                     "Excellent travail !";
 
             } else if (
-                quizScore >= 60
+                scoreSur100 >= 60
             ) {
 
                 message =
                     "Très bien ! Continue comme ça.";
 
             } else if (
-                quizScore >= 40
+                scoreSur100 >= 40
             ) {
 
                 message =
@@ -4652,22 +3634,16 @@
 
             }
 
-
             document.getElementById(
                 "messageFinal"
             ).textContent =
                 message;
-
 
             montrerEtape(
                 "etapeFinQuiz"
             );
         }
 
-
-        /* =====================================================
-           RECOMMENCER
-        ===================================================== */
 
         function recommencerQuiz() {
 
@@ -4681,17 +3657,13 @@
 
             };
 
-            quizQuestions =
-                [];
+            quizQuestions = [];
 
-            quizIndex =
-                0;
+            quizIndex = 0;
 
-            quizScore =
-                0;
+            quizScore = 0;
 
-            quizRepondu =
-                false;
+            quizRepondu = false;
 
             montrerEtape(
                 "etapeClasse"
@@ -4713,7 +3685,7 @@
 
 
         /* =====================================================
-           SAUVEGARDE AUTOMATIQUE
+           SAUVEGARDE
         ===================================================== */
 
         const CLE_SAUVEGARDE =
@@ -4722,32 +3694,43 @@
 
         function sauvegarderEtat() {
 
-            const etat = {
+            try {
 
-                pageActuelle:
-                    document.querySelector(
-                        ".page.active"
-                    )?.id ||
-                    "accueil",
+                const etat = {
 
-                matieres:
-                    obtenirDonneesMatieres(),
+                    pageActuelle:
+                        document.querySelector(
+                            ".page.active"
+                        )?.id ||
+                        "accueil",
 
-                revisions:
-                    revisions,
+                    matieres:
+                        obtenirDonneesMatieres(),
 
-                taches:
-                    taches,
+                    revisions:
+                        revisions,
 
-                emploi:
-                    obtenirEmploi()
+                    taches:
+                        taches,
 
-            };
+                    emploi:
+                        obtenirEmploi()
 
-            localStorage.setItem(
-                CLE_SAUVEGARDE,
-                JSON.stringify(etat)
-            );
+                };
+
+                localStorage.setItem(
+                    CLE_SAUVEGARDE,
+                    JSON.stringify(etat)
+                );
+
+            } catch (erreur) {
+
+                console.log(
+                    "Erreur de sauvegarde :",
+                    erreur
+                );
+
+            }
         }
 
 
@@ -4758,23 +3741,13 @@
                     CLE_SAUVEGARDE
                 );
 
-            /*
-               Aucun ancien contenu :
-               on crée simplement une ligne
-               de matière vide.
-            */
+            document.getElementById(
+                "listeMatieres"
+            ).innerHTML = "";
 
             if (!sauvegarde) {
 
-                if (
-                    document.querySelectorAll(
-                        ".ligne-matiere"
-                    ).length === 0
-                ) {
-
-                    ajouterMatiere();
-
-                }
+                ajouterMatiere();
 
                 afficherRevisions();
 
@@ -4787,20 +3760,12 @@
                 return;
             }
 
-
             try {
 
                 const etat =
                     JSON.parse(
                         sauvegarde
                     );
-
-
-                /* ---------- MOYENNE ---------- */
-
-                document.getElementById(
-                    "listeMatieres"
-                ).innerHTML = "";
 
                 if (
                     Array.isArray(
@@ -4830,8 +3795,6 @@
                 }
 
 
-                /* ---------- RÉVISIONS ---------- */
-
                 revisions =
                     Array.isArray(
                         etat.revisions
@@ -4842,8 +3805,6 @@
                 afficherRevisions();
 
 
-                /* ---------- TÂCHES ---------- */
-
                 taches =
                     Array.isArray(
                         etat.taches
@@ -4853,8 +3814,6 @@
 
                 afficherTaches();
 
-
-                /* ---------- EMPLOI ---------- */
 
                 if (
                     Array.isArray(
@@ -4869,18 +3828,15 @@
                 }
 
 
-                /* ---------- PAGE ---------- */
-
                 showPage(
                     etat.pageActuelle ||
                     "accueil"
                 );
 
-
             } catch (erreur) {
 
                 console.log(
-                    "Erreur lors de la restauration :",
+                    "Erreur de restauration :",
                     erreur
                 );
 
@@ -4917,6 +3873,122 @@
             "beforeunload",
             sauvegarderEtat
         );
+
+
+        /* =====================================================
+           INSTALLATION
+        ===================================================== */
+
+        let evenementInstallation = null;
+
+        const boutonInstaller =
+            document.getElementById(
+                "boutonInstaller"
+            );
+
+
+        window.addEventListener(
+            "beforeinstallprompt",
+            event => {
+
+                event.preventDefault();
+
+                evenementInstallation =
+                    event;
+
+                boutonInstaller.style.display =
+                    "inline-block";
+
+            }
+        );
+
+
+        boutonInstaller.addEventListener(
+            "click",
+            async () => {
+
+                if (
+                    !evenementInstallation
+                ) {
+                    return;
+                }
+
+                evenementInstallation.prompt();
+
+                const resultat =
+                    await evenementInstallation.userChoice;
+
+                if (
+                    resultat.outcome ===
+                    "accepted"
+                ) {
+
+                    boutonInstaller.style.display =
+                        "none";
+
+                }
+
+                evenementInstallation =
+                    null;
+
+            }
+        );
+
+
+        window.addEventListener(
+            "appinstalled",
+            () => {
+
+                boutonInstaller.style.display =
+                    "none";
+
+                evenementInstallation =
+                    null;
+
+            }
+        );
+
+
+        /* =====================================================
+           SERVICE WORKER
+        ===================================================== */
+
+        if (
+            "serviceWorker" in navigator
+        ) {
+
+            window.addEventListener(
+                "load",
+                () => {
+
+                    navigator.serviceWorker
+                        .register(
+                            "./sw.js"
+                        )
+                        .then(
+                            () => {
+
+                                console.log(
+                                    "StudySpace : service worker activé"
+                                );
+
+                            }
+                        )
+                        .catch(
+                            erreur => {
+
+                                console.error(
+                                    "Erreur service worker :",
+                                    erreur
+                                );
+
+                            }
+                        );
+
+                }
+            );
+
+        }
 
 
         /* =====================================================
