@@ -316,6 +316,7 @@
                     <p class="slogan">
                         Ton espace pour apprendre,<br>
                         t'organiser et progresser.
+                          --by MSK--
                     </p>
 
                     <button class="bouton" onclick="showPage('moyenne')">
@@ -529,53 +530,222 @@
 
 
     <!-- QUIZ -->
-    <section id="quiz" class="page">
-        <div class="accueil">
-            <div class="cadre">
+<section id="quiz" class="page">
+    <div class="accueil">
+        <div class="cadre">
 
-                <div class="contenu">
-                    <p class="petit-texte">QUIZ</p>
+            <div class="contenu">
 
-                    <h2>StudySpace</h2>
+                <p class="petit-texte">QUIZ</p>
 
-                    <div class="ligne"></div>
+                <h2>StudySpace</h2>
+
+                <div class="ligne"></div>
+
+                <p class="slogan">
+                    Configure ton quiz étape par étape.
+                </p>
+
+                <!-- CLASSE -->
+                <select id="classeQuiz">
+                    <option value="">
+                        -- Choisir ta classe --
+                    </option>
+
+                    <option value="6e">6e</option>
+                    <option value="5e">5e</option>
+                    <option value="4e">4e</option>
+                    <option value="3e">3e</option>
+                    <option value="2nde">2nde</option>
+                    <option value="1ere">1ère</option>
+                    <option value="terminale">Terminale</option>
+                </select>
+
+                <button
+                    class="bouton"
+                    onclick="choisirClasseQuiz()"
+                >
+                    Continuer ♡
+                </button>
+
+                <p id="messageClasseQuiz" class="quiz-message"></p>
+
+
+                <!-- ÉTABLISSEMENT -->
+                <div
+                    id="choixEtablissement"
+                    style="display: none; margin-top: 25px;"
+                >
 
                     <p class="slogan">
-                        Commence par choisir ta classe.
+                        Maintenant, choisis ton établissement.
                     </p>
+                    <div
+    id="choixParcours"
+    style="display: none; margin-top: 25px;"
+>
 
-                    <select id="classeQuiz">
+    <p class="slogan">
+        Choisis maintenant ton bloc ou ton parcours.
+    </p>
+
+    <select id="parcoursQuiz">
+
+        <option value="">
+            -- Choisir ton parcours --
+        </option>
+
+        <option value="classique">
+            🏫 Parcours classique
+        </option>
+
+        <option value="bst">
+            🔬 Bloc scientifique et technologique
+        </option>
+
+        <option value="personnalise">
+            ✏️ Parcours personnalisé
+        </option>
+
+    </select>
+
+    <button
+        class="bouton"
+        onclick="choisirParcours()"
+    >
+        Continuer ♡
+    </button>
+
+    <p
+        id="messageParcours"
+        class="quiz-message"
+    ></p>
+
+</div>
+                    <div
+    id="choixMatiere"
+    style="display: none; margin-top: 25px;"
+>
+
+    <p class="slogan">
+        Choisis maintenant ta matière.
+    </p>
+
+    <select id="matiereQuiz">
+        <option value="">
+            -- Choisir une matière --
+        </option>
+    </select>
+
+    <button
+        class="bouton"
+        onclick="choisirMatiere()"
+    >
+        Continuer ♡
+    </button>
+
+    <p
+        id="messageMatiere"
+        class="quiz-message"
+    ></p>
+
+</div>
+                    <div
+    id="choixNiveau"
+    style="display: none; margin-top: 25px;"
+>
+
+    <p class="slogan">
+        Choisis le niveau du quiz.
+    </p>
+
+    <select id="niveauQuiz">
+
+        <option value="">
+            -- Choisir un niveau --
+        </option>
+
+        <option value="facile">
+            🟢 Facile
+        </option>
+
+        <option value="moyen">
+            🟡 Moyen
+        </option>
+
+        <option value="difficile">
+            🔴 Difficile
+        </option>
+
+    </select>
+
+    <button
+        class="bouton"
+        onclick="choisirNiveau()"
+    >
+        Continuer ♡
+    </button>
+
+    <p
+        id="messageNiveau"
+        class="quiz-message"
+    ></p>
+
+</div>
+                    <button
+    id="boutonCommencerQuiz"
+    class="bouton"
+    onclick="commencerQuiz()"
+    style="display: none; margin-top: 15px;"
+>
+    🚀 Commencer le quiz
+</button>
+
+<div id="zoneQuiz"></div>
+
+                    <select id="typeEtablissement">
+
                         <option value="">
-                            -- Choisir ta classe --
+                            -- Type d'établissement --
                         </option>
 
-                        <option value="6e">6e</option>
-                        <option value="5e">5e</option>
-                        <option value="4e">4e</option>
-                        <option value="3e">3e</option>
-                        <option value="2nde">2nde</option>
-                        <option value="1ere">1ère</option>
-                        <option value="terminale">Terminale</option>
+                        <option value="public">
+                            🏫 Public
+                        </option>
+
+                        <option value="prive">
+                            🏫 Privé
+                        </option>
+
+                        <option value="priveBilingue">
+                            🌍 Privé bilingue
+                        </option>
+
+                        <option value="francoArabe">
+                            📖 Franco-arabe
+                        </option>
+
                     </select>
 
                     <button
                         class="bouton"
-                        onclick="choisirClasseQuiz()"
+                        onclick="choisirEtablissement()"
                     >
                         Continuer ♡
                     </button>
 
                     <p
-                        id="messageClasseQuiz"
+                        id="messageEtablissement"
                         class="quiz-message"
                     ></p>
+
                 </div>
 
             </div>
+
         </div>
-    </section>
-
-
+    </div>
+</section>
     <!-- JAVASCRIPT -->
     <script>
 
@@ -830,28 +1000,391 @@
         // QUIZ - CLASSE
         // =========================
 
-        function choisirClasseQuiz() {
+     function choisirEtablissement() {
 
-            const classe =
-                document.getElementById("classeQuiz").value;
+    const etablissement =
+        document.getElementById("typeEtablissement").value;
 
-            const message =
-                document.getElementById(
-                    "messageClasseQuiz"
-                );
+    const message =
+        document.getElementById("messageEtablissement");
 
-            if (classe === "") {
+    const choixParcours =
+        document.getElementById("choixParcours");
 
-                message.textContent =
-                    "⚠️ Choisis d'abord ta classe.";
+    if (etablissement === "") {
 
-                return;
-            }
+        message.textContent =
+            "⚠️ Choisis ton type d'établissement.";
 
-            message.textContent =
-                "✅ Classe choisie : " + classe;
-        }
+        choixParcours.style.display = "none";
 
+        return;
+    }
+
+    message.textContent =
+        "✅ Établissement choisi.";
+
+    choixParcours.style.display = "block";
+}
+        function choisirParcours() {
+
+    const parcours =
+        document.getElementById("parcoursQuiz").value;
+
+    const message =
+        document.getElementById("messageParcours");
+
+    const choixMatiere =
+        document.getElementById("choixMatiere");
+
+    const selectMatiere =
+        document.getElementById("matiereQuiz");
+
+    const classe =
+        document.getElementById("classeQuiz").value;
+
+    if (parcours === "") {
+
+        message.textContent =
+            "⚠️ Choisis ton parcours.";
+
+        choixMatiere.style.display = "none";
+
+        return;
+    }
+
+    message.textContent =
+        "✅ Parcours choisi.";
+
+    selectMatiere.innerHTML = `
+        <option value="">
+            -- Choisir une matière --
+        </option>
+    `;
+
+    let matieres = [];
+
+    if (classe === "6e" || classe === "5e") {
+
+        matieres = [
+            "Français",
+            "Mathématiques",
+            "Anglais",
+            "Histoire",
+            "Géographie",
+            "SVT",
+            "Éducation civique"
+        ];
+
+    } else if (classe === "4e" || classe === "3e") {
+
+        matieres = [
+            "Français",
+            "Mathématiques",
+            "Anglais",
+            "Histoire",
+            "Géographie",
+            "SVT",
+            "Physique-Chimie",
+            "Éducation civique"
+        ];
+
+    } else {
+
+        matieres = [
+            "Français",
+            "Mathématiques",
+            "Anglais",
+            "Histoire-Géographie",
+            "SVT",
+            "Physique-Chimie"
+        ];
+    }
+
+    if (parcours === "bst") {
+
+        matieres.push("Technologie");
+        matieres.push("Économie familiale");
+    }
+
+    matieres.forEach(function(matiere) {
+
+        const option =
+            document.createElement("option");
+
+        option.value = matiere;
+        option.textContent = matiere;
+
+        selectMatiere.appendChild(option);
+    });
+
+    choixMatiere.style.display = "block";
+}
+        function choisirMatiere() {
+
+    const matiere =
+        document.getElementById("matiereQuiz").value;
+
+    const message =
+        document.getElementById("messageMatiere");
+
+    const choixNiveau =
+        document.getElementById("choixNiveau");
+
+    if (matiere === "") {
+
+        message.textContent =
+            "⚠️ Choisis une matière.";
+
+        choixNiveau.style.display = "none";
+
+        return;
+    }
+
+    message.textContent =
+        "✅ Matière choisie : " + matiere;
+
+    choixNiveau.style.display = "block";
+}
+        function choisirNiveau() {
+
+    const niveau =
+        document.getElementById("niveauQuiz").value;
+
+    const message =
+        document.getElementById("messageNiveau");
+
+    const bouton =
+        document.getElementById("boutonCommencerQuiz");
+
+    if (niveau === "") {
+
+        message.textContent =
+            "⚠️ Choisis un niveau.";
+
+        bouton.style.display = "none";
+
+        return;
+    }
+
+    message.textContent =
+        "✅ Niveau choisi : " + niveau;
+
+    bouton.style.display = "inline-block";
+}
+        function commencerQuiz() {
+
+    const classe =
+        document.getElementById("classeQuiz").value;
+
+    const etablissement =
+        document.getElementById("typeEtablissement").value;
+
+    const parcours =
+        document.getElementById("parcoursQuiz").value;
+
+    const matiere =
+        document.getElementById("matiereQuiz").value;
+
+    const niveau =
+        document.getElementById("niveauQuiz").value;
+
+    if (
+        classe === "" ||
+        etablissement === "" ||
+        parcours === "" ||
+        matiere === "" ||
+        niveau === ""
+    ) {
+
+        alert(
+            "⚠️ Termine toutes les étapes avant de commencer."
+        );
+
+        return;
+    }
+
+    if (
+        !banqueQuestions[classe] ||
+        !banqueQuestions[classe][matiere] ||
+        !banqueQuestions[classe][matiere][niveau]
+    ) {
+
+        document.getElementById("zoneQuiz").innerHTML = `
+            <div class="task">
+                📚 Les questions de cette matière et de ce niveau
+                seront ajoutées prochainement.
+            </div>
+        `;
+
+        return;
+    }
+
+    quizQuestions =
+        [...banqueQuestions[classe][matiere][niveau]];
+
+    quizIndex = 0;
+    quizScore = 0;
+
+    afficherQuestion();
+}
+        function afficherQuestion() {
+
+    const zone =
+        document.getElementById("zoneQuiz");
+
+    if (quizIndex >= quizQuestions.length) {
+
+        afficherResultat();
+
+        return;
+    }
+
+    const question =
+        quizQuestions[quizIndex];
+
+    let html = `
+
+        <div style="
+            margin-top: 30px;
+            padding: 25px;
+            border: 2px solid #111111;
+            border-radius: 20px;
+            background: #fffaf2;
+            text-align: left;
+        ">
+
+            <p style="font-size: 14px;">
+                Question ${quizIndex + 1}
+                / ${quizQuestions.length}
+            </p>
+
+            <h3 style="margin-top: 15px;">
+                ${question.question}
+            </h3>
+
+            <div style="margin-top: 20px;">
+    `;
+
+    question.options.forEach(function(option, index) {
+
+        html += `
+            <button
+                class="bouton"
+                style="
+                    display: block;
+                    width: 100%;
+                    margin: 10px 0;
+                "
+                onclick="repondreQuiz(${index})"
+            >
+                ${option}
+            </button>
+        `;
+
+    });
+
+    html += `
+
+            </div>
+
+        </div>
+    `;
+
+    zone.innerHTML = html;
+}
+        function repondreQuiz(index) {
+
+    const question =
+        quizQuestions[quizIndex];
+
+    const boutons =
+        document.querySelectorAll(
+            "#zoneQuiz .bouton"
+        );
+
+    boutons.forEach(function(bouton) {
+        bouton.disabled = true;
+    });
+
+    if (index === question.reponse) {
+
+        quizScore++;
+
+        document.getElementById("zoneQuiz").innerHTML += `
+            <div class="task">
+                🎉 Bonne réponse !
+                <button
+                    class="bouton"
+                    onclick="questionSuivante()"
+                >
+                    Question suivante →
+                </button>
+            </div>
+        `;
+
+    } else {
+
+        document.getElementById("zoneQuiz").innerHTML += `
+            <div class="task">
+                ❌ Mauvaise réponse.<br>
+                Bonne réponse :
+                <strong>
+                    ${question.options[question.reponse]}
+                </strong>
+
+                <button
+                    class="bouton"
+                    onclick="questionSuivante()"
+                >
+                    Question suivante →
+                </button>
+            </div>
+        `;
+    }
+}
+        function questionSuivante() {
+
+    quizIndex++;
+
+    afficherQuestion();
+}
+        function afficherResultat() {
+
+    const zone =
+        document.getElementById("zoneQuiz");
+
+    zone.innerHTML = `
+
+        <div style="
+            margin-top: 30px;
+            padding: 30px;
+            border: 2px solid #111111;
+            border-radius: 20px;
+            background: #fffaf2;
+        ">
+
+            <h2>🏆 Quiz terminé !</h2>
+
+            <p style="margin: 20px 0;">
+                Tu as obtenu :
+            </p>
+
+            <h1>
+                ${quizScore} / ${quizQuestions.length}
+            </h1>
+
+            <button
+                class="bouton"
+                onclick="commencerQuiz()"
+                style="margin-top: 20px;"
+            >
+                🔄 Recommencer
+            </button>
+
+        </div>
+    `;
+}
     </script>
 
 </body>
