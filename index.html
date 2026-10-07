@@ -194,3 +194,509 @@
 
 </body>
 </html>
+<nav>
+    <button onclick="showPage('accueil')">🏠 Accueil</button>
+    <button onclick="showPage('moyenne')">🧮 Moyenne</button>
+    <button onclick="showPage('revision')">📚 Révisions</button>
+    <button onclick="showPage('emploi')">🗓️ Emploi du temps</button>
+    <button onclick="showPage('taches')">✅ Tâches</button>
+    <button onclick="showPage('quiz')">🧠 Quiz</button>
+</nav>
+<script>
+function showPage(pageId) {
+
+    const pages = document.querySelectorAll(".page");
+
+    pages.forEach(page => {
+        page.style.display = "none";
+    });
+
+    document.getElementById(pageId).style.display = "block";
+}
+</script>
+<section id="moyenne" class="page">
+
+    <div class="cadre">
+
+        <div class="contenu">
+
+            <p class="petit-texte">
+                CALCULATEUR
+            </p>
+
+            <h1>Moyenne</h1>
+
+            <div class="ligne"></div>
+
+            <p class="slogan">
+                Calcule facilement ta moyenne scolaire.
+            </p>
+
+            <input type="text" id="matiere" placeholder="Matière">
+
+            <input
+                type="number"
+                id="devoir1"
+                placeholder="Devoir 1 / 20"
+                min="0"
+                max="20"
+            >
+
+            <input
+                type="number"
+                id="devoir2"
+                placeholder="Devoir 2 / 20"
+                min="0"
+                max="20"
+            >
+
+            <input
+                type="number"
+                id="composition"
+                placeholder="Composition / 20"
+                min="0"
+                max="20"
+            >
+
+            <input
+                type="number"
+                id="coefficient"
+                placeholder="Coefficient"
+                min="1"
+            >
+
+            <button class="bouton" onclick="calculerMoyenne()">
+                Calculer ♡
+            </button>
+
+            <p id="resultatMoyenne"></p>
+
+        </div>
+
+    </div>
+
+</section>
+function calculerMoyenne() {
+
+    const devoir1 =
+        parseFloat(document.getElementById("devoir1").value);
+
+    const devoir2 =
+        parseFloat(document.getElementById("devoir2").value);
+
+    const composition =
+        parseFloat(document.getElementById("composition").value);
+
+    if (
+        isNaN(devoir1) ||
+        isNaN(devoir2) ||
+        isNaN(composition)
+    ) {
+        document.getElementById("resultatMoyenne").textContent =
+            "Remplis toutes les notes.";
+        return;
+    }
+
+    const moyenneDevoirs =
+        (devoir1 + devoir2) / 2;
+
+    const moyenneMatiere =
+        (moyenneDevoirs + composition) / 2;
+
+    document.getElementById("resultatMoyenne").textContent =
+        "Ta moyenne : " +
+        moyenneMatiere.toFixed(2) +
+        " / 20";
+}*
+<section id="revision" class="page">
+
+    <div class="cadre">
+
+        <div class="contenu">
+
+            <p class="petit-texte">
+                ORGANISATION
+            </p>
+
+            <h1>Révisions</h1>
+
+            <div class="ligne"></div>
+
+            <p class="slogan">
+                Ajoute ce que tu dois réviser.
+            </p>
+
+            <input
+                type="text"
+                id="matiereRevision"
+                placeholder="Matière"
+            >
+
+            <input
+                type="text"
+                id="chapitreRevision"
+                placeholder="Chapitre"
+            >
+
+            <button class="bouton" onclick="ajouterRevision()">
+                Ajouter ♡
+            </button>
+
+            <div id="listeRevision"></div>
+
+        </div>
+
+    </div>
+
+</section>
+function ajouterRevision() {
+
+    const matiere =
+        document.getElementById("matiereRevision").value.trim();
+
+    const chapitre =
+        document.getElementById("chapitreRevision").value.trim();
+
+    if (matiere === "" || chapitre === "") {
+        alert("Remplis la matière et le chapitre.");
+        return;
+    }
+
+    const revision =
+        document.createElement("div");
+
+    revision.className = "task";
+
+    revision.innerHTML = `
+        <input
+            type="checkbox"
+            onchange="terminerRevision(this)"
+        >
+
+        <span>
+            <strong>${matiere}</strong>
+            — ${chapitre}
+        </span>
+
+        <button onclick="supprimerRevision(this)">
+            🗑️
+        </button>
+    `;
+
+    document
+        .getElementById("listeRevision")
+        .appendChild(revision);
+
+    document.getElementById("matiereRevision").value = "";
+    document.getElementById("chapitreRevision").value = "";
+}
+
+
+function terminerRevision(checkbox) {
+
+    const texte =
+        checkbox.nextElementSibling;
+
+    if (checkbox.checked) {
+
+        texte.style.textDecoration = "line-through";
+        texte.style.opacity = "0.5";
+
+    } else {
+
+        texte.style.textDecoration = "none";
+        texte.style.opacity = "1";
+    }
+}
+
+
+function supprimerRevision(bouton) {
+
+    bouton.parentElement.remove();
+}
+<section id="revision" class="page">
+
+    <div class="cadre">
+
+        <div class="contenu">
+
+            <p class="petit-texte">
+                ORGANISATION
+            </p>
+
+            <h1>Révisions</h1>
+
+            <div class="ligne"></div>
+
+            <p class="slogan">
+                Ajoute ce que tu dois réviser.
+            </p>
+
+            <input
+                type="text"
+                id="matiereRevision"
+                placeholder="Matière"
+            >
+
+            <input
+                type="text"
+                id="chapitreRevision"
+                placeholder="Chapitre"
+            >
+
+            <button class="bouton" onclick="ajouterRevision()">
+                Ajouter ♡
+            </button>
+
+            <div id="listeRevision"></div>
+
+        </div>
+
+    </div>
+
+</section>
+function ajouterRevision() {
+
+    const matiere =
+        document.getElementById("matiereRevision").value.trim();
+
+    const chapitre =
+        document.getElementById("chapitreRevision").value.trim();
+
+    if (matiere === "" || chapitre === "") {
+        alert("Remplis la matière et le chapitre.");
+        return;
+    }
+
+    const revision = document.createElement("div");
+
+    revision.className = "task";
+
+    revision.innerHTML = `
+        <input
+            type="checkbox"
+            onchange="terminerRevision(this)"
+        >
+
+        <span>
+            <strong>${matiere}</strong> — ${chapitre}
+        </span>
+
+        <button onclick="supprimerRevision(this)">
+            🗑️
+        </button>
+    `;
+
+    document
+        .getElementById("listeRevision")
+        .appendChild(revision);
+
+    document.getElementById("matiereRevision").value = "";
+    document.getElementById("chapitreRevision").value = "";
+}
+
+
+function terminerRevision(checkbox) {
+
+    const texte = checkbox.nextElementSibling;
+
+    if (checkbox.checked) {
+        texte.style.textDecoration = "line-through";
+        texte.style.opacity = "0.5";
+    } else {
+        texte.style.textDecoration = "none";
+        texte.style.opacity = "1";
+    }
+}
+
+
+function supprimerRevision(bouton) {
+    bouton.parentElement.remove();
+}
+<button onclick="showPage('revision')">📚 Révisions</button>
+<section id="emploi" class="page">
+
+    <div class="cadre">
+
+        <div class="contenu">
+
+            <p class="petit-texte">
+                ORGANISATION
+            </p>
+
+            <h1>Emploi du temps</h1>
+
+            <div class="ligne"></div>
+
+            <p class="slogan">
+                Organise tes cours pour toute la semaine.
+            </p>
+
+            <table class="emploi-table">
+
+                <tr>
+                    <th>Jour</th>
+                    <th>Matin</th>
+                    <th>Après-midi</th>
+                </tr>
+
+                <tr>
+                    <td>Lundi</td>
+                    <td>Mathématiques</td>
+                    <td>Français</td>
+                </tr>
+
+                <tr>
+                    <td>Mardi</td>
+                    <td>Anglais</td>
+                    <td>Histoire</td>
+                </tr>
+
+                <tr>
+                    <td>Mercredi</td>
+                    <td>SVT</td>
+                    <td>Mathématiques</td>
+                </tr>
+
+                <tr>
+                    <td>Jeudi</td>
+                    <td>Géographie</td>
+                    <td>Physique-Chimie</td>
+                </tr>
+
+                <tr>
+                    <td>Vendredi</td>
+                    <td>Français</td>
+                    <td>Anglais</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+.emploi-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.emploi-table th,
+.emploi-table td {
+    border: 2px solid #111111;
+    padding: 14px 10px;
+    text-align: center;
+}
+
+.emploi-table th {
+    background: #111111;
+    color: #f1e7d5;
+}
+
+.emploi-table td {
+    background: #f8f0e3;
+}
+
+.emploi-table tr:hover td {
+    background: #e8dcc8;
+}
+<button onclick="showPage('emploi')">
+    🗓️ Emploi du temps
+</button>
+<section id="taches" class="page">
+
+    <div class="cadre">
+
+        <div class="contenu">
+
+            <p class="petit-texte">
+                ORGANISATION
+            </p>
+
+            <h1>Tâches</h1>
+
+            <div class="ligne"></div>
+
+            <p class="slogan">
+                Note les devoirs et les choses à faire.
+            </p>
+
+            <input
+                type="text"
+                id="nouvelleTache"
+                placeholder="Ex : Faire les exercices de maths"
+            >
+
+            <button class="bouton" onclick="ajouterTache()">
+                Ajouter ♡
+            </button>
+
+            <div id="listeTaches"></div>
+
+        </div>
+
+    </div>
+
+</section>
+function ajouterTache() {
+
+    const texte =
+        document.getElementById("nouvelleTache").value.trim();
+
+    if (texte === "") {
+        alert("Écris une tâche.");
+        return;
+    }
+
+    const tache = document.createElement("div");
+
+    tache.className = "task";
+
+    tache.innerHTML = `
+        <input
+            type="checkbox"
+            onchange="terminerTache(this)"
+        >
+
+        <span>${texte}</span>
+
+        <button onclick="supprimerTache(this)">
+            🗑️
+        </button>
+    `;
+
+    document
+        .getElementById("listeTaches")
+        .appendChild(tache);
+
+    document.getElementById("nouvelleTache").value = "";
+}
+
+
+function terminerTache(checkbox) {
+
+    const texte =
+        checkbox.nextElementSibling;
+
+    if (checkbox.checked) {
+
+        texte.style.textDecoration = "line-through";
+        texte.style.opacity = "0.5";
+
+    } else {
+
+        texte.style.textDecoration = "none";
+        texte.style.opacity = "1";
+    }
+}
+
+
+function supprimerTache(bouton) {
+
+    bouton.parentElement.remove();
+}
+<button onclick="showPage('taches')">
+    ✅ Tâches
+</button>
