@@ -19,6 +19,56 @@
             font-family: Arial, sans-serif;
             min-height: 100vh;
         }
+        .accueil-cadre {
+    min-height: 560px;
+}
+
+.raccourcis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.raccourci {
+    border: 2px solid #111111;
+    background: #fffaf2;
+    color: #111111;
+    border-radius: 18px;
+    padding: 20px 12px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.raccourci span {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.raccourci strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.raccourci small {
+    font-size: 13px;
+}
+
+.raccourci:hover {
+    background: #111111;
+    color: #f1e7d5;
+    transform: translateY(-4px);
+}
+
+@media (max-width: 600px) {
+
+    .raccourcis {
+        grid-template-columns: 1fr;
+    }
+
+}
 
         /* =========================
            NAVIGATION
@@ -62,64 +112,67 @@
             display: block;
         }
 
-        .accueil {
-            min-height: calc(100vh - 80px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-        }
+        <section id="accueil" class="page">
 
-        .cadre {
-            width: 900px;
-            max-width: 100%;
-            background: #f1e7d5;
-            border: 3px solid #111111;
-            border-radius: 35px;
-            padding: 45px;
-            text-align: center;
-        }
+    <div class="accueil">
 
-        .contenu {
-            width: 100%;
-            max-width: 750px;
-            margin: auto;
-        }
+        <div class="cadre accueil-cadre">
 
-        .petit-texte {
-            font-size: 14px;
-            letter-spacing: 5px;
-            margin-bottom: 15px;
-        }
+            <div class="contenu">
 
-        h1 {
-            font-size: 62px;
-            margin-bottom: 15px;
-            font-weight: 900;
-        }
+                <p class="petit-texte">
+                    BIENVENUE DANS
+                </p>
 
-        h2 {
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
+                <h1>
+                    StudySpace
+                </h1>
 
-        h3 {
-            margin-bottom: 15px;
-        }
+                <div class="ligne"></div>
 
-        .ligne {
-            width: 90px;
-            height: 3px;
-            background: #111111;
-            margin: 22px auto;
-        }
+                <p class="slogan">
+                    Ton espace pour apprendre,<br>
+                    t'organiser et progresser.
+                </p>
 
-        .slogan {
-            font-size: 18px;
-            line-height: 1.7;
-            margin-bottom: 25px;
-        }
+                <div class="raccourcis">
 
+                    <button
+                        class="raccourci"
+                        onclick="showPage('moyenne')"
+                    >
+                        <span>🧮</span>
+                        <strong>Moyenne</strong>
+                        <small>Calcule tes notes</small>
+                    </button>
+
+                    <button
+                        class="raccourci"
+                        onclick="showPage('revision')"
+                    >
+                        <span>📚</span>
+                        <strong>Révisions</strong>
+                        <small>Organise ton travail</small>
+                    </button>
+
+                    <button
+                        class="raccourci"
+                        onclick="showPage('quiz')"
+                    >
+                        <span>🧠</span>
+                        <strong>Quiz</strong>
+                        <small>Teste tes connaissances</small>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
         /* =========================
            BOUTONS
         ========================= */
@@ -1590,6 +1643,1526 @@
          */
 
         const banqueQuestions = {
+                "6e": {
+
+        "Mathématiques": {
+
+            "facile": [
+                {
+                    question: "Combien font 25 + 17 ?",
+                    options: ["40", "41", "42", "43"],
+                    reponse: 2
+                },
+                {
+                    question: "Combien font 8 × 7 ?",
+                    options: ["48", "54", "56", "64"],
+                    reponse: 2
+                },
+                {
+                    question: "Quel nombre vient après 999 ?",
+                    options: ["100", "1000", "1001", "9999"],
+                    reponse: 1
+                },
+                {
+                    question: "Combien font 72 ÷ 8 ?",
+                    options: ["7", "8", "9", "10"],
+                    reponse: 2
+                }
+            ],
+
+            "moyen": [
+                {
+                    question: "Calcule : 3/4 + 1/4.",
+                    options: ["1/2", "3/4", "1", "5/4"],
+                    reponse: 2
+                },
+                {
+                    question: "Un rectangle mesure 8 cm de longueur et 5 cm de largeur. Quel est son périmètre ?",
+                    options: ["13 cm", "26 cm", "40 cm", "45 cm"],
+                    reponse: 1
+                },
+                {
+                    question: "Quel est le plus grand nombre ?",
+                    options: ["4,08", "4,8", "4,18", "4,008"],
+                    reponse: 1
+                },
+                {
+                    question: "Un article coûte 2 000 F. On ajoute 500 F. Quel est son prix ?",
+                    options: ["2 100 F", "2 300 F", "2 500 F", "3 000 F"],
+                    reponse: 2
+                }
+            ],
+
+            "difficile": [
+                {
+                    question: "Une classe compte 32 élèves. Les 3/8 sont des filles. Combien y a-t-il de filles ?",
+                    options: ["8", "10", "12", "14"],
+                    reponse: 2
+                },
+                {
+                    question: "Un terrain rectangulaire mesure 12 m sur 7 m. Quelle est son aire ?",
+                    options: ["19 m²", "38 m²", "84 m²", "96 m²"],
+                    reponse: 2
+                }
+            ]
+        },
+
+        "Français": {
+
+            "facile": [
+                {
+                    question: "Dans « Awa lit un livre », quel est le verbe ?",
+                    options: ["Awa", "lit", "livre", "un"],
+                    reponse: 1
+                },
+                {
+                    question: "Quel est le pluriel de « maison » ?",
+                    options: ["maisons", "maisonx", "maisonnes", "maisones"],
+                    reponse: 0
+                },
+                {
+                    question: "Quel est le contraire de « grand » ?",
+                    options: ["long", "petit", "haut", "fort"],
+                    reponse: 1
+                },
+                {
+                    question: "Dans « Le chat dort », quel est le sujet ?",
+                    options: ["Le", "chat", "dort", "Le chat dort"],
+                    reponse: 1
+                }
+            ],
+
+            "moyen": [
+                {
+                    question: "Quel est le groupe du verbe « finir » ?",
+                    options: ["1er groupe", "2e groupe", "3e groupe", "aucun"],
+                    reponse: 1
+                },
+                {
+                    question: "Dans « Les enfants jouent dans la cour », quel est le complément circonstanciel de lieu ?",
+                    options: ["Les enfants", "jouent", "dans la cour", "aucun"],
+                    reponse: 2
+                },
+                {
+                    question: "Quel temps est utilisé dans « Nous avons terminé » ?",
+                    options: ["Présent", "Imparfait", "Passé composé", "Futur"],
+                    reponse: 2
+                },
+                {
+                    question: "Quel mot est un adjectif qualificatif ?",
+                    options: ["rapidement", "maison", "joli", "courir"],
+                    reponse: 2
+                }
+            ],
+
+            "difficile": [
+                {
+                    question: "Dans « La fille que j'ai rencontrée est gentille », quel groupe est une proposition subordonnée relative ?",
+                    options: [
+                        "La fille",
+                        "que j'ai rencontrée",
+                        "est gentille",
+                        "La fille est"
+                    ],
+                    reponse: 1
+                },
+                {
+                    question: "Dans « Il travaille parce qu'il veut réussir », « parce qu'il veut réussir » exprime :",
+                    options: ["Le but", "La cause", "La conséquence", "Le temps"],
+                    reponse: 1
+                }
+            ]
+        },
+
+        "Anglais": {
+
+            "facile": [
+                {
+                    question: "What is the opposite of “big”?",
+                    options: ["small", "long", "fast", "old"],
+                    reponse: 0
+                },
+                {
+                    question: "Choose the correct answer: “I ___ a student.”",
+                    options: ["am", "is", "are", "be"],
+                    reponse: 0
+                },
+                {
+                    question: "What is the plural of “book”?",
+                    options: ["bookes", "books", "bookies", "book"],
+                    reponse: 1
+                },
+                {
+                    question: "What does “Good morning” mean?",
+                    options: [
+                        "Bonsoir",
+                        "Bonjour",
+                        "Au revoir",
+                        "Merci"
+                    ],
+                    reponse: 1
+                }
+            ],
+
+            "moyen": [
+                {
+                    question: "Choose the correct form: “She ___ to school every day.”",
+                    options: ["go", "goes", "going", "gone"],
+                    reponse: 1
+                },
+                {
+                    question: "What is the past tense of “play”?",
+                    options: ["played", "playd", "plays", "playing"],
+                    reponse: 0
+                },
+                {
+                    question: "Complete: “There ___ two books on the table.”",
+                    options: ["is", "are", "am", "be"],
+                    reponse: 1
+                },
+                {
+                    question: "What does “How old are you?” mean?",
+                    options: [
+                        "Où habites-tu ?",
+                        "Quel âge as-tu ?",
+                        "Comment vas-tu ?",
+                        "Que fais-tu ?"
+                    ],
+                    reponse: 1
+                }
+            ],
+
+            "difficile": [
+                {
+                    question: "Choose the correct sentence.",
+                    options: [
+                        "He don't like milk.",
+                        "He doesn't like milk.",
+                        "He doesn't likes milk.",
+                        "He not like milk."
+                    ],
+                    reponse: 1
+                },
+                {
+                    question: "Complete: “I have lived here ___ two years.”",
+                    options: ["since", "for", "at", "on"],
+                    reponse: 1
+                }
+            ]
+        },
+
+        "Histoire": {
+
+            "facile": [
+                {
+                    question: "Comment appelle-t-on les premières périodes de l'histoire humaine avant l'écriture ?",
+                    options: [
+                        "La Préhistoire",
+                        "L'Antiquité",
+                        "Le Moyen Âge",
+                        "L'époque moderne"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel ancien empire africain est étudié en histoire africaine ?",
+                    options: [
+                        "L'empire du Mali",
+                        "L'empire romain uniquement",
+                        "L'empire japonais",
+                        "L'empire aztèque"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel continent est le berceau de l'humanité selon les connaissances historiques et archéologiques ?",
+                    options: [
+                        "Europe",
+                        "Afrique",
+                        "Asie",
+                        "Océanie"
+                    ],
+                    reponse: 1
+                },
+                {
+                    question: "L'écriture apparaît avant ou après la Préhistoire ?",
+                    options: [
+                        "Pendant la Préhistoire uniquement",
+                        "Après la Préhistoire",
+                        "Avant l'apparition de l'homme",
+                        "Elle apparaît au XXIe siècle"
+                    ],
+                    reponse: 1
+                }
+            ],
+
+            "moyen": [
+                {
+                    question: "Quel élément permet traditionnellement de distinguer la Préhistoire de l'Histoire ?",
+                    options: [
+                        "L'invention de l'écriture",
+                        "La découverte de l'électricité",
+                        "La construction des routes",
+                        "L'invention d'Internet"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "L'empire du Mali s'est développé principalement en :",
+                    options: [
+                        "Afrique de l'Ouest",
+                        "Afrique australe",
+                        "Europe",
+                        "Asie"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel grand fleuve est important dans l'histoire et la géographie de l'Afrique de l'Ouest ?",
+                    options: [
+                        "Le Nil",
+                        "Le fleuve Sénégal",
+                        "Le Danube",
+                        "Le Gange"
+                    ],
+                    reponse: 1
+                },
+                {
+                    question: "Pourquoi les sources historiques sont-elles importantes ?",
+                    options: [
+                        "Elles permettent d'étudier le passé",
+                        "Elles remplacent toutes les cartes",
+                        "Elles servent uniquement à compter",
+                        "Elles servent uniquement aux sciences"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "difficile": [
+                {
+                    question: "Pourquoi l'invention de l'écriture est-elle une étape importante dans l'histoire ?",
+                    options: [
+                        "Elle permet notamment de conserver des informations par écrit",
+                        "Elle fait disparaître les sociétés",
+                        "Elle empêche les échanges",
+                        "Elle supprime les traditions orales"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel rôle le commerce a-t-il joué dans le développement de plusieurs empires ouest-africains ?",
+                    options: [
+                        "Il a favorisé les échanges de produits et les richesses",
+                        "Il a supprimé toutes les villes",
+                        "Il a empêché les contacts entre peuples",
+                        "Il n'a jamais existé"
+                    ],
+                    reponse: 0
+                }
+            ]
+        },
+
+        "Géographie": {
+
+            "facile": [
+                {
+                    question: "Quelle est la capitale du Sénégal ?",
+                    options: ["Dakar", "Thiès", "Ziguinchor", "Saint-Louis"],
+                    reponse: 0
+                },
+                {
+                    question: "Sur quel continent se trouve le Sénégal ?",
+                    options: ["Europe", "Afrique", "Asie", "Amérique"],
+                    reponse: 1
+                },
+                {
+                    question: "Quel océan borde le Sénégal à l'ouest ?",
+                    options: [
+                        "Océan Indien",
+                        "Océan Atlantique",
+                        "Océan Pacifique",
+                        "Océan Arctique"
+                    ],
+                    reponse: 1
+                },
+                {
+                    question: "Quelle ville est située en Casamance ?",
+                    options: ["Ziguinchor", "Louga", "Matam", "Touba"],
+                    reponse: 0
+                }
+            ],
+
+            "moyen": [
+                {
+                    question: "Qu'est-ce qu'une carte géographique ?",
+                    options: [
+                        "Une représentation d'un espace",
+                        "Une photographie uniquement",
+                        "Un texte littéraire",
+                        "Un tableau de multiplication"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel élément naturel influence fortement les activités humaines ?",
+                    options: [
+                        "Le climat",
+                        "La couleur des bâtiments uniquement",
+                        "Le nom des rues uniquement",
+                        "Les vêtements"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Qu'appelle-t-on population ?",
+                    options: [
+                        "L'ensemble des habitants d'un territoire",
+                        "Uniquement les enfants",
+                        "Uniquement les travailleurs",
+                        "Uniquement les personnes âgées"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel espace est généralement plus densément peuplé ?",
+                    options: [
+                        "Une grande ville",
+                        "Un désert inhabité",
+                        "Une région glacée",
+                        "Une zone sans eau"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "difficile": [
+                {
+                    question: "Pourquoi les populations ne sont-elles pas réparties uniformément sur un territoire ?",
+                    options: [
+                        "Les conditions naturelles et les activités économiques varient selon les espaces",
+                        "Tous les territoires sont identiques",
+                        "Les populations choisissent toujours les mêmes lieux",
+                        "La population ne dépend jamais du territoire"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi les villes jouent-elles un rôle important dans l'organisation d'un territoire ?",
+                    options: [
+                        "Elles concentrent souvent des habitants, des services et des activités économiques",
+                        "Elles n'abritent jamais de services",
+                        "Elles sont toujours moins peuplées que les campagnes",
+                        "Elles n'ont aucune activité"
+                    ],
+                    reponse: 0
+                }
+            ]
+        },
+
+        "SVT": {
+
+            "facile": [
+                {
+                    question: "De quoi les êtres humains ont-ils besoin pour respirer ?",
+                    options: [
+                        "De dioxygène",
+                        "De sable",
+                        "De sel uniquement",
+                        "De lumière uniquement"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel organe permet principalement la respiration ?",
+                    options: [
+                        "Les poumons",
+                        "Le cœur",
+                        "L'estomac",
+                        "Le foie"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel organe pompe le sang ?",
+                    options: [
+                        "Le cœur",
+                        "Le rein",
+                        "Le cerveau",
+                        "L'estomac"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel être vivant est un végétal ?",
+                    options: [
+                        "Le manguier",
+                        "Le chat",
+                        "Le poisson",
+                        "La poule"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "moyen": [
+                {
+                    question: "Quel organe permet au sang de circuler dans tout le corps ?",
+                    options: [
+                        "Le cœur",
+                        "L'estomac",
+                        "Les poumons uniquement",
+                        "La peau"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Les végétaux verts ont besoin notamment de lumière pour :",
+                    options: [
+                        "Réaliser la photosynthèse",
+                        "Courir",
+                        "Respirer comme les animaux uniquement",
+                        "Changer de forme"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quelle partie de la plante absorbe principalement l'eau et les sels minéraux du sol ?",
+                    options: [
+                        "Les racines",
+                        "Les fleurs",
+                        "Les fruits",
+                        "Les feuilles uniquement"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel organe permet principalement la digestion des aliments ?",
+                    options: [
+                        "L'appareil digestif",
+                        "Le cœur",
+                        "Les poumons",
+                        "Les os"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "difficile": [
+                {
+                    question: "Pourquoi les êtres vivants ont-ils besoin d'aliments ?",
+                    options: [
+                        "Pour fournir notamment de l'énergie et des nutriments nécessaires au fonctionnement du corps",
+                        "Pour remplacer l'air",
+                        "Pour arrêter la circulation du sang",
+                        "Pour empêcher la croissance"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi les plantes vertes sont-elles importantes dans les écosystèmes ?",
+                    options: [
+                        "Elles produisent de la matière organique grâce à la photosynthèse",
+                        "Elles ne produisent aucune matière",
+                        "Elles consomment uniquement les autres végétaux",
+                        "Elles vivent sans eau"
+                    ],
+                    reponse: 0
+                }
+            ]
+        },
+
+        "Éducation civique": {
+
+            "facile": [
+                {
+                    question: "Qu'est-ce qu'un citoyen ?",
+                    options: [
+                        "Une personne ayant des droits et des devoirs dans une société",
+                        "Une personne sans aucun droit",
+                        "Uniquement un élève",
+                        "Uniquement un fonctionnaire"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel comportement est citoyen ?",
+                    options: [
+                        "Respecter les autres",
+                        "Détruire les biens publics",
+                        "Ignorer les règles",
+                        "Insulter les autres"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi respecter les règles de l'école ?",
+                    options: [
+                        "Pour permettre une vie scolaire organisée",
+                        "Pour empêcher les cours",
+                        "Pour supprimer les droits",
+                        "Pour éviter d'apprendre"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Les biens publics sont destinés :",
+                    options: [
+                        "À la collectivité",
+                        "À une seule personne",
+                        "À une seule famille",
+                        "À personne"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "moyen": [
+                {
+                    question: "Un droit est :",
+                    options: [
+                        "Une possibilité reconnue à une personne",
+                        "Une punition",
+                        "Une interdiction permanente",
+                        "Une maladie"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Un devoir est :",
+                    options: [
+                        "Une responsabilité ou une obligation à respecter",
+                        "Un privilège uniquement",
+                        "Un jeu",
+                        "Une récompense"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi protéger les biens publics ?",
+                    options: [
+                        "Parce qu'ils servent à la collectivité",
+                        "Parce qu'ils sont inutiles",
+                        "Parce qu'ils appartiennent toujours à une personne",
+                        "Parce qu'ils doivent être détruits"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "L'égalité signifie notamment :",
+                    options: [
+                        "Que les personnes doivent être traitées selon les mêmes règles de droit",
+                        "Que certaines personnes sont au-dessus des lois",
+                        "Que seuls les riches ont des droits",
+                        "Que les règles changent pour chacun"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "difficile": [
+                {
+                    question: "Pourquoi les droits et les devoirs sont-ils liés ?",
+                    options: [
+                        "Parce que la vie en société implique à la fois des libertés et des responsabilités",
+                        "Parce que les citoyens n'ont aucun droit",
+                        "Parce que les devoirs remplacent toutes les libertés",
+                        "Parce que les règles n'ont aucune importance"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel comportement favorise la vie en communauté ?",
+                    options: [
+                        "Respecter les autres et les règles communes",
+                        "Refuser toute règle",
+                        "Détruire les biens communs",
+                        "Empêcher les autres de parler"
+                    ],
+                    reponse: 0
+                }
+            ]
+        }
+    },
+                "5e": {
+
+        "Mathématiques": {
+
+            "facile": [
+                {
+                    question: "Combien font 3/4 + 1/4 ?",
+                    options: ["1/2", "3/4", "1", "5/4"],
+                    reponse: 2
+                },
+                {
+                    question: "Combien font 7 × 9 ?",
+                    options: ["56", "63", "72", "81"],
+                    reponse: 1
+                },
+                {
+                    question: "Quel est le double de 35 ?",
+                    options: ["60", "65", "70", "75"],
+                    reponse: 2
+                },
+                {
+                    question: "Quelle est la moitié de 84 ?",
+                    options: ["38", "40", "42", "44"],
+                    reponse: 2
+                }
+            ],
+
+            "moyen": [
+                {
+                    question: "Calcule : 5/6 − 1/3.",
+                    options: ["1/6", "1/3", "1/2", "2/3"],
+                    reponse: 2
+                },
+                {
+                    question: "Un article coûte 4 000 F. Il augmente de 10 %. Quel est son nouveau prix ?",
+                    options: ["4 100 F", "4 200 F", "4 400 F", "4 500 F"],
+                    reponse: 2
+                },
+                {
+                    question: "Un rectangle mesure 9 cm de longueur et 4 cm de largeur. Quel est son périmètre ?",
+                    options: ["13 cm", "18 cm", "26 cm", "36 cm"],
+                    reponse: 2
+                },
+                {
+                    question: "Sur une carte, 1 cm représente 5 km. 4 cm représentent :",
+                    options: ["9 km", "15 km", "20 km", "25 km"],
+                    reponse: 2
+                }
+            ],
+
+            "difficile": [
+                {
+                    question: "Une classe compte 40 élèves. Les 3/5 sont des filles. Combien y a-t-il de filles ?",
+                    options: ["20", "24", "25", "30"],
+                    reponse: 1
+                },
+                {
+                    question: "Un prix passe de 8 000 F à 6 000 F. Le pourcentage de réduction est de :",
+                    options: ["20 %", "25 %", "30 %", "35 %"],
+                    reponse: 1
+                }
+            ]
+        },
+
+
+        "Français": {
+
+            "facile": [
+                {
+                    question: "Dans « Les enfants jouent », quel est le sujet ?",
+                    options: ["Les", "enfants", "jouent", "Les enfants jouent"],
+                    reponse: 1
+                },
+                {
+                    question: "Quel est le pluriel de « animal » ?",
+                    options: ["animals", "animaux", "animales", "animalx"],
+                    reponse: 1
+                },
+                {
+                    question: "Dans « Elle chante doucement », « doucement » est un :",
+                    options: ["Nom", "Adjectif", "Adverbe", "Pronom"],
+                    reponse: 2
+                },
+                {
+                    question: "Quel est le contraire de « facile » ?",
+                    options: ["Simple", "Difficile", "Rapide", "Calme"],
+                    reponse: 1
+                }
+            ],
+
+            "moyen": [
+                {
+                    question: "Quel temps est utilisé dans « Nous avons fini notre travail » ?",
+                    options: ["Présent", "Imparfait", "Passé composé", "Futur"],
+                    reponse: 2
+                },
+                {
+                    question: "Dans « Les élèves travaillent parce qu'ils veulent réussir », la proposition introduite par « parce que » exprime :",
+                    options: ["Le but", "La cause", "Le temps", "La comparaison"],
+                    reponse: 1
+                },
+                {
+                    question: "Dans « Le livre que tu lis est intéressant », quelle est la proposition subordonnée relative ?",
+                    options: ["Le livre", "que tu lis", "est intéressant", "tu lis"],
+                    reponse: 1
+                },
+                {
+                    question: "Dans « Cette robe est très jolie », « jolie » est un :",
+                    options: ["Nom", "Adjectif qualificatif", "Adverbe", "Verbe"],
+                    reponse: 1
+                }
+            ],
+
+            "difficile": [
+                {
+                    question: "Quelle phrase est à la voix passive ?",
+                    options: [
+                        "Le professeur explique la leçon.",
+                        "Les élèves apprennent la leçon.",
+                        "La leçon est expliquée par le professeur.",
+                        "Les élèves écrivent."
+                    ],
+                    reponse: 2
+                },
+                {
+                    question: "Dans « Bien qu'il soit fatigué, il continue son travail », la proposition « Bien qu'il soit fatigué » exprime :",
+                    options: ["La cause", "La concession", "Le but", "La conséquence"],
+                    reponse: 1
+                }
+            ]
+        },
+
+
+        "Anglais": {
+
+            "facile": [
+                {
+                    question: "Choose the correct form: “She ___ a student.”",
+                    options: ["am", "are", "is", "be"],
+                    reponse: 2
+                },
+                {
+                    question: "What is the plural of “book”?",
+                    options: ["bookes", "books", "bookies", "book"],
+                    reponse: 1
+                },
+                {
+                    question: "What is the opposite of “small”?",
+                    options: ["big", "slow", "short", "young"],
+                    reponse: 0
+                },
+                {
+                    question: "What does “Good evening” mean?",
+                    options: [
+                        "Bonjour",
+                        "Bonsoir",
+                        "Bonne nuit",
+                        "Au revoir"
+                    ],
+                    reponse: 1
+                }
+            ],
+
+            "moyen": [
+                {
+                    question: "Choose the correct form: “He ___ to school every day.”",
+                    options: ["go", "goes", "going", "gone"],
+                    reponse: 1
+                },
+                {
+                    question: "What is the past tense of “eat”?",
+                    options: ["eated", "ate", "eaten", "eating"],
+                    reponse: 1
+                },
+                {
+                    question: "Complete: “There ___ three books on the table.”",
+                    options: ["is", "are", "am", "be"],
+                    reponse: 1
+                },
+                {
+                    question: "What does “How old are you?” mean?",
+                    options: [
+                        "Comment vas-tu ?",
+                        "Quel âge as-tu ?",
+                        "Où habites-tu ?",
+                        "Que fais-tu ?"
+                    ],
+                    reponse: 1
+                }
+            ],
+
+            "difficile": [
+                {
+                    question: "Choose the correct sentence.",
+                    options: [
+                        "He don't like milk.",
+                        "He doesn't like milk.",
+                        "He doesn't likes milk.",
+                        "He not like milk."
+                    ],
+                    reponse: 1
+                },
+                {
+                    question: "Complete: “I have lived here ___ 2022.”",
+                    options: ["for", "since", "during", "at"],
+                    reponse: 1
+                }
+            ]
+        },
+
+
+        "Histoire": {
+
+            "facile": [
+                {
+                    question: "Quel grand empire ouest-africain est associé à Soundiata Keïta ?",
+                    options: [
+                        "L'empire du Mali",
+                        "L'empire romain",
+                        "L'empire ottoman",
+                        "L'empire aztèque"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quelle ville est célèbre dans l'histoire de l'empire du Mali ?",
+                    options: [
+                        "Tombouctou",
+                        "Tokyo",
+                        "Londres",
+                        "Rome"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Comment appelle-t-on le commerce pratiqué à travers le désert du Sahara ?",
+                    options: [
+                        "Le commerce transsaharien",
+                        "Le commerce polaire",
+                        "Le commerce maritime européen",
+                        "Le commerce amazonien"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Mansa Moussa était un souverain de :",
+                    options: [
+                        "L'empire du Mali",
+                        "L'empire romain",
+                        "L'empire chinois",
+                        "L'empire britannique"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "moyen": [
+                {
+                    question: "Pourquoi Tombouctou a-t-elle été importante dans l'histoire ouest-africaine ?",
+                    options: [
+                        "Elle était un centre commercial et intellectuel important",
+                        "Elle était située en Europe",
+                        "Elle n'avait aucune activité commerciale",
+                        "Elle était une capitale asiatique"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel produit faisait partie des grands échanges transsahariens ?",
+                    options: [
+                        "Le sel",
+                        "Le cacao uniquement",
+                        "Le pétrole uniquement",
+                        "Le café uniquement"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel personnage est célèbre pour son pèlerinage à La Mecque ?",
+                    options: [
+                        "Mansa Moussa",
+                        "Jules César",
+                        "Napoléon",
+                        "Charlemagne"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi les routes commerciales étaient-elles importantes pour les empires ouest-africains ?",
+                    options: [
+                        "Elles favorisaient les échanges et les richesses",
+                        "Elles empêchaient tout contact",
+                        "Elles supprimaient les villes",
+                        "Elles empêchaient les activités économiques"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "difficile": [
+                {
+                    question: "Quel facteur a contribué à la puissance de l'empire du Mali ?",
+                    options: [
+                        "Le contrôle de routes commerciales et de ressources",
+                        "L'absence totale de commerce",
+                        "La fermeture des villes",
+                        "L'isolement complet"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi les grandes villes commerciales étaient-elles aussi des centres culturels ?",
+                    options: [
+                        "Les échanges favorisaient la circulation des idées et des connaissances",
+                        "Le commerce empêchait toute transmission",
+                        "Les villes n'accueillaient aucun étudiant",
+                        "Les routes commerciales étaient fermées"
+                    ],
+                    reponse: 0
+                }
+            ]
+        },
+
+
+        "Géographie": {
+
+            "facile": [
+                {
+                    question: "Quelle est la capitale du Sénégal ?",
+                    options: ["Dakar", "Thiès", "Ziguinchor", "Saint-Louis"],
+                    reponse: 0
+                },
+                {
+                    question: "Quel océan borde le Sénégal ?",
+                    options: [
+                        "Atlantique",
+                        "Indien",
+                        "Pacifique",
+                        "Arctique"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quelle ville se trouve en Casamance ?",
+                    options: [
+                        "Ziguinchor",
+                        "Louga",
+                        "Matam",
+                        "Touba"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Le Sénégal se trouve sur quel continent ?",
+                    options: ["Europe", "Afrique", "Asie", "Amérique"],
+                    reponse: 1
+                }
+            ],
+
+            "moyen": [
+                {
+                    question: "Qu'est-ce que la population d'un territoire ?",
+                    options: [
+                        "L'ensemble des habitants de ce territoire",
+                        "Uniquement les enfants",
+                        "Uniquement les travailleurs",
+                        "Uniquement les personnes âgées"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Qu'est-ce que la densité de population ?",
+                    options: [
+                        "Le nombre d'habitants par unité de superficie",
+                        "Le nombre de villes",
+                        "La superficie totale d'un pays",
+                        "Le nombre de routes"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel phénomène correspond à la croissance des villes ?",
+                    options: [
+                        "L'urbanisation",
+                        "La glaciation",
+                        "La désertification uniquement",
+                        "La tectonique"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Le Sahel est caractérisé notamment par :",
+                    options: [
+                        "Un climat relativement sec",
+                        "Un climat polaire",
+                        "Des glaciers permanents",
+                        "Une forêt équatoriale continue"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "difficile": [
+                {
+                    question: "Pourquoi les populations sont-elles inégalement réparties sur un territoire ?",
+                    options: [
+                        "Les conditions naturelles et les activités humaines varient selon les espaces",
+                        "Tous les espaces sont identiques",
+                        "La population ne dépend jamais du territoire",
+                        "Toutes les régions ont exactement les mêmes ressources"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi les villes attirent-elles souvent les populations ?",
+                    options: [
+                        "Elles concentrent souvent emplois, services et équipements",
+                        "Elles n'ont aucune activité",
+                        "Elles interdisent les écoles",
+                        "Elles sont toujours moins peuplées"
+                    ],
+                    reponse: 0
+                }
+            ]
+        },
+
+
+        "SVT": {
+
+            "facile": [
+                {
+                    question: "Quel organe pompe le sang ?",
+                    options: [
+                        "Le cœur",
+                        "Le foie",
+                        "Le rein",
+                        "L'estomac"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel organe permet principalement les échanges gazeux ?",
+                    options: [
+                        "Les poumons",
+                        "Le cœur",
+                        "Le foie",
+                        "L'estomac"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quelle partie de la plante absorbe principalement l'eau du sol ?",
+                    options: [
+                        "Les racines",
+                        "Les feuilles",
+                        "Les fleurs",
+                        "Les fruits"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel être vivant est un végétal ?",
+                    options: [
+                        "Le manguier",
+                        "Le chat",
+                        "Le poisson",
+                        "La poule"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "moyen": [
+                {
+                    question: "Les végétaux verts réalisent la photosynthèse grâce notamment à :",
+                    options: [
+                        "La lumière",
+                        "L'obscurité totale",
+                        "Le sel uniquement",
+                        "Le sable uniquement"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel système transporte le sang ?",
+                    options: [
+                        "Le système circulatoire",
+                        "Le système digestif",
+                        "Le système osseux",
+                        "Le système respiratoire"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel organe participe principalement à la digestion ?",
+                    options: [
+                        "L'estomac",
+                        "Le cœur",
+                        "Les poumons",
+                        "Le cerveau"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi les muscles ont-ils besoin de dioxygène ?",
+                    options: [
+                        "Pour leur fonctionnement et la production d'énergie",
+                        "Pour changer leur couleur",
+                        "Pour produire des os",
+                        "Pour empêcher le sang de circuler"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "difficile": [
+                {
+                    question: "Pourquoi les racines sont-elles importantes pour la plante ?",
+                    options: [
+                        "Elles permettent notamment l'absorption de l'eau et des sels minéraux",
+                        "Elles produisent uniquement des fleurs",
+                        "Elles servent uniquement à attirer les animaux",
+                        "Elles remplacent les feuilles"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi la respiration est-elle importante pour les cellules ?",
+                    options: [
+                        "Elle permet de libérer de l'énergie utilisable",
+                        "Elle empêche toute activité cellulaire",
+                        "Elle remplace la digestion",
+                        "Elle produit uniquement de l'eau"
+                    ],
+                    reponse: 0
+                }
+            ]
+        },
+
+
+        "Éducation civique": {
+
+            "facile": [
+                {
+                    question: "Un bon citoyen doit notamment :",
+                    options: [
+                        "Respecter les règles",
+                        "Détruire les biens publics",
+                        "Ignorer les autres",
+                        "Refuser tout dialogue"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Les biens publics sont destinés :",
+                    options: [
+                        "À la collectivité",
+                        "À une seule personne",
+                        "À une seule famille",
+                        "À personne"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi respecter les autres ?",
+                    options: [
+                        "Pour favoriser la vie en société",
+                        "Pour empêcher le dialogue",
+                        "Pour supprimer les droits",
+                        "Pour créer des conflits"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel comportement est citoyen ?",
+                    options: [
+                        "Respecter les lois",
+                        "Détruire les biens communs",
+                        "Insulter les autres",
+                        "Ignorer toutes les règles"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "moyen": [
+                {
+                    question: "Un droit est :",
+                    options: [
+                        "Une possibilité reconnue à une personne",
+                        "Une punition",
+                        "Une maladie",
+                        "Une interdiction permanente"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Un devoir est :",
+                    options: [
+                        "Une responsabilité à respecter",
+                        "Un privilège uniquement",
+                        "Un jeu",
+                        "Une récompense"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi protéger les biens publics ?",
+                    options: [
+                        "Parce qu'ils servent à la collectivité",
+                        "Parce qu'ils sont inutiles",
+                        "Parce qu'ils n'appartiennent à personne",
+                        "Parce qu'ils doivent être détruits"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "La citoyenneté implique notamment :",
+                    options: [
+                        "Des droits et des responsabilités",
+                        "Uniquement des privilèges",
+                        "Uniquement des sanctions",
+                        "Aucun devoir"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "difficile": [
+                {
+                    question: "Pourquoi les droits et les devoirs sont-ils liés ?",
+                    options: [
+                        "La vie en société implique des libertés et des responsabilités",
+                        "Les citoyens n'ont aucun droit",
+                        "Les devoirs suppriment toujours les libertés",
+                        "Les règles sont inutiles"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel comportement favorise la cohésion sociale ?",
+                    options: [
+                        "Respecter les autres et les règles communes",
+                        "Discriminer les autres",
+                        "Refuser tout dialogue",
+                        "Détruire les biens communs"
+                    ],
+                    reponse: 0
+                }
+            ]
+        },
+
+
+        "Technologie": {
+
+            "facile": [
+                {
+                    question: "Quel appareil permet de mesurer une température ?",
+                    options: [
+                        "Un thermomètre",
+                        "Une balance",
+                        "Une règle",
+                        "Un chronomètre"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel objet permet d'ouvrir ou fermer un circuit électrique ?",
+                    options: [
+                        "Un interrupteur",
+                        "Une règle",
+                        "Une balance",
+                        "Un cahier"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel outil mesure une longueur ?",
+                    options: [
+                        "Une règle",
+                        "Un thermomètre",
+                        "Une balance",
+                        "Un ampèremètre"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Un schéma technique sert notamment à :",
+                    options: [
+                        "Représenter un système",
+                        "Décorer une page",
+                        "Remplacer tous les outils",
+                        "Éviter toute observation"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "moyen": [
+                {
+                    question: "Dans un circuit simple, la pile fournit principalement :",
+                    options: [
+                        "De l'énergie électrique",
+                        "De l'eau",
+                        "De la chaleur uniquement",
+                        "De la lumière sans circuit"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel composant transforme l'énergie électrique en lumière ?",
+                    options: [
+                        "Une lampe",
+                        "Une règle",
+                        "Un interrupteur uniquement",
+                        "Un cahier"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi utilise-t-on différents matériaux pour fabriquer des objets ?",
+                    options: [
+                        "Parce que leurs propriétés sont différentes",
+                        "Parce qu'ils ont tous les mêmes propriétés",
+                        "Pour empêcher l'utilisation de l'objet",
+                        "Pour éviter toute conception"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel appareil permet de mesurer une tension électrique ?",
+                    options: [
+                        "Un voltmètre",
+                        "Un thermomètre",
+                        "Une balance",
+                        "Une règle"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "difficile": [
+                {
+                    question: "Pourquoi choisit-on un matériau particulier pour fabriquer un objet technique ?",
+                    options: [
+                        "Parce que ses propriétés doivent correspondre à l'usage prévu",
+                        "Parce que tous les matériaux sont identiques",
+                        "Parce que le matériau n'a aucune importance",
+                        "Parce qu'on choisit toujours le matériau le plus lourd"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Que se passe-t-il généralement lorsqu'un interrupteur ouvre un circuit ?",
+                    options: [
+                        "Le courant ne circule plus dans le circuit",
+                        "Le courant augmente automatiquement",
+                        "La pile disparaît",
+                        "La lampe devient une pile"
+                    ],
+                    reponse: 0
+                }
+            ]
+        },
+
+
+        "Économie familiale": {
+
+            "facile": [
+                {
+                    question: "Un repas équilibré doit être :",
+                    options: [
+                        "Varié et adapté aux besoins du corps",
+                        "Uniquement sucré",
+                        "Uniquement composé de viande",
+                        "Uniquement composé de boissons"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi faut-il se laver les mains avant de préparer un repas ?",
+                    options: [
+                        "Pour réduire les microbes",
+                        "Pour décorer les mains",
+                        "Pour changer le goût des aliments",
+                        "Pour refroidir les mains"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi certains aliments doivent-ils être conservés au réfrigérateur ?",
+                    options: [
+                        "Pour ralentir leur altération",
+                        "Pour les rendre plus sucrés",
+                        "Pour changer leur couleur",
+                        "Pour augmenter leur taille"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel comportement favorise une bonne hygiène alimentaire ?",
+                    options: [
+                        "Nettoyer les surfaces de préparation",
+                        "Laisser les aliments au soleil",
+                        "Utiliser des ustensiles sales",
+                        "Ignorer la conservation"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "moyen": [
+                {
+                    question: "Pourquoi vérifier la date de péremption d'un aliment ?",
+                    options: [
+                        "Pour vérifier qu'il peut encore être consommé dans de bonnes conditions",
+                        "Pour connaître sa couleur",
+                        "Pour calculer son poids",
+                        "Pour modifier son goût"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi séparer les aliments crus et cuits ?",
+                    options: [
+                        "Pour limiter les contaminations croisées",
+                        "Pour les rendre plus salés",
+                        "Pour les rendre plus sucrés",
+                        "Pour accélérer la cuisson"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Quel groupe d'aliments apporte principalement des glucides ?",
+                    options: [
+                        "Les céréales et féculents",
+                        "L'eau",
+                        "Le sel",
+                        "Les huiles uniquement"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi nettoyer les ustensiles de cuisine ?",
+                    options: [
+                        "Pour limiter les contaminations",
+                        "Pour changer leur couleur",
+                        "Pour augmenter leur poids",
+                        "Pour empêcher la cuisson"
+                    ],
+                    reponse: 0
+                }
+            ],
+
+            "difficile": [
+                {
+                    question: "Qu'est-ce qu'une contamination croisée ?",
+                    options: [
+                        "Le transfert de microbes d'un aliment ou d'une surface vers un autre aliment",
+                        "Le changement de couleur d'un aliment",
+                        "La cuisson d'un aliment",
+                        "La congélation d'un aliment"
+                    ],
+                    reponse: 0
+                },
+                {
+                    question: "Pourquoi faut-il respecter les conditions de conservation des aliments ?",
+                    options: [
+                        "Pour limiter leur altération et certains risques sanitaires",
+                        "Pour les rendre toujours plus sucrés",
+                        "Pour augmenter leur taille",
+                        "Pour changer leur couleur"
+                    ],
+                    reponse: 0
+                }
+            ]
+        }
+
+    },
 
             "4e": {
 
