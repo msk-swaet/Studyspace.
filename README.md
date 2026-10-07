@@ -1,1 +1,0 @@
-# Studyspace.

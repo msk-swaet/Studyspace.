@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySpace</title>
+</head>
+
+<body>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudySpace</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #e8dcc8;
+            color: #111111;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        .accueil {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .cadre {
+            position: relative;
+            width: 850px;
+            min-height: 520px;
+            background: #f1e7d5;
+            border: 3px solid #111111;
+            border-radius: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* OREILLE GAUCHE */
+
+        .oreille-gauche {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: #f1e7d5;
+            border-left: 3px solid #111111;
+            border-top: 3px solid #111111;
+            transform: rotate(45deg);
+            top: -75px;
+            left: 90px;
+        }
+
+        /* OREILLE DROITE */
+
+        .oreille-droite {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: #f1e7d5;
+            border-right: 3px solid #111111;
+            border-top: 3px solid #111111;
+            transform: rotate(-45deg);
+            top: -75px;
+            right: 90px;
+        }
+
+        .contenu {
+            position: relative;
+            z-index: 2;
+        }
+
+        .petit-texte {
+            font-size: 14px;
+            letter-spacing: 5px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 64px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .ligne {
+            width: 90px;
+            height: 3px;
+            background: #111111;
+            margin: 22px auto;
+        }
+
+        .slogan {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .bouton {
+            background: #111111;
+            color: #f1e7d5;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .bouton:hover {
+            transform: translateY(-3px);
+            background: #2b2b2b;
+        }
+
+        @media (max-width: 600px) {
+
+            .accueil {
+                padding: 15px;
+            }
+
+            .cadre {
+                min-height: 500px;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+
+            .oreille-gauche {
+                left: 20px;
+            }
+
+            .oreille-droite {
+                right: 20px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <section class="accueil">
+
+        <div class="cadre">
+
+            <div class="oreille-gauche"></div>
+            <div class="oreille-droite"></div>
+
+            <div class="contenu">
+
+                <p class="petit-texte">
+                    BIENVENUE DANS
+                </p>
+
+                <h1>
+                    StudySpace
+                </h1>
+
+                <div class="ligne"></div>
+
+                <p class="slogan">
+                    Ton espace pour apprendre,<br>
+                    t'organiser et progresser.
+                </p>
+
+                <button class="bouton">
+                    Commencer ♡
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+</html>
