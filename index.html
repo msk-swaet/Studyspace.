@@ -236,44 +236,27 @@
            EMPLOI DU TEMPS
         ========================= */
 
-        .emploi-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .emploi-table th,
-        .emploi-table td {
-            border: 2px solid #111111;
-            padding: 14px 10px;
-            text-align: center;
-        }
-
-        .emploi-table th {
-            background: #111111;
-            color: #f1e7d5;
-        }
-
-        .emploi-table td {
-            background: #fffaf2;
-        }
-
-        .emploi-table tr:hover td {
-            background: #e8dcc8;
-        }
-        #emploi .emploi-table input {
+       #emploi .emploi-table select {
     width: 100%;
-    min-width: 90px;
+    height: 45px;
     margin: 0;
-    padding: 8px;
-    border: 1px solid #111111;
+    padding: 5px;
+    border: none;
+    border-radius: 0;
     background: #fffaf2;
+    color: #111111;
+    text-align: center;
+    cursor: pointer;
+}
+
+#emploi .emploi-table select:focus {
+    outline: 2px solid #111111;
 }
 
 #emploi .emploi-table td {
-    min-width: 120px;
+    min-width: 125px;
+    padding: 4px;
 }
-
         /* =========================
            QUIZ
         ========================= */
@@ -631,132 +614,152 @@
                 <div class="ligne"></div>
 
                 <p class="slogan">
-                    Crée ton emploi du temps personnalisé.
+                    Choisis une matière pour chaque heure.
                 </p>
 
-                <table class="emploi-table">
+                <div class="emploi-container">
 
-                    <tr>
-                        <th>Heure</th>
-                        <th>Lundi</th>
-                        <th>Mardi</th>
-                        <th>Mercredi</th>
-                        <th>Jeudi</th>
-                        <th>Vendredi</th>
-                    </tr>
+                    <table class="emploi-table">
 
-                    <tr>
-                        <th>08h - 10h</th>
+                        <thead>
+                            <tr>
+                                <th>Heure</th>
+                                <th>Lundi</th>
+                                <th>Mardi</th>
+                                <th>Mercredi</th>
+                                <th>Jeudi</th>
+                                <th>Vendredi</th>
+                                <th>Samedi</th>
+                            </tr>
+                        </thead>
 
-                        <td>
-                            <input
-                                type="text"
-                                placeholder="Matière"
-                            >
-                        </td>
+                        <tbody>
 
-                        <td>
-                            <input
-                                type="text"
-                                placeholder="Matière"
-                            >
-                        </td>
+                            <tr>
+                                <th>8h</th>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                            </tr>
 
-                        <td>
-                            <input
-                                type="text"
-                                placeholder="Matière"
-                            >
-                        </td>
+                            <tr>
+                                <th>9h</th>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                            </tr>
 
-                        <td>
-                            <input
-                                type="text"
-                                placeholder="Matière"
-                            >
-                        </td>
+                            <tr>
+                                <th>10h</th>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                            </tr>
 
-                        <td>
-                            <input
-                                type="text"
-                                placeholder="Matière"
-                            >
-                        </td>
-                    </tr>
+                            <tr>
+                                <th>11h</th>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                            </tr>
 
-                    <tr>
-                        <th>10h - 12h</th>
+                            <tr>
+                                <th>12h</th>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                            </tr>
 
-                        <td>
-                            <input type="text" placeholder="Matière">
-                        </td>
+                            <tr>
+                                <th>13h</th>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                            </tr>
 
-                        <td>
-                            <input type="text" placeholder="Matière">
-                        </td>
+                            <tr>
+                                <th>14h</th>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                            </tr>
 
-                        <td>
-                            <input type="text" placeholder="Matière">
-                        </td>
+                            <tr>
+                                <th>15h</th>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                            </tr>
 
-                        <td>
-                            <input type="text" placeholder="Matière">
-                        </td>
+                            <tr>
+                                <th>16h</th>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                            </tr>
 
-                        <td>
-                            <input type="text" placeholder="Matière">
-                        </td>
-                    </tr>
+                            <tr>
+                                <th>17h</th>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                            </tr>
 
-                    <tr>
-                        <th>14h - 16h</th>
+                            <tr>
+                                <th>18h</th>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                            </tr>
 
-                        <td>
-                            <input type="text" placeholder="Matière">
-                        </td>
+                            <tr>
+                                <th>19h</th>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                                <td><select class="matiereEmploi"></select></td>
+                            </tr>
 
-                        <td>
-                            <input type="text" placeholder="Matière">
-                        </td>
+                        </tbody>
 
-                        <td>
-                            <input type="text" placeholder="Matière">
-                        </td>
+                    </table>
 
-                        <td>
-                            <input type="text" placeholder="Matière">
-                        </td>
-
-                        <td>
-                            <input type="text" placeholder="Matière">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th>16h - 18h</th>
-
-                        <td>
-                            <input type="text" placeholder="Matière">
-                        </td>
-
-                        <td>
-                            <input type="text" placeholder="Matière">
-                        </td>
-
-                        <td>
-                            <input type="text" placeholder="Matière">
-                        </td>
-
-                        <td>
-                            <input type="text" placeholder="Matière">
-                        </td>
-
-                        <td>
-                            <input type="text" placeholder="Matière">
-                        </td>
-                    </tr>
-
-                </table>
+                </div>
 
                 <button
                     class="bouton"
@@ -784,7 +787,6 @@
     </div>
 
 </section>
-
     <!-- =====================================================
          TACHES
     ====================================================== -->
@@ -2938,6 +2940,129 @@ function effacerEmploi() {
 }
 
 
+chargerEmploi();
+        const matieresEmploi = [
+    "Aucune",
+    "Mathématiques",
+    "Français",
+    "Anglais",
+    "Histoire",
+    "Géographie",
+    "Histoire-Géographie",
+    "SVT",
+    "Physique-Chimie",
+    "Technologie",
+    "Économie familiale",
+    "Éducation civique",
+    "Informatique",
+    "Étude",
+    "Pause"
+];
+
+
+function remplirMatieresEmploi() {
+
+    const selects =
+        document.querySelectorAll(
+            ".matiereEmploi"
+        );
+
+    selects.forEach(function(select) {
+
+        select.innerHTML = "";
+
+        matieresEmploi.forEach(function(matiere) {
+
+            const option =
+                document.createElement("option");
+
+            option.value = matiere;
+            option.textContent = matiere;
+
+            select.appendChild(option);
+        });
+
+    });
+}
+
+
+function sauvegarderEmploi() {
+
+    const cases =
+        document.querySelectorAll(
+            ".matiereEmploi"
+        );
+
+    const valeurs = [];
+
+    cases.forEach(function(select) {
+        valeurs.push(select.value);
+    });
+
+    localStorage.setItem(
+        "emploiStudySpace",
+        JSON.stringify(valeurs)
+    );
+
+    document.getElementById(
+        "messageEmploi"
+    ).textContent =
+        "✅ Emploi du temps sauvegardé.";
+}
+
+
+function chargerEmploi() {
+
+    const sauvegarde =
+        localStorage.getItem(
+            "emploiStudySpace"
+        );
+
+    if (!sauvegarde) {
+        return;
+    }
+
+    const valeurs =
+        JSON.parse(sauvegarde);
+
+    const cases =
+        document.querySelectorAll(
+            ".matiereEmploi"
+        );
+
+    cases.forEach(function(select, index) {
+
+        if (valeurs[index] !== undefined) {
+            select.value = valeurs[index];
+        }
+
+    });
+}
+
+
+function effacerEmploi() {
+
+    const cases =
+        document.querySelectorAll(
+            ".matiereEmploi"
+        );
+
+    cases.forEach(function(select) {
+        select.value = "Aucune";
+    });
+
+    localStorage.removeItem(
+        "emploiStudySpace"
+    );
+
+    document.getElementById(
+        "messageEmploi"
+    ).textContent =
+        "🗑️ Emploi du temps effacé.";
+}
+
+
+remplirMatieresEmploi();
 chargerEmploi();
     </script>
 
