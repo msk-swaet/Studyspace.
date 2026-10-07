@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="512"
+     height="512"
+     viewBox="0 0 512 512">
+
+    <rect
+        width="512"
+        height="512"
+        rx="112"
+        fill="#111111"/>
+
+    <!-- silhouette du chat -->
+    <path
+        d="M112 174
+           L112 92
+           L181 141
+           Q256 103 331 141
+           L400 92
+           L400 174
+           Q421 204 421 252
+           Q421 365 256 421
+           Q91 365 91 252
+           Q91 204 112 174 Z"
+        fill="#080808"
+        stroke="#f1e7d5"
+        stroke-width="10"
+        stroke-linejoin="round"/>
+
+    <!-- S beige -->
+    <text
+        x="256"
+        y="337"
+        text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="220"
+        font-weight="700"
+        fill="#f1e7d5">
+        S
+    </text>
+
+</svg>
