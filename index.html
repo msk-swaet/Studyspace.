@@ -3,15 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>StudySpace</title>
 
     <style>
-
-        /* =========================
-           STYLE GÉNÉRAL
-        ========================= */
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -25,17 +19,11 @@
             min-height: 100vh;
         }
 
-
-        /* =========================
-           MENU
-        ========================= */
-
         nav {
             width: 100%;
             padding: 18px;
             display: flex;
             justify-content: center;
-            align-items: center;
             flex-wrap: wrap;
             gap: 10px;
             background: #e8dcc8;
@@ -57,11 +45,6 @@
             background: #2b2b2b;
         }
 
-
-        /* =========================
-           PAGES
-        ========================= */
-
         .page {
             display: none;
         }
@@ -69,11 +52,6 @@
         .page.active {
             display: block;
         }
-
-
-        /* =========================
-           CADRE PRINCIPAL
-        ========================= */
 
         .accueil {
             min-height: calc(100vh - 80px);
@@ -88,20 +66,14 @@
             width: 850px;
             max-width: 100%;
             min-height: 520px;
-
             background: #f1e7d5;
-
             border: 3px solid #111111;
             border-radius: 35px;
-
             display: flex;
             justify-content: center;
             align-items: center;
-
             text-align: center;
-
             padding: 40px;
-
             overflow: hidden;
         }
 
@@ -112,49 +84,29 @@
             max-width: 650px;
         }
 
-
-        /* =========================
-           OREILLES DE CHAT
-        ========================= */
-
         .oreille-gauche {
             position: absolute;
-
             width: 150px;
             height: 150px;
-
             background: #f1e7d5;
-
             border-left: 3px solid #111111;
             border-top: 3px solid #111111;
-
             transform: rotate(45deg);
-
             top: -75px;
             left: 90px;
         }
 
         .oreille-droite {
             position: absolute;
-
             width: 150px;
             height: 150px;
-
             background: #f1e7d5;
-
             border-right: 3px solid #111111;
             border-top: 3px solid #111111;
-
             transform: rotate(-45deg);
-
             top: -75px;
             right: 90px;
         }
-
-
-        /* =========================
-           TEXTES
-        ========================= */
 
         .petit-texte {
             font-size: 14px;
@@ -169,16 +121,14 @@
         }
 
         h2 {
-            font-size: 35px;
+            font-size: 36px;
             margin-bottom: 20px;
         }
 
         .ligne {
             width: 90px;
             height: 3px;
-
             background: #111111;
-
             margin: 22px auto;
         }
 
@@ -188,25 +138,14 @@
             margin-bottom: 30px;
         }
 
-
-        /* =========================
-           BOUTONS
-        ========================= */
-
         .bouton {
             background: #111111;
             color: #f1e7d5;
-
             border: none;
-
             padding: 14px 30px;
-
             border-radius: 30px;
-
             font-size: 16px;
-
             cursor: pointer;
-
             transition: 0.25s;
         }
 
@@ -215,76 +154,41 @@
             background: #2b2b2b;
         }
 
-
-        /* =========================
-           CHAMPS
-        ========================= */
-
-        input {
+        input,
+        select {
             width: 100%;
-
             padding: 13px;
-
             margin-bottom: 12px;
-
             border: 2px solid #111111;
-
             border-radius: 12px;
-
             background: #fffaf2;
-
             color: #111111;
-
             font-size: 15px;
-
             outline: none;
         }
 
-        input:focus {
+        input:focus,
+        select:focus {
             background: #ffffff;
         }
 
-
-        /* =========================
-           RÉSULTAT MOYENNE
-        ========================= */
-
-        #resultatMoyenne {
+        #resultatMoyenne,
+        #messageClasseQuiz {
             margin-top: 20px;
-
-            font-size: 20px;
-
+            font-size: 18px;
             font-weight: bold;
-        }
-
-
-        /* =========================
-           LISTE DES RÉVISIONS
-        ========================= */
-
-        #listeRevision {
-            margin-top: 25px;
         }
 
         .task {
             display: flex;
-
             align-items: center;
-
             gap: 12px;
-
             width: 100%;
-
             padding: 13px;
-
             margin-bottom: 10px;
-
             background: #fffaf2;
-
             border: 2px solid #111111;
-
             border-radius: 12px;
-
             text-align: left;
         }
 
@@ -300,35 +204,22 @@
         .task button {
             background: #111111;
             color: #ffffff;
-
             border: none;
-
             padding: 7px 10px;
-
             border-radius: 8px;
-
             cursor: pointer;
         }
 
-
-        /* =========================
-           EMPLOI DU TEMPS
-        ========================= */
-
         .emploi-table {
             width: 100%;
-
             margin-top: 20px;
-
             border-collapse: collapse;
         }
 
         .emploi-table th,
         .emploi-table td {
             border: 2px solid #111111;
-
             padding: 14px 10px;
-
             text-align: center;
         }
 
@@ -345,13 +236,12 @@
             background: #e8dcc8;
         }
 
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
+        .quiz-message {
+            margin-top: 20px;
+            font-weight: bold;
+        }
 
         @media (max-width: 600px) {
-
             nav {
                 padding: 12px;
             }
@@ -392,65 +282,34 @@
                 font-size: 13px;
             }
         }
-
     </style>
 </head>
 
-
 <body>
 
-
-    <!-- =========================
-         MENU
-    ========================= -->
-
+    <!-- MENU -->
     <nav>
-
-        <button onclick="showPage('accueil')">
-            🏠 Accueil
-        </button>
-
-        <button onclick="showPage('moyenne')">
-            🧮 Moyenne
-        </button>
-
-        <button onclick="showPage('revision')">
-            📚 Révisions
-        </button>
-
-        <button onclick="showPage('emploi')">
-            🗓️ Emploi du temps
-        </button>
-
-        <button onclick="showPage('taches')">
-            ✅ Tâches
-        </button>
-
+        <button onclick="showPage('accueil')">🏠 Accueil</button>
+        <button onclick="showPage('moyenne')">🧮 Moyenne</button>
+        <button onclick="showPage('revision')">📚 Révisions</button>
+        <button onclick="showPage('emploi')">🗓️ Emploi du temps</button>
+        <button onclick="showPage('taches')">✅ Tâches</button>
+        <button onclick="showPage('quiz')">🧠 Quiz</button>
     </nav>
 
 
-    <!-- =========================
-         ACCUEIL
-    ========================= -->
-
+    <!-- ACCUEIL -->
     <section id="accueil" class="page active">
-
         <div class="accueil">
-
             <div class="cadre">
 
                 <div class="oreille-gauche"></div>
                 <div class="oreille-droite"></div>
 
                 <div class="contenu">
+                    <p class="petit-texte">BIENVENUE DANS</p>
 
-                    <p class="petit-texte">
-                        BIENVENUE DANS
-                    </p>
-
-                    <h1>
-                        StudySpace
-                    </h1>
+                    <h1>StudySpace</h1>
 
                     <div class="ligne"></div>
 
@@ -459,41 +318,25 @@
                         t'organiser et progresser.
                     </p>
 
-                    <button
-                        class="bouton"
-                        onclick="showPage('moyenne')"
-                    >
+                    <button class="bouton" onclick="showPage('moyenne')">
                         Commencer ♡
                     </button>
-
                 </div>
 
             </div>
-
         </div>
-
     </section>
 
 
-    <!-- =========================
-         MOYENNE
-    ========================= -->
-
+    <!-- MOYENNE -->
     <section id="moyenne" class="page">
-
         <div class="accueil">
-
             <div class="cadre">
 
                 <div class="contenu">
+                    <p class="petit-texte">CALCULATEUR</p>
 
-                    <p class="petit-texte">
-                        CALCULATEUR
-                    </p>
-
-                    <h2>
-                        Moyenne
-                    </h2>
+                    <h2>Moyenne</h2>
 
                     <div class="ligne"></div>
 
@@ -536,45 +379,30 @@
                         id="coefficient"
                         placeholder="Coefficient"
                         min="1"
+                        value="1"
                     >
 
-                    <button
-                        class="bouton"
-                        onclick="calculerMoyenne()"
-                    >
+                    <button class="bouton" onclick="calculerMoyenne()">
                         Calculer ♡
                     </button>
 
                     <p id="resultatMoyenne"></p>
-
                 </div>
 
             </div>
-
         </div>
-
     </section>
 
 
-    <!-- =========================
-         RÉVISIONS
-    ========================= -->
-
+    <!-- RÉVISIONS -->
     <section id="revision" class="page">
-
         <div class="accueil">
-
             <div class="cadre">
 
                 <div class="contenu">
+                    <p class="petit-texte">ORGANISATION</p>
 
-                    <p class="petit-texte">
-                        ORGANISATION
-                    </p>
-
-                    <h2>
-                        Révisions
-                    </h2>
+                    <h2>Révisions</h2>
 
                     <div class="ligne"></div>
 
@@ -594,43 +422,27 @@
                         placeholder="Chapitre"
                     >
 
-                    <button
-                        class="bouton"
-                        onclick="ajouterRevision()"
-                    >
+                    <button class="bouton" onclick="ajouterRevision()">
                         Ajouter ♡
                     </button>
 
                     <div id="listeRevision"></div>
-
                 </div>
 
             </div>
-
         </div>
-
     </section>
 
 
-    <!-- =========================
-         EMPLOI DU TEMPS
-    ========================= -->
-
+    <!-- EMPLOI DU TEMPS -->
     <section id="emploi" class="page">
-
         <div class="accueil">
-
             <div class="cadre">
 
                 <div class="contenu">
+                    <p class="petit-texte">ORGANISATION</p>
 
-                    <p class="petit-texte">
-                        ORGANISATION
-                    </p>
-
-                    <h2>
-                        Emploi du temps
-                    </h2>
+                    <h2>Emploi du temps</h2>
 
                     <div class="ligne"></div>
 
@@ -639,7 +451,6 @@
                     </p>
 
                     <table class="emploi-table">
-
                         <tr>
                             <th>Jour</th>
                             <th>Matin</th>
@@ -675,37 +486,23 @@
                             <td>Français</td>
                             <td>Anglais</td>
                         </tr>
-
                     </table>
-
                 </div>
 
             </div>
-
         </div>
-
     </section>
 
 
-    <!-- =========================
-         TÂCHES
-    ========================= -->
-
+    <!-- TÂCHES -->
     <section id="taches" class="page">
-
         <div class="accueil">
-
             <div class="cadre">
 
                 <div class="contenu">
+                    <p class="petit-texte">ORGANISATION</p>
 
-                    <p class="petit-texte">
-                        ORGANISATION
-                    </p>
-
-                    <h2>
-                        Tâches
-                    </h2>
+                    <h2>Tâches</h2>
 
                     <div class="ligne"></div>
 
@@ -719,34 +516,72 @@
                         placeholder="Ex : Faire les exercices de maths"
                     >
 
-                    <button
-                        class="bouton"
-                        onclick="ajouterTache()"
-                    >
+                    <button class="bouton" onclick="ajouterTache()">
                         Ajouter ♡
                     </button>
 
                     <div id="listeTaches"></div>
-
                 </div>
 
             </div>
-
         </div>
-
     </section>
 
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================= -->
+    <!-- QUIZ -->
+    <section id="quiz" class="page">
+        <div class="accueil">
+            <div class="cadre">
 
+                <div class="contenu">
+                    <p class="petit-texte">QUIZ</p>
+
+                    <h2>StudySpace</h2>
+
+                    <div class="ligne"></div>
+
+                    <p class="slogan">
+                        Commence par choisir ta classe.
+                    </p>
+
+                    <select id="classeQuiz">
+                        <option value="">
+                            -- Choisir ta classe --
+                        </option>
+
+                        <option value="6e">6e</option>
+                        <option value="5e">5e</option>
+                        <option value="4e">4e</option>
+                        <option value="3e">3e</option>
+                        <option value="2nde">2nde</option>
+                        <option value="1ere">1ère</option>
+                        <option value="terminale">Terminale</option>
+                    </select>
+
+                    <button
+                        class="bouton"
+                        onclick="choisirClasseQuiz()"
+                    >
+                        Continuer ♡
+                    </button>
+
+                    <p
+                        id="messageClasseQuiz"
+                        class="quiz-message"
+                    ></p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- JAVASCRIPT -->
     <script>
 
-
-        /* =========================
-           NAVIGATION
-        ========================= */
+        // =========================
+        // NAVIGATION
+        // =========================
 
         function showPage(pageId) {
 
@@ -754,31 +589,26 @@
                 document.querySelectorAll(".page");
 
             pages.forEach(function(page) {
-
                 page.classList.remove("active");
-
             });
 
             const page =
                 document.getElementById(pageId);
 
             if (page) {
-
                 page.classList.add("active");
-
             }
 
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
             });
-
         }
 
 
-        /* =========================
-           MOYENNE
-        ========================= */
+        // =========================
+        // MOYENNE
+        // =========================
 
         function calculerMoyenne() {
 
@@ -823,13 +653,12 @@
                 "🌸 Ta moyenne est : " +
                 moyenneMatiere.toFixed(2) +
                 " / 20";
-
         }
 
 
-        /* =========================
-           RÉVISIONS
-        ========================= */
+        // =========================
+        // RÉVISIONS
+        // =========================
 
         function ajouterRevision() {
 
@@ -863,15 +692,13 @@
             revision.className = "task";
 
             revision.innerHTML = `
-
                 <input
                     type="checkbox"
                     onchange="terminerRevision(this)"
                 >
 
                 <span>
-                    <strong>${matiere}</strong>
-                    — ${chapitre}
+                    <strong>${matiere}</strong> — ${chapitre}
                 </span>
 
                 <button
@@ -879,21 +706,19 @@
                 >
                     🗑️
                 </button>
-
             `;
 
             document
                 .getElementById("listeRevision")
                 .appendChild(revision);
 
-            document
-                .getElementById("matiereRevision")
-                .value = "";
+            document.getElementById(
+                "matiereRevision"
+            ).value = "";
 
-            document
-                .getElementById("chapitreRevision")
-                .value = "";
-
+            document.getElementById(
+                "chapitreRevision"
+            ).value = "";
         }
 
 
@@ -903,36 +728,29 @@
                 checkbox.nextElementSibling;
 
             if (checkbox.checked) {
-
                 texte.style.textDecoration =
                     "line-through";
 
                 texte.style.opacity =
                     "0.5";
-
             } else {
-
                 texte.style.textDecoration =
                     "none";
 
                 texte.style.opacity =
                     "1";
-
             }
-
         }
 
 
         function supprimerRevision(bouton) {
-
             bouton.parentElement.remove();
-
         }
 
 
-        /* =========================
-           TÂCHES
-        ========================= */
+        // =========================
+        // TÂCHES
+        // =========================
 
         function ajouterTache() {
 
@@ -944,9 +762,7 @@
 
             if (texte === "") {
 
-                alert(
-                    "⚠️ Écris une tâche."
-                );
+                alert("⚠️ Écris une tâche.");
 
                 return;
             }
@@ -957,32 +773,27 @@
             tache.className = "task";
 
             tache.innerHTML = `
-
                 <input
                     type="checkbox"
                     onchange="terminerTache(this)"
                 >
 
-                <span>
-                    ${texte}
-                </span>
+                <span>${texte}</span>
 
                 <button
                     onclick="supprimerTache(this)"
                 >
                     🗑️
                 </button>
-
             `;
 
             document
                 .getElementById("listeTaches")
                 .appendChild(tache);
 
-            document
-                .getElementById("nouvelleTache")
-                .value = "";
-
+            document.getElementById(
+                "nouvelleTache"
+            ).value = "";
         }
 
 
@@ -1006,16 +817,39 @@
 
                 texte.style.opacity =
                     "1";
-
             }
-
         }
 
 
         function supprimerTache(bouton) {
-
             bouton.parentElement.remove();
+        }
 
+
+        // =========================
+        // QUIZ - CLASSE
+        // =========================
+
+        function choisirClasseQuiz() {
+
+            const classe =
+                document.getElementById("classeQuiz").value;
+
+            const message =
+                document.getElementById(
+                    "messageClasseQuiz"
+                );
+
+            if (classe === "") {
+
+                message.textContent =
+                    "⚠️ Choisis d'abord ta classe.";
+
+                return;
+            }
+
+            message.textContent =
+                "✅ Classe choisie : " + classe;
         }
 
     </script>
