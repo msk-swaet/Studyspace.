@@ -611,6 +611,109 @@
                 box-shadow: 4px 4px 0 #111111;
             }
         }
+        /* =========================
+   EMPLOI DU TEMPS — STYLE PLUS VIVANT
+========================= */
+
+.emploi {
+    border-collapse: separate;
+    border-spacing: 5px;
+    min-width: 1000px;
+}
+
+.emploi th {
+    background: #25211f;
+    color: #fffaf2;
+    border: none;
+    border-radius: 13px;
+    padding: 16px 12px;
+    font-size: 14px;
+}
+
+/* Une couleur douce pour chaque jour */
+.emploi thead th:nth-child(2) {
+    background: #f0d3d4;
+    color: #292020;
+}
+
+.emploi thead th:nth-child(3) {
+    background: #e3d8f2;
+    color: #292020;
+}
+
+.emploi thead th:nth-child(4) {
+    background: #d9e9dc;
+    color: #292020;
+}
+
+.emploi thead th:nth-child(5) {
+    background: #f5e3b8;
+    color: #292020;
+}
+
+.emploi thead th:nth-child(6) {
+    background: #f3d9c5;
+    color: #292020;
+}
+
+.emploi thead th:nth-child(7) {
+    background: #d8e6ec;
+    color: #292020;
+}
+
+/* Cases plus douces */
+.emploi td {
+    background: #fffaf2;
+    border: 1px solid #e5d9c8;
+    border-radius: 12px;
+    padding: 9px;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.emploi td:hover {
+    background: #f8edf0;
+}
+
+/* Colonne des heures */
+.emploi .heure {
+    background: #e9ddca;
+    border: none;
+    border-radius: 12px;
+    color: #29211d;
+    font-weight: bold;
+    white-space: nowrap;
+    min-width: 95px;
+}
+
+/* Champs pour écrire les matières */
+.emploi input.matiereEmploi {
+    background: #fffdfa;
+    border: 1.5px solid #e0d3c2;
+    border-radius: 10px;
+    min-width: 110px;
+    padding: 12px 8px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.emploi input.matiereEmploi:focus {
+    background: #fff0f2;
+    border-color: #d6a2ae;
+    box-shadow: 0 0 0 3px #f5e2e6;
+}
+
+/* Pause du midi : créneau 12h–15h */
+#corpsEmploi tr:nth-child(5) td {
+    background: #f8edcf;
+}
+
+#corpsEmploi tr:nth-child(5) .heure {
+    background: #efd49b;
+}
+
+#corpsEmploi tr:nth-child(5) input {
+    background: #fff9e9;
+}
     </style>
 </head>
 
