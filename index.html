@@ -2254,6 +2254,47 @@
 
         creerEmploi();
         restaurerEtat();
+        function appliquerCouleurCase(select) {
+  const cellule = select.closest("td");
+  if (!cellule) return;
+
+  const couleur = select.value;
+  const hex = couleur.replace("#", "");
+
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+
+  const couleurTexte =
+    (0.299 * r + 0.587 * g + 0.114 * b) < 145
+      ? "#ffffff"
+      : "#111111";
+
+  cellule.style.setProperty("background-color", couleur, "important");
+  cellule.style.color = couleurTexte;
+
+  const matiere = cellule.querySelector(".matiereEmploi");
+
+  if (matiere) {
+    matiere.style.setProperty("background-color", couleur, "important");
+    matiere.style.color = couleurTexte;
+  }
+
+  select.style.setProperty("background-color", couleur, "important");
+  select.style.color = couleurTexte;
+}
+
+document.addEventListener("change", function(event) {
+  if (event.target.matches(".couleurEmploi")) {
+    appliquerCouleurCase(event.target);
+  }
+});
+
+window.addEventListener("load", function() {
+  document.querySelectorAll(".couleurEmploi").forEach(function(select) {
+    appliquerCouleurCase(select);
+  });
+});
 
     </script>
 
