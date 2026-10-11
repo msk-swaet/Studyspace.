@@ -1304,17 +1304,18 @@
         });
 
 
-        /* =========================
-           EMPLOI DU TEMPS
-        ========================= */
+      /* =========================
+   EMPLOI DU TEMPS
+========================= */
 
-      const COULEURS_EMPLOI = [
-  // Couleurs douces
+const COULEURS_EMPLOI = [
+  { nom: "Beige", code: "#f1e7d5" },
   { nom: "Lilas", code: "#d9c7f2" },
   { nom: "Lavande", code: "#c7b5ee" },
   { nom: "Bleu ciel", code: "#c8e7f4" },
   { nom: "Vert sauge", code: "#b8d0aa" },
   { nom: "Pêche", code: "#f6d0b6" },
+  { nom: "Jaune doux", code: "#ffe5a0" },
 
   // Couleurs chaudes
   { nom: "Rouge bordeaux", code: "#800020" },
@@ -1326,7 +1327,7 @@
   { nom: "Violet foncé", code: "#4B0082" },
   { nom: "Prune", code: "#673147" },
 
-  // Couleurs vives ✨
+  // Couleurs vives
   { nom: "Rouge vif", code: "#FF1744" },
   { nom: "Orange vitaminé", code: "#FF6D00" },
   { nom: "Jaune soleil", code: "#FFD600" },
@@ -1343,128 +1344,161 @@
   { nom: "Orange mandarine", code: "#FF9100" }
 ];
 
-        function creerOptionsCouleur(couleurChoisie = "#f1e7d5") {
-            return COULEURS_EMPLOI.map(couleur => `
-                <option value="${couleur.valeur}"
-                    ${couleur.valeur === couleurChoisie ? "selected" : ""}>
-                    ${couleur.nom}
-                </option>
-            `).join("");
-        }
+function creerOptionsCouleur(couleurChoisie = "#f1e7d5") {
+  return COULEURS_EMPLOI.map(couleur => `
+    <option
+      value="${couleur.code}"
+      ${couleur.code === couleurChoisie ? "selected" : ""}
+    >
+      ${couleur.nom}
+    </option>
+  `).join("");
+}
 
-        function appliquerCouleurEmploi(cellule) {
-            const champ = cellule.querySelector(".matiereEmploi");
-            const select = cellule.querySelector(".couleurEmploi");
+function appliquerCouleurEmploi(cellule) {
+  const champ = cellule.querySelector(".matiereEmploi");
+  const select = cellule.querySelector(".couleurEmploi");
+  const contenu = cellule.querySelector(".cellule-emploi");
 
-            if (!champ || !select) return;
+  if (!champ || !select) return;
 
-            const couleur = select.value;
-            cellule.style.backgroundColor = couleur;
-            champ.style.backgroundColor = couleur;
-            select.style.backgroundColor = couleur;
-        }
+  const couleur = select.value || "#f1e7d5";
+  const hex = couleur.replace("#", "");
 
-        function creerEmploi() {
-            const tbody = document.getElementById("corpsEmploi");
-            tbody.innerHTML = "";
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
 
-            const creneaux = [
-                [8, 9],
-                [9, 10],
-                [10, 11],
-                [11, 12],
-                [12, 15],
-                [15, 16],
-                [16, 17],
-                [17, 18],
-                [18, 19]
-            ];
+  const luminosite = 0.299 * r + 0.587 * g + 0.114 * b;
+  const couleurTexte = luminosite < 145 ? "#ffffff" : "#111111";
 
-            creneaux.forEach(([debut, fin]) => {
-                const ligne = document.createElement("tr");
-                const celluleHeure = document.createElement("td");
+  cellule.style.setProperty("background-color", couleur, "important");
+  cellule.style.color = couleurTexte;
 
-                celluleHeure.className = "heure";
-                celluleHeure.textContent =
-                    `${String(debut).padStart(2, "0")}h–${String(fin).padStart(2, "0")}h`;
+  if (contenu) {
+    contenu.style.setProperty("background-color", couleur, "important");
+  }
 
-                ligne.appendChild(celluleHeure);
+  champ.style.setProperty("background-color", couleur, "important");
+  champ.style.setProperty("color", couleurTexte, "important");
 
-                for (let jour = 0; jour < 6; jour++) {
-                    const cellule = document.createElement("td");
-                    const contenu = document.createElement("div");
-                    contenu.className = "cellule-emploi";
+  select.style.setProperty("background-color", couleur, "important");
+  select.style.setProperty("color", couleurTexte, "important");
+}
 
-                    const champ = document.createElement("input");
-                    champ.type = "text";
-                    champ.className = "matiereEmploi";
-                    champ.placeholder = "Écrire une matière";
-                    champ.setAttribute("aria-label", `Matière de ${debut}h à ${fin}h`);
+function creerEmploi() {
+  const tbody = document.getElementById("corpsEmploi");
+  if (!tbody) return;
 
-                    const couleurInitiale = debut === 12 ? "#ffe5a0" : "#f1e7d5";
+  tbody.innerHTML = "";
 
-                    const select = document.createElement("select");
-                    select.className = "couleurEmploi";
-                    select.setAttribute("aria-label", "Choisir la couleur de cette matière");
-                    select.innerHTML = creerOptionsCouleur(couleurInitiale);
+  const creneaux = [
+    [8, 9],
+    [9, 10],
+    [10, 11],
+    [11, 12],
+    [12, 15],
+    [15, 16],
+    [16, 17],
+    [17, 18],
+    [18, 19]
+  ];
 
-                    select.addEventListener("change", () => {
-                        appliquerCouleurEmploi(cellule);
-                        sauvegarderEtat();
-                    });
+  creneaux.forEach(([debut, fin]) => {
+    const ligne = document.createElement("tr");
+    const celluleHeure = document.createElement("td");
 
-                    champ.addEventListener("input", sauvegarderEtat);
+    celluleHeure.className = "heure";
+    celluleHeure.textContent =
+      `${String(debut).padStart(2, "0")}h–${String(fin).padStart(2, "0")}h`;
 
-                    contenu.appendChild(champ);
-                    contenu.appendChild(select);
-                    cellule.appendChild(contenu);
-                    ligne.appendChild(cellule);
+    ligne.appendChild(celluleHeure);
 
-                    appliquerCouleurEmploi(cellule);
-                }
+    for (let jour = 0; jour < 6; jour++) {
+      const cellule = document.createElement("td");
+      const contenu = document.createElement("div");
+      contenu.className = "cellule-emploi";
 
-                tbody.appendChild(ligne);
-            });
-        }
+      const champ = document.createElement("input");
+      champ.type = "text";
+      champ.className = "matiereEmploi";
+      champ.placeholder = "Écrire une matière";
+      champ.setAttribute(
+        "aria-label",
+        `Matière de ${debut}h à ${fin}h`
+      );
 
-        function obtenirEmploi() {
-            return Array.from(document.querySelectorAll(".matiereEmploi")).map(champ => {
-                const cellule = champ.closest("td");
-                const select = cellule.querySelector(".couleurEmploi");
+      const couleurInitiale =
+        debut === 12 ? "#ffe5a0" : "#f1e7d5";
 
-                return {
-                    matiere: champ.value,
-                    couleur: select.value
-                };
-            });
-        }
+      const select = document.createElement("select");
+      select.className = "couleurEmploi";
+      select.setAttribute(
+        "aria-label",
+        "Choisir la couleur de cette matière"
+      );
+      select.innerHTML = creerOptionsCouleur(couleurInitiale);
 
-        function remplirEmploi(donnees) {
-            const champs = document.querySelectorAll(".matiereEmploi");
+      select.addEventListener("change", () => {
+        appliquerCouleurEmploi(cellule);
+        sauvegarderEtat();
+      });
 
-            champs.forEach((champ, index) => {
-                const cellule = champ.closest("td");
-                const select = cellule.querySelector(".couleurEmploi");
-                const entree = donnees[index];
+      champ.addEventListener("input", sauvegarderEtat);
 
-                if (typeof entree === "string") {
-                    champ.value = entree;
-                } else if (entree && typeof entree === "object") {
-                    champ.value = entree.matiere || "";
+      contenu.appendChild(champ);
+      contenu.appendChild(select);
+      cellule.appendChild(contenu);
+      ligne.appendChild(cellule);
 
-                    const couleurValide = COULEURS_EMPLOI.some(
-                        couleur => couleur.valeur === entree.couleur
-                    );
+      appliquerCouleurEmploi(cellule);
+    }
 
-                    if (couleurValide) {
-                        select.value = entree.couleur;
-                    }
-                }
+    tbody.appendChild(ligne);
+  });
+}
 
-                appliquerCouleurEmploi(cellule);
-            });
-        }
+function obtenirEmploi() {
+  return Array.from(
+    document.querySelectorAll(".matiereEmploi")
+  ).map(champ => {
+    const cellule = champ.closest("td");
+    const select = cellule.querySelector(".couleurEmploi");
 
+    return {
+      matiere: champ.value,
+      couleur: select.value
+    };
+  });
+}
+
+function remplirEmploi(donnees) {
+  const champs = document.querySelectorAll(".matiereEmploi");
+
+  champs.forEach((champ, index) => {
+    const cellule = champ.closest("td");
+    const select = cellule.querySelector(".couleurEmploi");
+    const entree = donnees[index];
+
+    if (!select) return;
+
+    if (typeof entree === "string") {
+      champ.value = entree;
+    } else if (entree && typeof entree === "object") {
+      champ.value = entree.matiere || "";
+
+      const couleurValide = COULEURS_EMPLOI.some(
+        couleur => couleur.code === entree.couleur
+      );
+
+      if (couleurValide) {
+        select.value = entree.couleur;
+      }
+    }
+
+    appliquerCouleurEmploi(cellule);
+  });
+}
 
         /* =========================
            TÂCHES
