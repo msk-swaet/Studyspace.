@@ -1812,79 +1812,39 @@
         }
 
 
-        function creerEmploi() {
+       function creerEmploi() {
+    const tbody = document.getElementById("corpsEmploi");
+    tbody.innerHTML = "";
 
-            const tbody =
-                document.getElementById(
-                    "corpsEmploi"
-                );
+    for (let heure = 8; heure < 19; heure++) {
+        const ligne = document.createElement("tr");
 
-            tbody.innerHTML = "";
+        const celluleHeure = document.createElement("td");
+        celluleHeure.className = "heure";
 
-            for (
-                let heure = 8;
-                heure <= 19;
-                heure++
-            ) {
+        const debut = String(heure).padStart(2, "0");
+        const fin = String(heure + 1).padStart(2, "0");
 
-                const ligne =
-                    document.createElement(
-                        "tr"
-                    );
+        celluleHeure.textContent = `${debut}h–${fin}h`;
+        ligne.appendChild(celluleHeure);
 
-                const celluleHeure =
-                    document.createElement(
-                        "td"
-                    );
+        // Lundi à samedi
+        for (let jour = 0; jour < 6; jour++) {
+            const cellule = document.createElement("td");
 
-                celluleHeure.className =
-                    "heure";
+            const champ = document.createElement("input");
+            champ.type = "text";
+            champ.className = "matiereEmploi";
+            champ.placeholder = "Écrire une matière";
+            champ.setAttribute("aria-label", "Matière du cours");
 
-                celluleHeure.textContent =
-                    heure + "h";
-
-                ligne.appendChild(
-                    celluleHeure
-                );
-
-                for (
-                    let jour = 0;
-                    jour < 6;
-                    jour++
-                ) {
-
-                    const cellule =
-                        document.createElement(
-                            "td"
-                        );
-
-                    const select =
-                        document.createElement(
-                            "select"
-                        );
-
-                    select.className =
-                        "matiereEmploi";
-
-                    select.innerHTML =
-                        creerOptionsEmploi();
-
-                    cellule.appendChild(
-                        select
-                    );
-
-                    ligne.appendChild(
-                        cellule
-                    );
-                }
-
-                tbody.appendChild(
-                    ligne
-                );
-            }
+            cellule.appendChild(champ);
+            ligne.appendChild(cellule);
         }
 
-
+        tbody.appendChild(ligne);
+    }
+}
         function obtenirEmploi() {
 
             return Array
@@ -1900,53 +1860,15 @@
         }
 
 
-        function remplirEmploi(
-            donnees
-        ) {
+        function remplirEmploi(donnees) {
+    const champs = document.querySelectorAll(".matiereEmploi");
 
-            const selects =
-                document.querySelectorAll(
-                    ".matiereEmploi"
-                );
-
-            selects.forEach(
-                (select, index) => {
-
-                    if (
-                        donnees[index] &&
-                        matieresEmploi.includes(
-                            donnees[index]
-                        )
-                    ) {
-
-                        select.value =
-                            donnees[index];
-
-                    }
-
-                }
-            );
+    champs.forEach((champ, index) => {
+        if (typeof donnees[index] === "string") {
+            champ.value = donnees[index];
         }
-
-
-        document.addEventListener(
-            "change",
-            event => {
-
-                if (
-                    event.target.classList.contains(
-                        "matiereEmploi"
-                    )
-                ) {
-
-                    sauvegarderEtat();
-
-                }
-
-            }
-        );
-
-
+    });
+}
         /* =====================================================
            TÂCHES
         ===================================================== */
