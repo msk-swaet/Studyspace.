@@ -1363,29 +1363,22 @@ function appliquerCouleurEmploi(cellule) {
   if (!champ || !select) return;
 
   const couleur = select.value || "#f1e7d5";
-  const hex = couleur.replace("#", "");
-
-  const r = parseInt(hex.substring(0, 2), 16);
-  const g = parseInt(hex.substring(2, 4), 16);
-  const b = parseInt(hex.substring(4, 6), 16);
-
-  const luminosite = 0.299 * r + 0.587 * g + 0.114 * b;
-  const couleurTexte = luminosite < 145 ? "#ffffff" : "#111111";
 
   cellule.style.setProperty("background-color", couleur, "important");
-  cellule.style.color = couleurTexte;
+  cellule.style.setProperty("color", "#ffffff", "important");
 
   if (contenu) {
     contenu.style.setProperty("background-color", couleur, "important");
+    contenu.style.setProperty("color", "#ffffff", "important");
   }
 
   champ.style.setProperty("background-color", couleur, "important");
-  champ.style.setProperty("color", couleurTexte, "important");
+  champ.style.setProperty("color", "#ffffff", "important");
+  champ.style.setProperty("caret-color", "#ffffff", "important");
 
   select.style.setProperty("background-color", couleur, "important");
-  select.style.setProperty("color", couleurTexte, "important");
+  select.style.setProperty("color", "#ffffff", "important");
 }
-
 function creerEmploi() {
   const tbody = document.getElementById("corpsEmploi");
   if (!tbody) return;
