@@ -1308,19 +1308,22 @@
            EMPLOI DU TEMPS
         ========================= */
 
-        const COULEURS_EMPLOI = [
-            { nom: "Beige", valeur: "#f1e7d5" },
-            { nom: "Rose", valeur: "#f6c6d0" },
-            { nom: "Rose pâle", valeur: "#fde2e8" },
-            { nom: "Lilas", valeur: "#d9c7f2" },
-            { nom: "Lavande", valeur: "#c7b5ee" },
-            { nom: "Bleu ciel", valeur: "#c8e7f4" },
-            { nom: "Bleu pastel", valeur: "#b6d7ed" },
-            { nom: "Menthe", valeur: "#c9efdc" },
-            { nom: "Vert sauge", valeur: "#b8d0aa" },
-            { nom: "Jaune doux", valeur: "#ffe5a0" },
-            { nom: "Pêche", valeur: "#f6d0b6" }
-        ];
+       const COULEURS_EMPLOI = [
+  { nom: "Lilas", code: "#d9c7f2" },
+  { nom: "Lavande", code: "#c7b5ee" },
+  { nom: "Bleu ciel", code: "#c8e7f4" },
+  { nom: "Vert sauge", code: "#b8d0aa" },
+  { nom: "Pêche", code: "#f6d0b6" },
+
+  { nom: "Rouge bordeaux", code: "#800020" },
+  { nom: "Rouge grenat", code: "#8C1D40" },
+  { nom: "Marron cacao", code: "#6F4E37" },
+  { nom: "Marron chocolat", code: "#4E342E" },
+  { nom: "Brun caramel", code: "#A66B4F" },
+  { nom: "Terracotta", code: "#B65D3A" },
+  { nom: "Violet foncé", code: "#4B0082" },
+  { nom: "Prune", code: "#673147" }
+];
 
         function creerOptionsCouleur(couleurChoisie = "#f1e7d5") {
             return COULEURS_EMPLOI.map(couleur => `
