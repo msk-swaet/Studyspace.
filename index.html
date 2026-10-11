@@ -1812,38 +1812,51 @@
         }
 
 
-       function creerEmploi() {
+      function creerEmploi() {
     const tbody = document.getElementById("corpsEmploi");
     tbody.innerHTML = "";
 
-    for (let heure = 8; heure < 19; heure++) {
+    const creneaux = [
+        [8, 9],
+        [9, 10],
+        [10, 11],
+        [11, 12],
+        [12, 15],
+        [15, 16],
+        [16, 17],
+        [17, 18],
+        [18, 19]
+    ];
+
+    creneaux.forEach(([debut, fin]) => {
         const ligne = document.createElement("tr");
 
         const celluleHeure = document.createElement("td");
         celluleHeure.className = "heure";
+        celluleHeure.textContent =
+            `${String(debut).padStart(2, "0")}h–${String(fin).padStart(2, "0")}h`;
 
-        const debut = String(heure).padStart(2, "0");
-        const fin = String(heure + 1).padStart(2, "0");
-
-        celluleHeure.textContent = `${debut}h–${fin}h`;
         ligne.appendChild(celluleHeure);
 
         // Lundi à samedi
         for (let jour = 0; jour < 6; jour++) {
             const cellule = document.createElement("td");
-
             const champ = document.createElement("input");
+
             champ.type = "text";
             champ.className = "matiereEmploi";
             champ.placeholder = "Écrire une matière";
-            champ.setAttribute("aria-label", "Matière du cours");
+            champ.setAttribute(
+                "aria-label",
+                `Matière de ${debut}h à ${fin}h`
+            );
 
             cellule.appendChild(champ);
             ligne.appendChild(cellule);
         }
 
         tbody.appendChild(ligne);
-    }
+    });
 }
         function obtenirEmploi() {
 
