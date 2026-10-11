@@ -6,7 +6,6 @@
 
     <title>StudySpace</title>
 
-    <!-- PWA -->
     <link rel="manifest" href="./manifest.json">
     <link rel="icon" href="./icon-192.svg">
 
@@ -94,6 +93,7 @@
         .sous-titre {
             text-align: center;
             color: #555555;
+            line-height: 1.5;
             margin-bottom: 30px;
         }
 
@@ -103,6 +103,64 @@
             border-radius: 24px;
             padding: 30px;
             box-shadow: 6px 6px 0 #111111;
+        }
+
+        /* =========================
+           BOUTONS
+        ========================= */
+
+        .bouton {
+            border: 2px solid #111111;
+            background: #111111;
+            color: #f1e7d5;
+            padding: 13px 25px;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .bouton:hover {
+            background: transparent;
+            color: #111111;
+        }
+
+        .bouton-installer {
+            background: transparent;
+            color: #111111;
+        }
+
+        .bouton-installer:hover {
+            background: #111111;
+            color: #f1e7d5;
+        }
+
+        .petit-bouton {
+            border: 2px solid #111111;
+            background: #111111;
+            color: #f1e7d5;
+            border-radius: 12px;
+            padding: 11px 14px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .petit-bouton:hover {
+            background: transparent;
+            color: #111111;
+        }
+
+        .danger {
+            background: #8f1d1d;
+            color: #ffffff;
+            border-color: #8f1d1d;
+        }
+
+        .danger:hover {
+            background: transparent;
+            color: #8f1d1d;
         }
 
         /* =========================
@@ -158,33 +216,6 @@
             margin-bottom: 30px;
         }
 
-        .bouton {
-            border: 2px solid #111111;
-            background: #111111;
-            color: #f1e7d5;
-            padding: 13px 25px;
-            border-radius: 15px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.25s;
-        }
-
-        .bouton:hover {
-            background: transparent;
-            color: #111111;
-        }
-
-        .bouton-installer {
-            background: transparent;
-            color: #111111;
-        }
-
-        .bouton-installer:hover {
-            background: #111111;
-            color: #f1e7d5;
-        }
-
         .raccourcis {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -230,22 +261,8 @@
         }
 
         /* =========================
-           MOYENNE
+           CHAMPS
         ========================= */
-
-        .actions-haut {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
-        }
-
-        .ligne-matiere {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr 1fr 1fr 0.8fr auto;
-            gap: 10px;
-            align-items: center;
-            margin-bottom: 12px;
-        }
 
         input,
         select,
@@ -266,31 +283,22 @@
             box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.12);
         }
 
-        .petit-bouton {
-            border: 2px solid #111111;
-            background: #111111;
-            color: #f1e7d5;
-            border-radius: 12px;
-            padding: 11px 14px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.2s;
+        /* =========================
+           MOYENNE
+        ========================= */
+
+        .actions-haut {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
         }
 
-        .petit-bouton:hover {
-            background: transparent;
-            color: #111111;
-        }
-
-        .danger {
-            background: #8f1d1d;
-            color: #ffffff;
-            border-color: #8f1d1d;
-        }
-
-        .danger:hover {
-            background: transparent;
-            color: #8f1d1d;
+        .ligne-matiere {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr 1fr 0.8fr auto;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 12px;
         }
 
         .resultat-moyenne {
@@ -370,6 +378,7 @@
         .texte {
             font-size: 15px;
             line-height: 1.4;
+            overflow-wrap: anywhere;
         }
 
         /* =========================
@@ -382,33 +391,152 @@
 
         .emploi {
             width: 100%;
-            min-width: 900px;
-            border-collapse: collapse;
-        }
-
-        .emploi th,
-        .emploi td {
-            border: 2px solid #111111;
-            padding: 10px;
-            text-align: center;
+            min-width: 1100px;
+            border-collapse: separate;
+            border-spacing: 5px;
         }
 
         .emploi th {
-            background: #111111;
-            color: #f1e7d5;
+            background: #25211f;
+            color: #fffaf2;
+            border: none;
+            border-radius: 13px;
+            padding: 16px 12px;
+            font-size: 14px;
         }
 
-        .emploi .heure {
-            width: 85px;
-            font-weight: bold;
-            background: #f7efdf;
+        .emploi thead th:nth-child(2) {
+            background: #f0d3d4;
+            color: #292020;
         }
 
-        .emploi select {
-            border: 1px solid #111111;
-            border-radius: 8px;
+        .emploi thead th:nth-child(3) {
+            background: #e3d8f2;
+            color: #292020;
+        }
+
+        .emploi thead th:nth-child(4) {
+            background: #d9e9dc;
+            color: #292020;
+        }
+
+        .emploi thead th:nth-child(5) {
+            background: #f5e3b8;
+            color: #292020;
+        }
+
+        .emploi thead th:nth-child(6) {
+            background: #f3d9c5;
+            color: #292020;
+        }
+
+        .emploi thead th:nth-child(7) {
+            background: #d8e6ec;
+            color: #292020;
+        }
+
+        .emploi td {
+            background: #fffaf2;
+            border: 1px solid #e5d9c8;
+            border-radius: 12px;
             padding: 8px;
+            vertical-align: middle;
+            transition: background 0.2s;
+        }
+
+        .emploi td.heure {
+            width: 100px;
+            min-width: 100px;
+            white-space: nowrap;
+            border: none;
+            background: #e9ddca;
+            border-radius: 12px;
+            color: #29211d;
+            font-weight: bold;
+            text-align: center;
+            padding: 14px 8px;
+        }
+
+        .cellule-emploi {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
             min-width: 120px;
+        }
+
+        .emploi input.matiereEmploi {
+            width: 100%;
+            min-width: 0;
+            border: 1px solid #e0d3c2;
+            border-radius: 9px;
+            padding: 10px 7px;
+            text-align: center;
+            color: #111111;
+        }
+
+        .emploi input.matiereEmploi::placeholder {
+            color: #666666;
+            opacity: 1;
+        }
+
+        .emploi select.couleurEmploi {
+            width: 100%;
+            min-width: 0;
+            padding: 7px;
+            border: 1px solid #e0d3c2;
+            border-radius: 9px;
+            font-size: 12px;
+            color: #111111;
+            cursor: pointer;
+        }
+
+        #corpsEmploi tr:nth-child(5) td.heure {
+            background: #efd49b;
+        }
+
+        /* =========================
+           PAPILLONS
+        ========================= */
+
+        .papillons {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 20px;
+            margin: 0 auto 25px;
+            max-width: 650px;
+        }
+
+        .papillons span {
+            display: inline-block;
+            font-size: 25px;
+            animation: volPapillon 3s ease-in-out infinite;
+        }
+
+        .papillons span:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .papillons span:nth-child(3) {
+            animation-delay: 0.8s;
+        }
+
+        .papillons span:nth-child(4) {
+            animation-delay: 1.2s;
+        }
+
+        .papillons span:nth-child(5) {
+            animation-delay: 1.6s;
+        }
+
+        @keyframes volPapillon {
+            0%, 100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-9px) rotate(8deg);
+            }
         }
 
         /* =========================
@@ -585,7 +713,6 @@
         ========================= */
 
         @media (max-width: 800px) {
-
             .contenu-accueil h1 {
                 font-size: 46px;
             }
@@ -610,168 +737,45 @@
                 padding: 20px;
                 box-shadow: 4px 4px 0 #111111;
             }
+
+            .titre-page {
+                font-size: 29px;
+            }
+
+            .papillons {
+                gap: 10px;
+            }
+
+            .papillons span {
+                font-size: 22px;
+            }
         }
-        /* =========================
-   EMPLOI DU TEMPS — STYLE PLUS VIVANT
-========================= */
-
-.emploi {
-    border-collapse: separate;
-    border-spacing: 5px;
-    min-width: 1000px;
-}
-
-.emploi th {
-    background: #25211f;
-    color: #fffaf2;
-    border: none;
-    border-radius: 13px;
-    padding: 16px 12px;
-    font-size: 14px;
-}
-
-/* Une couleur douce pour chaque jour */
-.emploi thead th:nth-child(2) {
-    background: #f0d3d4;
-    color: #292020;
-}
-
-.emploi thead th:nth-child(3) {
-    background: #e3d8f2;
-    color: #292020;
-}
-
-.emploi thead th:nth-child(4) {
-    background: #d9e9dc;
-    color: #292020;
-}
-
-.emploi thead th:nth-child(5) {
-    background: #f5e3b8;
-    color: #292020;
-}
-
-.emploi thead th:nth-child(6) {
-    background: #f3d9c5;
-    color: #292020;
-}
-
-.emploi thead th:nth-child(7) {
-    background: #d8e6ec;
-    color: #292020;
-}
-
-/* Cases plus douces */
-.emploi td {
-    background: #fffaf2;
-    border: 1px solid #e5d9c8;
-    border-radius: 12px;
-    padding: 9px;
-    transition: background 0.2s, transform 0.2s;
-}
-
-.emploi td:hover {
-    background: #f8edf0;
-}
-
-/* Colonne des heures */
-.emploi .heure {
-    background: #e9ddca;
-    border: none;
-    border-radius: 12px;
-    color: #29211d;
-    font-weight: bold;
-    white-space: nowrap;
-    min-width: 95px;
-}
-
-/* Champs pour écrire les matières */
-.emploi input.matiereEmploi {
-    background: #fffdfa;
-    border: 1.5px solid #e0d3c2;
-    border-radius: 10px;
-    min-width: 110px;
-    padding: 12px 8px;
-    text-align: center;
-    transition: 0.2s;
-}
-
-.emploi input.matiereEmploi:focus {
-    background: #fff0f2;
-    border-color: #d6a2ae;
-    box-shadow: 0 0 0 3px #f5e2e6;
-}
-
-/* Pause du midi : créneau 12h–15h */
-#corpsEmploi tr:nth-child(5) td {
-    background: #f8edcf;
-}
-
-#corpsEmploi tr:nth-child(5) .heure {
-    background: #efd49b;
-}
-
-#corpsEmploi tr:nth-child(5) input {
-    background: #fff9e9;
-}
     </style>
 </head>
 
 <body>
 
-    <!-- =========================
-         NAVIGATION
-    ========================= -->
+    <!-- NAVIGATION -->
 
     <nav>
-
-        <button data-page="accueil" onclick="showPage('accueil')">
-            Accueil
-        </button>
-
-        <button data-page="moyenne" onclick="showPage('moyenne')">
-            Moyenne
-        </button>
-
-        <button data-page="revision" onclick="showPage('revision')">
-            Révisions
-        </button>
-
-        <button data-page="emploi" onclick="showPage('emploi')">
-            Emploi du temps
-        </button>
-
-        <button data-page="taches" onclick="showPage('taches')">
-            Tâches
-        </button>
-
-        <button data-page="quiz" onclick="showPage('quiz')">
-            Quiz
-        </button>
-
+        <button data-page="accueil" onclick="showPage('accueil')">Accueil</button>
+        <button data-page="moyenne" onclick="showPage('moyenne')">Moyenne</button>
+        <button data-page="revision" onclick="showPage('revision')">Révisions</button>
+        <button data-page="emploi" onclick="showPage('emploi')">Emploi du temps</button>
+        <button data-page="taches" onclick="showPage('taches')">Tâches</button>
+        <button data-page="quiz" onclick="showPage('quiz')">Quiz</button>
     </nav>
 
 
-    <!-- =========================
-         ACCUEIL
-    ========================= -->
+    <!-- ACCUEIL -->
 
     <section id="accueil" class="page active">
-
         <div class="accueil">
-
             <div class="cadre accueil-cadre">
-
                 <div class="contenu-accueil">
 
-                    <p class="petit-texte">
-                        BIENVENUE DANS
-                    </p>
-
-                    <h1>
-                        StudySpace
-                    </h1>
-
+                    <p class="petit-texte">BIENVENUE DANS</p>
+                    <h1>StudySpace</h1>
                     <div class="ligne"></div>
 
                     <p class="slogan">
@@ -779,10 +783,7 @@
                         t'organiser et progresser.
                     </p>
 
-                    <button
-                        class="bouton"
-                        onclick="showPage('moyenne')"
-                    >
+                    <button class="bouton" onclick="showPage('moyenne')">
                         Commencer ♡
                     </button>
 
@@ -796,55 +797,37 @@
 
                     <div class="raccourcis">
 
-                        <button
-                            class="raccourci"
-                            onclick="showPage('moyenne')"
-                        >
+                        <button class="raccourci" onclick="showPage('moyenne')">
                             <span>🧮</span>
                             <strong>Moyenne</strong>
                             <small>Calcule tes notes</small>
                         </button>
 
-                        <button
-                            class="raccourci"
-                            onclick="showPage('revision')"
-                        >
+                        <button class="raccourci" onclick="showPage('revision')">
                             <span>📚</span>
                             <strong>Révisions</strong>
                             <small>Organise ton travail</small>
                         </button>
 
-                        <button
-                            class="raccourci"
-                            onclick="showPage('quiz')"
-                        >
+                        <button class="raccourci" onclick="showPage('quiz')">
                             <span>🧠</span>
                             <strong>Quiz</strong>
                             <small>Teste tes connaissances</small>
                         </button>
 
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
 
-    <!-- =========================
-         MOYENNE
-    ========================= -->
+    <!-- MOYENNE -->
 
     <section id="moyenne" class="page">
-
         <div class="conteneur">
 
-            <h2 class="titre-page">
-                Ma moyenne
-            </h2>
+            <h2 class="titre-page">Ma moyenne</h2>
 
             <p class="sous-titre">
                 Ajoute tes matières et calcule automatiquement ta moyenne générale.
@@ -853,56 +836,34 @@
             <div class="cadre">
 
                 <div class="actions-haut">
-
-                    <button
-                        class="petit-bouton"
-                        onclick="ajouterMatiere()"
-                    >
+                    <button class="petit-bouton" onclick="ajouterMatiere()">
                         + Ajouter une matière
                     </button>
-
                 </div>
 
                 <div id="listeMatieres"></div>
 
                 <div class="resultat-moyenne">
-
-                    <h3>
-                        Moyenne générale
-                    </h3>
-
-                    <div
-                        class="note"
-                        id="moyenneGenerale"
-                    >
-                        0,00 / 20
-                    </div>
+                    <h3>Moyenne générale</h3>
+                    <div class="note" id="moyenneGenerale">0,00 / 20</div>
 
                     <p class="info-formule">
                         Moyenne de D1 et D2 → moyenne avec la composition →
                         coefficient.
                     </p>
-
                 </div>
 
             </div>
-
         </div>
-
     </section>
 
 
-    <!-- =========================
-         RÉVISIONS
-    ========================= -->
+    <!-- RÉVISIONS -->
 
     <section id="revision" class="page">
-
         <div class="conteneur">
 
-            <h2 class="titre-page">
-                Révisions
-            </h2>
+            <h2 class="titre-page">Révisions</h2>
 
             <p class="sous-titre">
                 Organise les matières et chapitres que tu dois réviser.
@@ -911,99 +872,72 @@
             <div class="cadre">
 
                 <div class="ajout-bloc">
-
                     <input
                         type="text"
                         id="revisionInput"
                         placeholder="Exemple : Mathématiques - Fractions"
                     >
 
-                    <button
-                        class="petit-bouton"
-                        onclick="ajouterRevision()"
-                    >
+                    <button class="petit-bouton" onclick="ajouterRevision()">
                         + Ajouter
                     </button>
-
                 </div>
 
-                <div
-                    id="listeRevisions"
-                    class="liste"
-                ></div>
+                <div id="listeRevisions" class="liste"></div>
 
             </div>
-
         </div>
-
     </section>
 
 
-    <!-- =========================
-         EMPLOI DU TEMPS
-    ========================= -->
+    <!-- EMPLOI DU TEMPS -->
 
     <section id="emploi" class="page">
-
         <div class="conteneur">
 
-           <section id="emploi" class="page">
+            <h2 class="titre-page">🦋 Emploi du temps 🦋</h2>
 
-    <div class="conteneur">
+            <div class="papillons" aria-hidden="true">
+                <span>🦋</span>
+                <span>🦋</span>
+                <span>🦋</span>
+                <span>🦋</span>
+                <span>🦋</span>
+            </div>
 
-        <h2 class="titre-page">
-            🦋 Emploi du temps 🦋
-        </h2>
+            <p class="sous-titre">
+                Organise tes cours avec tes couleurs préférées. 🌸
+            </p>
 
-        <div class="papillons" aria-hidden="true">
-            <span>🦋</span>
-            <span>🦋</span>
-            <span>🦋</span>
-            <span>🦋</span>
-            <span>🦋</span>
+            <div class="cadre emploi-wrapper">
+
+                <table class="emploi">
+                    <thead>
+                        <tr>
+                            <th>Heure</th>
+                            <th>Lundi</th>
+                            <th>Mardi</th>
+                            <th>Mercredi</th>
+                            <th>Jeudi</th>
+                            <th>Vendredi</th>
+                            <th>Samedi</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="corpsEmploi"></tbody>
+                </table>
+
+            </div>
         </div>
+    </section>
 
-        <p class="sous-titre">
-            Organise tes cours avec tes couleurs préférées. 🌸
-        </p>
 
-        <div class="cadre emploi-wrapper">
-
-            <table class="emploi">
-
-                <thead>
-                    <tr>
-                        <th>Heure</th>
-                        <th>Lundi</th>
-                        <th>Mardi</th>
-                        <th>Mercredi</th>
-                        <th>Jeudi</th>
-                        <th>Vendredi</th>
-                        <th>Samedi</th>
-                    </tr>
-                </thead>
-
-                <tbody id="corpsEmploi"></tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-
-</section>
-
-    <!-- =========================
-         TÂCHES
-    ========================= -->
+    <!-- TÂCHES -->
 
     <section id="taches" class="page">
-
         <div class="conteneur">
 
-            <h2 class="titre-page">
-                Mes tâches
-            </h2>
+            <h2 class="titre-page">Mes tâches</h2>
 
             <p class="sous-titre">
                 Note ce que tu dois faire et coche ce qui est terminé.
@@ -1012,45 +946,30 @@
             <div class="cadre">
 
                 <div class="ajout-bloc">
-
                     <input
                         type="text"
                         id="tacheInput"
                         placeholder="Exemple : Apprendre la leçon d'histoire"
                     >
 
-                    <button
-                        class="petit-bouton"
-                        onclick="ajouterTache()"
-                    >
+                    <button class="petit-bouton" onclick="ajouterTache()">
                         + Ajouter
                     </button>
-
                 </div>
 
-                <div
-                    id="listeTaches"
-                    class="liste"
-                ></div>
+                <div id="listeTaches" class="liste"></div>
 
             </div>
-
         </div>
-
     </section>
 
 
-    <!-- =========================
-         QUIZ
-    ========================= -->
+    <!-- QUIZ -->
 
     <section id="quiz" class="page">
-
         <div class="conteneur">
 
-            <h2 class="titre-page">
-                Quiz
-            </h2>
+            <h2 class="titre-page">Quiz</h2>
 
             <p class="sous-titre">
                 Choisis ton profil puis teste tes connaissances.
@@ -1058,230 +977,64 @@
 
             <div class="cadre quiz-box">
 
-
-                <!-- CLASSE -->
-
-                <div
-                    id="etapeClasse"
-                    class="etape active"
-                >
-
-                    <h3>
-                        Choisis ta classe
-                    </h3>
+                <div id="etapeClasse" class="etape active">
+                    <h3>Choisis ta classe</h3>
 
                     <div class="choix-grid">
-
-                        <button class="choix" onclick="choisirClasse('6e')">
-                            6e
-                        </button>
-
-                        <button class="choix" onclick="choisirClasse('5e')">
-                            5e
-                        </button>
-
-                        <button class="choix" onclick="choisirClasse('4e')">
-                            4e
-                        </button>
-
-                        <button class="choix" onclick="choisirClasse('3e')">
-                            3e
-                        </button>
-
-                        <button class="choix" onclick="choisirClasse('2nde')">
-                            2nde
-                        </button>
-
-                        <button class="choix" onclick="choisirClasse('1ère')">
-                            1ère
-                        </button>
-
-                        <button class="choix" onclick="choisirClasse('Terminale')">
-                            Terminale
-                        </button>
-
+                        <button class="choix" onclick="choisirClasse('6e')">6e</button>
+                        <button class="choix" onclick="choisirClasse('5e')">5e</button>
+                        <button class="choix" onclick="choisirClasse('4e')">4e</button>
+                        <button class="choix" onclick="choisirClasse('3e')">3e</button>
+                        <button class="choix" onclick="choisirClasse('2nde')">2nde</button>
+                        <button class="choix" onclick="choisirClasse('1ère')">1ère</button>
+                        <button class="choix" onclick="choisirClasse('Terminale')">Terminale</button>
                     </div>
-
                 </div>
 
-
-                <!-- ÉTABLISSEMENT -->
-
-                <div
-                    id="etapeEtablissement"
-                    class="etape"
-                >
-
-                    <h3>
-                        Choisis ton établissement
-                    </h3>
+                <div id="etapeEtablissement" class="etape">
+                    <h3>Choisis ton établissement</h3>
 
                     <div class="choix-grid">
-
-                        <button
-                            class="choix"
-                            onclick="choisirEtablissement('public')"
-                        >
-                            Public
-                        </button>
-
-                        <button
-                            class="choix"
-                            onclick="choisirEtablissement('prive')"
-                        >
-                            Privé
-                        </button>
-
-                        <button
-                            class="choix"
-                            onclick="choisirEtablissement('bilingue')"
-                        >
-                            Privé bilingue
-                        </button>
-
-                        <button
-                            class="choix"
-                            onclick="choisirEtablissement('franco-arabe')"
-                        >
-                            Franco-arabe
-                        </button>
-
+                        <button class="choix" onclick="choisirEtablissement('public')">Public</button>
+                        <button class="choix" onclick="choisirEtablissement('prive')">Privé</button>
+                        <button class="choix" onclick="choisirEtablissement('bilingue')">Privé bilingue</button>
+                        <button class="choix" onclick="choisirEtablissement('franco-arabe')">Franco-arabe</button>
                     </div>
-
                 </div>
 
-
-                <!-- PARCOURS -->
-
-                <div
-                    id="etapeParcours"
-                    class="etape"
-                >
-
-                    <h3>
-                        Choisis ton parcours
-                    </h3>
+                <div id="etapeParcours" class="etape">
+                    <h3>Choisis ton parcours</h3>
 
                     <div class="choix-grid">
-
-                        <button
-                            class="choix"
-                            onclick="choisirParcours('classique')"
-                        >
-                            Classique
-                        </button>
-
-                        <button
-                            class="choix"
-                            onclick="choisirParcours('BST')"
-                        >
-                            BST
-                        </button>
-
-                        <button
-                            class="choix"
-                            onclick="choisirParcours('personnalise')"
-                        >
-                            Personnalisé
-                        </button>
-
+                        <button class="choix" onclick="choisirParcours('classique')">Classique</button>
+                        <button class="choix" onclick="choisirParcours('BST')">BST</button>
+                        <button class="choix" onclick="choisirParcours('personnalise')">Personnalisé</button>
                     </div>
-
                 </div>
 
-
-                <!-- MATIÈRE -->
-
-                <div
-                    id="etapeMatiere"
-                    class="etape"
-                >
-
-                    <h3>
-                        Choisis la matière
-                    </h3>
-
-                    <div
-                        class="choix-grid"
-                        id="choixMatieresQuiz"
-                    ></div>
-
+                <div id="etapeMatiere" class="etape">
+                    <h3>Choisis la matière</h3>
+                    <div class="choix-grid" id="choixMatieresQuiz"></div>
                 </div>
 
-
-                <!-- NIVEAU -->
-
-                <div
-                    id="etapeNiveau"
-                    class="etape"
-                >
-
-                    <h3>
-                        Choisis le niveau
-                    </h3>
+                <div id="etapeNiveau" class="etape">
+                    <h3>Choisis le niveau</h3>
 
                     <div class="choix-grid">
-
-                        <button
-                            class="choix"
-                            onclick="choisirNiveau('facile')"
-                        >
-                            Facile
-                        </button>
-
-                        <button
-                            class="choix"
-                            onclick="choisirNiveau('moyen')"
-                        >
-                            Moyen
-                        </button>
-
-                        <button
-                            class="choix"
-                            onclick="choisirNiveau('difficile')"
-                        >
-                            Difficile
-                        </button>
-
+                        <button class="choix" onclick="choisirNiveau('facile')">Facile</button>
+                        <button class="choix" onclick="choisirNiveau('moyen')">Moyen</button>
+                        <button class="choix" onclick="choisirNiveau('difficile')">Difficile</button>
                     </div>
-
                 </div>
 
-
-                <!-- QUESTIONS -->
-
-                <div
-                    id="etapeQuestion"
-                    class="etape"
-                >
-
-                    <div
-                        class="quiz-info"
-                        id="quizInfo"
-                    ></div>
-
-                    <div
-                        class="question-num"
-                        id="questionNum"
-                    ></div>
-
-                    <div
-                        class="question-texte"
-                        id="questionTexte"
-                    ></div>
-
-                    <div
-                        class="options-quiz"
-                        id="optionsQuiz"
-                    ></div>
-
-                    <div
-                        class="feedback-quiz"
-                        id="feedbackQuiz"
-                    ></div>
+                <div id="etapeQuestion" class="etape">
+                    <div class="quiz-info" id="quizInfo"></div>
+                    <div class="question-num" id="questionNum"></div>
+                    <div class="question-texte" id="questionTexte"></div>
+                    <div class="options-quiz" id="optionsQuiz"></div>
+                    <div class="feedback-quiz" id="feedbackQuiz"></div>
 
                     <div class="quiz-actions">
-
                         <button
                             id="boutonSuivant"
                             class="petit-bouton"
@@ -1290,33 +1043,19 @@
                         >
                             Question suivante
                         </button>
-
                     </div>
-
                 </div>
 
-
-                <!-- FIN -->
-
-                <div
-                    id="etapeFinQuiz"
-                    class="etape"
-                >
-
+                <div id="etapeFinQuiz" class="etape">
                     <div class="score-final">
 
-                        <h3>
-                            Quiz terminé 🎉
-                        </h3>
+                        <h3>Quiz terminé 🎉</h3>
 
                         <div class="score-sur-100">
                             10 points par bonne réponse
                         </div>
 
-                        <div
-                            class="gros-score"
-                            id="scoreFinal"
-                        >
+                        <div class="gros-score" id="scoreFinal">
                             0 / 100
                         </div>
 
@@ -1332,125 +1071,75 @@
                         </button>
 
                     </div>
-
                 </div>
 
             </div>
-
         </div>
-
     </section>
 
 
     <script>
-
-        /* =====================================================
-           OUTIL
-        ===================================================== */
+        /* =========================
+           OUTILS
+        ========================= */
 
         function escapeHTML(texte) {
-
             return String(texte)
                 .replaceAll("&", "&amp;")
                 .replaceAll("<", "&lt;")
                 .replaceAll(">", "&gt;")
                 .replaceAll('"', "&quot;")
                 .replaceAll("'", "&#039;");
-
         }
 
-
         function melanger(tableau) {
-
             const copie = [...tableau];
 
-            for (
-                let i = copie.length - 1;
-                i > 0;
-                i--
-            ) {
+            for (let i = copie.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
 
-                const j =
-                    Math.floor(
-                        Math.random() * (i + 1)
-                    );
-
-                [
-                    copie[i],
-                    copie[j]
-                ] = [
-                    copie[j],
-                    copie[i]
-                ];
-
+                [copie[i], copie[j]] = [copie[j], copie[i]];
             }
 
             return copie;
         }
 
 
-        /* =====================================================
+        /* =========================
            NAVIGATION
-        ===================================================== */
+        ========================= */
 
         function showPage(pageId) {
-
-            document
-                .querySelectorAll(".page")
-                .forEach(page => {
-
-                    page.classList.remove(
-                        "active"
-                    );
-
-                });
-
-            const page =
-                document.getElementById(
-                    pageId
-                );
-
-            if (page) {
-                page.classList.add(
-                    "active"
-                );
-            }
-
-            document
-                .querySelectorAll("nav button")
-                .forEach(button => {
-
-                    button.classList.remove(
-                        "actif"
-                    );
-
-                });
-
-            const boutonActif =
-                document.querySelector(
-                    'nav button[data-page="' +
-                    pageId +
-                    '"]'
-                );
-
-            if (boutonActif) {
-                boutonActif.classList.add(
-                    "actif"
-                );
-            }
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
+            document.querySelectorAll(".page").forEach(page => {
+                page.classList.remove("active");
             });
 
+            const page = document.getElementById(pageId);
+
+            if (page) {
+                page.classList.add("active");
+            }
+
+            document.querySelectorAll("nav button").forEach(button => {
+                button.classList.remove("actif");
+            });
+
+            const boutonActif = document.querySelector(
+                'nav button[data-page="' + pageId + '"]'
+            );
+
+            if (boutonActif) {
+                boutonActif.classList.add("actif");
+            }
+
+            window.scrollTo({ top: 0, behavior: "smooth" });
             sauvegarderEtat();
         }
 
 
-        /* =====================================================
+        /* =========================
            MOYENNE
-        ===================================================== */
+        ========================= */
 
         function ajouterMatiere(
             nom = "",
@@ -1459,2438 +1148,1015 @@
             composition = "",
             coefficient = ""
         ) {
+            const conteneur = document.getElementById("listeMatieres");
+            const ligne = document.createElement("div");
 
-            const conteneur =
-                document.getElementById(
-                    "listeMatieres"
-                );
-
-            const ligne =
-                document.createElement(
-                    "div"
-                );
-
-            ligne.className =
-                "ligne-matiere";
+            ligne.className = "ligne-matiere";
 
             ligne.innerHTML = `
+                <input type="text" class="nomMatiere"
+                    placeholder="Matière" value="${escapeHTML(nom)}">
 
-                <input
-                    type="text"
-                    class="nomMatiere"
-                    placeholder="Matière"
-                    value="${escapeHTML(nom)}"
-                >
+                <input type="number" class="noteD1"
+                    min="0" max="20" step="0.01"
+                    placeholder="D1" value="${escapeHTML(d1)}">
 
-                <input
-                    type="number"
-                    class="noteD1"
-                    min="0"
-                    max="20"
-                    step="0.01"
-                    placeholder="D1"
-                    value="${escapeHTML(d1)}"
-                >
+                <input type="number" class="noteD2"
+                    min="0" max="20" step="0.01"
+                    placeholder="D2" value="${escapeHTML(d2)}">
 
-                <input
-                    type="number"
-                    class="noteD2"
-                    min="0"
-                    max="20"
-                    step="0.01"
-                    placeholder="D2"
-                    value="${escapeHTML(d2)}"
-                >
+                <input type="number" class="noteComposition"
+                    min="0" max="20" step="0.01"
+                    placeholder="Composition" value="${escapeHTML(composition)}">
 
-                <input
-                    type="number"
-                    class="noteComposition"
-                    min="0"
-                    max="20"
-                    step="0.01"
-                    placeholder="Composition"
-                    value="${escapeHTML(composition)}"
-                >
+                <input type="number" class="coefficient"
+                    min="0.1" step="0.1"
+                    placeholder="Coef" value="${escapeHTML(coefficient)}">
 
-                <input
-                    type="number"
-                    class="coefficient"
-                    min="0.1"
-                    step="0.1"
-                    placeholder="Coef"
-                    value="${escapeHTML(coefficient)}"
-                >
-
-                <button
-                    class="petit-bouton danger"
-                    type="button"
-                >
+                <button class="petit-bouton danger" type="button">
                     Supprimer
                 </button>
-
             `;
 
-            conteneur.appendChild(
-                ligne
-            );
+            conteneur.appendChild(ligne);
 
-            ligne
-                .querySelector("button")
-                .addEventListener(
-                    "click",
-                    () => {
+            ligne.querySelector("button").addEventListener("click", () => {
+                ligne.remove();
+                calculerMoyenne();
+                sauvegarderEtat();
+            });
 
-                        ligne.remove();
-
-                        calculerMoyenne();
-
-                        sauvegarderEtat();
-
-                    }
-                );
-
-            ligne
-                .querySelectorAll("input")
-                .forEach(
-                    input => {
-
-                        input.addEventListener(
-                            "input",
-                            () => {
-
-                                calculerMoyenne();
-
-                                sauvegarderEtat();
-
-                            }
-                        );
-
-                    }
-                );
+            ligne.querySelectorAll("input").forEach(input => {
+                input.addEventListener("input", () => {
+                    calculerMoyenne();
+                    sauvegarderEtat();
+                });
+            });
 
             calculerMoyenne();
         }
 
-
         function obtenirDonneesMatieres() {
-
-            return Array
-                .from(
-                    document.querySelectorAll(
-                        ".ligne-matiere"
-                    )
-                )
-                .map(
-                    ligne => ({
-
-                        nom:
-                            ligne.querySelector(
-                                ".nomMatiere"
-                            ).value,
-
-                        d1:
-                            ligne.querySelector(
-                                ".noteD1"
-                            ).value,
-
-                        d2:
-                            ligne.querySelector(
-                                ".noteD2"
-                            ).value,
-
-                        composition:
-                            ligne.querySelector(
-                                ".noteComposition"
-                            ).value,
-
-                        coefficient:
-                            ligne.querySelector(
-                                ".coefficient"
-                            ).value
-
-                    })
-                );
+            return Array.from(document.querySelectorAll(".ligne-matiere")).map(ligne => ({
+                nom: ligne.querySelector(".nomMatiere").value,
+                d1: ligne.querySelector(".noteD1").value,
+                d2: ligne.querySelector(".noteD2").value,
+                composition: ligne.querySelector(".noteComposition").value,
+                coefficient: ligne.querySelector(".coefficient").value
+            }));
         }
-
 
         function calculerMoyenne() {
-
-            const lignes =
-                document.querySelectorAll(
-                    ".ligne-matiere"
-                );
-
             let totalPoints = 0;
-
             let totalCoefficients = 0;
 
-            lignes.forEach(
-                ligne => {
+            document.querySelectorAll(".ligne-matiere").forEach(ligne => {
+                const d1 = parseFloat(ligne.querySelector(".noteD1").value);
+                const d2 = parseFloat(ligne.querySelector(".noteD2").value);
+                const composition = parseFloat(ligne.querySelector(".noteComposition").value);
+                const coefficient = parseFloat(ligne.querySelector(".coefficient").value);
 
-                    const d1 =
-                        parseFloat(
-                            ligne.querySelector(
-                                ".noteD1"
-                            ).value
-                        );
+                if (
+                    !isNaN(d1) && !isNaN(d2) &&
+                    !isNaN(composition) && !isNaN(coefficient) &&
+                    coefficient > 0
+                ) {
+                    const moyenneD1D2 = (d1 + d2) / 2;
+                    const moyenneMatiere = (moyenneD1D2 + composition) / 2;
 
-                    const d2 =
-                        parseFloat(
-                            ligne.querySelector(
-                                ".noteD2"
-                            ).value
-                        );
-
-                    const composition =
-                        parseFloat(
-                            ligne.querySelector(
-                                ".noteComposition"
-                            ).value
-                        );
-
-                    const coefficient =
-                        parseFloat(
-                            ligne.querySelector(
-                                ".coefficient"
-                            ).value
-                        );
-
-                    if (
-                        !isNaN(d1) &&
-                        !isNaN(d2) &&
-                        !isNaN(composition) &&
-                        !isNaN(coefficient) &&
-                        coefficient > 0
-                    ) {
-
-                        const moyenneD1D2 =
-                            (d1 + d2) / 2;
-
-                        const moyenneMatiere =
-                            (
-                                moyenneD1D2 +
-                                composition
-                            ) / 2;
-
-                        totalPoints +=
-                            moyenneMatiere *
-                            coefficient;
-
-                        totalCoefficients +=
-                            coefficient;
-                    }
-
+                    totalPoints += moyenneMatiere * coefficient;
+                    totalCoefficients += coefficient;
                 }
-            );
+            });
 
-            const moyenne =
-                totalCoefficients > 0
-                    ? totalPoints /
-                      totalCoefficients
-                    : 0;
+            const moyenne = totalCoefficients > 0
+                ? totalPoints / totalCoefficients
+                : 0;
 
-            document.getElementById(
-                "moyenneGenerale"
-            ).textContent =
-                moyenne
-                    .toFixed(2)
-                    .replace(".", ",") +
-                " / 20";
+            document.getElementById("moyenneGenerale").textContent =
+                moyenne.toFixed(2).replace(".", ",") + " / 20";
         }
 
 
-        /* =====================================================
+        /* =========================
            RÉVISIONS
-        ===================================================== */
+        ========================= */
 
         let revisions = [];
 
-
         function ajouterRevision() {
+            const input = document.getElementById("revisionInput");
+            const texte = input.value.trim();
 
-            const input =
-                document.getElementById(
-                    "revisionInput"
-                );
-
-            const texte =
-                input.value.trim();
-
-            if (!texte) {
-                return;
-            }
+            if (!texte) return;
 
             revisions.push({
-
-                id:
-                    Date.now(),
-
-                texte:
-                    texte,
-
-                termine:
-                    false
-
+                id: Date.now() + Math.random(),
+                texte,
+                termine: false
             });
 
             input.value = "";
-
             afficherRevisions();
-
             sauvegarderEtat();
         }
 
-
         function afficherRevisions() {
-
-            const liste =
-                document.getElementById(
-                    "listeRevisions"
-                );
-
+            const liste = document.getElementById("listeRevisions");
             liste.innerHTML = "";
 
-            if (
-                revisions.length === 0
-            ) {
-
-                liste.innerHTML = `
-                    <div class="vide">
-                        Aucune révision pour le moment.
-                    </div>
-                `;
-
+            if (revisions.length === 0) {
+                liste.innerHTML = `<div class="vide">Aucune révision pour le moment.</div>`;
                 return;
             }
 
-            revisions.forEach(
-                revision => {
+            revisions.forEach(revision => {
+                const element = document.createElement("div");
 
-                    const element =
-                        document.createElement(
-                            "div"
-                        );
+                element.className = "element" + (revision.termine ? " termine" : "");
 
-                    element.className =
-                        "element" +
-                        (
-                            revision.termine
-                                ? " termine"
-                                : ""
-                        );
+                element.innerHTML = `
+                    <div class="element-gauche">
+                        <input type="checkbox" ${revision.termine ? "checked" : ""}>
+                        <span class="texte">${escapeHTML(revision.texte)}</span>
+                    </div>
+                    <button class="petit-bouton danger" type="button">Supprimer</button>
+                `;
 
-                    element.innerHTML = `
+                element.querySelector('input[type="checkbox"]').addEventListener("change", event => {
+                    revision.termine = event.target.checked;
+                    afficherRevisions();
+                    sauvegarderEtat();
+                });
 
-                        <div class="element-gauche">
+                element.querySelector("button").addEventListener("click", () => {
+                    revisions = revisions.filter(item => item.id !== revision.id);
+                    afficherRevisions();
+                    sauvegarderEtat();
+                });
 
-                            <input
-                                type="checkbox"
-                                ${revision.termine ? "checked" : ""}
-                            >
-
-                            <span class="texte">
-                                ${escapeHTML(
-                                    revision.texte
-                                )}
-                            </span>
-
-                        </div>
-
-                        <button
-                            class="petit-bouton danger"
-                            type="button"
-                        >
-                            Supprimer
-                        </button>
-
-                    `;
-
-                    const checkbox =
-                        element.querySelector(
-                            'input[type="checkbox"]'
-                        );
-
-                    checkbox.addEventListener(
-                        "change",
-                        () => {
-
-                            revision.termine =
-                                checkbox.checked;
-
-                            afficherRevisions();
-
-                            sauvegarderEtat();
-
-                        }
-                    );
-
-                    element
-                        .querySelector("button")
-                        .addEventListener(
-                            "click",
-                            () => {
-
-                                revisions =
-                                    revisions.filter(
-                                        item =>
-                                            item.id !==
-                                            revision.id
-                                    );
-
-                                afficherRevisions();
-
-                                sauvegarderEtat();
-
-                            }
-                        );
-
-                    liste.appendChild(
-                        element
-                    );
-
-                }
-            );
+                liste.appendChild(element);
+            });
         }
 
-
-        document
-            .getElementById(
-                "revisionInput"
-            )
-            .addEventListener(
-                "keydown",
-                event => {
-
-                    if (
-                        event.key ===
-                        "Enter"
-                    ) {
-
-                        ajouterRevision();
-
-                    }
-
-                }
-            );
+        document.getElementById("revisionInput").addEventListener("keydown", event => {
+            if (event.key === "Enter") ajouterRevision();
+        });
 
 
-        /* =====================================================
+        /* =========================
            EMPLOI DU TEMPS
-        ===================================================== */
+        ========================= */
 
-        const matieresEmploi = [
-
-            "Aucune",
-            "Mathématiques",
-            "Français",
-            "Anglais",
-            "Histoire",
-            "Géographie",
-            "Histoire-Géographie",
-            "SVT",
-            "Physique-Chimie",
-            "Technologie",
-            "Économie familiale",
-            "Éducation civique",
-            "Informatique",
-            "Étude",
-            "Pause"
-
+        const COULEURS_EMPLOI = [
+            { nom: "Beige", valeur: "#f1e7d5" },
+            { nom: "Rose", valeur: "#f6c6d0" },
+            { nom: "Rose pâle", valeur: "#fde2e8" },
+            { nom: "Lilas", valeur: "#d9c7f2" },
+            { nom: "Lavande", valeur: "#c7b5ee" },
+            { nom: "Bleu ciel", valeur: "#c8e7f4" },
+            { nom: "Bleu pastel", valeur: "#b6d7ed" },
+            { nom: "Menthe", valeur: "#c9efdc" },
+            { nom: "Vert sauge", valeur: "#b8d0aa" },
+            { nom: "Jaune doux", valeur: "#ffe5a0" },
+            { nom: "Pêche", valeur: "#f6d0b6" }
         ];
 
-
-        function creerOptionsEmploi(
-            valeur = "Aucune"
-        ) {
-
-            return matieresEmploi
-                .map(
-                    matiere => `
-
-                        <option
-                            value="${escapeHTML(matiere)}"
-                            ${
-                                matiere === valeur
-                                    ? "selected"
-                                    : ""
-                            }
-                        >
-                            ${escapeHTML(matiere)}
-                        </option>
-
-                    `
-                )
-                .join("");
+        function creerOptionsCouleur(couleurChoisie = "#f1e7d5") {
+            return COULEURS_EMPLOI.map(couleur => `
+                <option value="${couleur.valeur}"
+                    ${couleur.valeur === couleurChoisie ? "selected" : ""}>
+                    ${couleur.nom}
+                </option>
+            `).join("");
         }
 
+        function appliquerCouleurEmploi(cellule) {
+            const champ = cellule.querySelector(".matiereEmploi");
+            const select = cellule.querySelector(".couleurEmploi");
 
-      function creerEmploi() {
-    const tbody = document.getElementById("corpsEmploi");
-    tbody.innerHTML = "";
+            if (!champ || !select) return;
 
-    const creneaux = [
-        [8, 9],
-        [9, 10],
-        [10, 11],
-        [11, 12],
-        [12, 15],
-        [15, 16],
-        [16, 17],
-        [17, 18],
-        [18, 19]
-    ];
-
-    creneaux.forEach(([debut, fin]) => {
-        const ligne = document.createElement("tr");
-
-        const celluleHeure = document.createElement("td");
-        celluleHeure.className = "heure";
-        celluleHeure.textContent =
-            `${String(debut).padStart(2, "0")}h–${String(fin).padStart(2, "0")}h`;
-
-        ligne.appendChild(celluleHeure);
-
-        // Lundi à samedi
-        for (let jour = 0; jour < 6; jour++) {
-            const cellule = document.createElement("td");
-            const champ = document.createElement("input");
-
-            champ.type = "text";
-            champ.className = "matiereEmploi";
-            champ.placeholder = "Écrire une matière";
-            champ.setAttribute(
-                "aria-label",
-                `Matière de ${debut}h à ${fin}h`
-            );
-
-            cellule.appendChild(champ);
-            ligne.appendChild(cellule);
+            const couleur = select.value;
+            cellule.style.backgroundColor = couleur;
+            champ.style.backgroundColor = couleur;
+            select.style.backgroundColor = couleur;
         }
 
-        tbody.appendChild(ligne);
-    });
-}
+        function creerEmploi() {
+            const tbody = document.getElementById("corpsEmploi");
+            tbody.innerHTML = "";
+
+            const creneaux = [
+                [8, 9],
+                [9, 10],
+                [10, 11],
+                [11, 12],
+                [12, 15],
+                [15, 16],
+                [16, 17],
+                [17, 18],
+                [18, 19]
+            ];
+
+            creneaux.forEach(([debut, fin]) => {
+                const ligne = document.createElement("tr");
+                const celluleHeure = document.createElement("td");
+
+                celluleHeure.className = "heure";
+                celluleHeure.textContent =
+                    `${String(debut).padStart(2, "0")}h–${String(fin).padStart(2, "0")}h`;
+
+                ligne.appendChild(celluleHeure);
+
+                for (let jour = 0; jour < 6; jour++) {
+                    const cellule = document.createElement("td");
+                    const contenu = document.createElement("div");
+                    contenu.className = "cellule-emploi";
+
+                    const champ = document.createElement("input");
+                    champ.type = "text";
+                    champ.className = "matiereEmploi";
+                    champ.placeholder = "Écrire une matière";
+                    champ.setAttribute("aria-label", `Matière de ${debut}h à ${fin}h`);
+
+                    const couleurInitiale = debut === 12 ? "#ffe5a0" : "#f1e7d5";
+
+                    const select = document.createElement("select");
+                    select.className = "couleurEmploi";
+                    select.setAttribute("aria-label", "Choisir la couleur de cette matière");
+                    select.innerHTML = creerOptionsCouleur(couleurInitiale);
+
+                    select.addEventListener("change", () => {
+                        appliquerCouleurEmploi(cellule);
+                        sauvegarderEtat();
+                    });
+
+                    champ.addEventListener("input", sauvegarderEtat);
+
+                    contenu.appendChild(champ);
+                    contenu.appendChild(select);
+                    cellule.appendChild(contenu);
+                    ligne.appendChild(cellule);
+
+                    appliquerCouleurEmploi(cellule);
+                }
+
+                tbody.appendChild(ligne);
+            });
+        }
+
         function obtenirEmploi() {
+            return Array.from(document.querySelectorAll(".matiereEmploi")).map(champ => {
+                const cellule = champ.closest("td");
+                const select = cellule.querySelector(".couleurEmploi");
 
-            return Array
-                .from(
-                    document.querySelectorAll(
-                        ".matiereEmploi"
-                    )
-                )
-                .map(
-                    select =>
-                        select.value
-                );
+                return {
+                    matiere: champ.value,
+                    couleur: select.value
+                };
+            });
         }
-
 
         function remplirEmploi(donnees) {
-    const champs = document.querySelectorAll(".matiereEmploi");
+            const champs = document.querySelectorAll(".matiereEmploi");
 
-    champs.forEach((champ, index) => {
-        if (typeof donnees[index] === "string") {
-            champ.value = donnees[index];
+            champs.forEach((champ, index) => {
+                const cellule = champ.closest("td");
+                const select = cellule.querySelector(".couleurEmploi");
+                const entree = donnees[index];
+
+                if (typeof entree === "string") {
+                    champ.value = entree;
+                } else if (entree && typeof entree === "object") {
+                    champ.value = entree.matiere || "";
+
+                    const couleurValide = COULEURS_EMPLOI.some(
+                        couleur => couleur.valeur === entree.couleur
+                    );
+
+                    if (couleurValide) {
+                        select.value = entree.couleur;
+                    }
+                }
+
+                appliquerCouleurEmploi(cellule);
+            });
         }
-    });
-}
-        /* =====================================================
+
+
+        /* =========================
            TÂCHES
-        ===================================================== */
+        ========================= */
 
         let taches = [];
 
-
         function ajouterTache() {
+            const input = document.getElementById("tacheInput");
+            const texte = input.value.trim();
 
-            const input =
-                document.getElementById(
-                    "tacheInput"
-                );
-
-            const texte =
-                input.value.trim();
-
-            if (!texte) {
-                return;
-            }
+            if (!texte) return;
 
             taches.push({
-
-                id:
-                    Date.now(),
-
-                texte:
-                    texte,
-
-                termine:
-                    false
-
+                id: Date.now() + Math.random(),
+                texte,
+                termine: false
             });
 
             input.value = "";
-
             afficherTaches();
-
             sauvegarderEtat();
         }
 
-
         function afficherTaches() {
-
-            const liste =
-                document.getElementById(
-                    "listeTaches"
-                );
-
+            const liste = document.getElementById("listeTaches");
             liste.innerHTML = "";
 
-            if (
-                taches.length === 0
-            ) {
-
-                liste.innerHTML = `
-                    <div class="vide">
-                        Aucune tâche pour le moment.
-                    </div>
-                `;
-
+            if (taches.length === 0) {
+                liste.innerHTML = `<div class="vide">Aucune tâche pour le moment.</div>`;
                 return;
             }
 
-            taches.forEach(
-                tache => {
+            taches.forEach(tache => {
+                const element = document.createElement("div");
+                element.className = "tache" + (tache.termine ? " fini" : "");
 
-                    const element =
-                        document.createElement(
-                            "div"
-                        );
+                element.innerHTML = `
+                    <div class="tache-gauche">
+                        <input type="checkbox" ${tache.termine ? "checked" : ""}>
+                        <span class="texte">${escapeHTML(tache.texte)}</span>
+                    </div>
+                    <button class="petit-bouton danger" type="button">Supprimer</button>
+                `;
 
-                    element.className =
-                        "tache" +
-                        (
-                            tache.termine
-                                ? " fini"
-                                : ""
-                        );
+                element.querySelector('input[type="checkbox"]').addEventListener("change", event => {
+                    tache.termine = event.target.checked;
+                    afficherTaches();
+                    sauvegarderEtat();
+                });
 
-                    element.innerHTML = `
+                element.querySelector("button").addEventListener("click", () => {
+                    taches = taches.filter(item => item.id !== tache.id);
+                    afficherTaches();
+                    sauvegarderEtat();
+                });
 
-                        <div class="tache-gauche">
-
-                            <input
-                                type="checkbox"
-                                ${tache.termine ? "checked" : ""}
-                            >
-
-                            <span class="texte">
-                                ${escapeHTML(
-                                    tache.texte
-                                )}
-                            </span>
-
-                        </div>
-
-                        <button
-                            class="petit-bouton danger"
-                            type="button"
-                        >
-                            Supprimer
-                        </button>
-
-                    `;
-
-                    const checkbox =
-                        element.querySelector(
-                            'input[type="checkbox"]'
-                        );
-
-                    checkbox.addEventListener(
-                        "change",
-                        () => {
-
-                            tache.termine =
-                                checkbox.checked;
-
-                            afficherTaches();
-
-                            sauvegarderEtat();
-
-                        }
-                    );
-
-                    element
-                        .querySelector(
-                            "button"
-                        )
-                        .addEventListener(
-                            "click",
-                            () => {
-
-                                taches =
-                                    taches.filter(
-                                        item =>
-                                            item.id !==
-                                            tache.id
-                                    );
-
-                                afficherTaches();
-
-                                sauvegarderEtat();
-
-                            }
-                        );
-
-                    liste.appendChild(
-                        element
-                    );
-
-                }
-            );
+                liste.appendChild(element);
+            });
         }
 
-
-        document
-            .getElementById(
-                "tacheInput"
-            )
-            .addEventListener(
-                "keydown",
-                event => {
-
-                    if (
-                        event.key ===
-                        "Enter"
-                    ) {
-
-                        ajouterTache();
-
-                    }
-
-                }
-            );
+        document.getElementById("tacheInput").addEventListener("keydown", event => {
+            if (event.key === "Enter") ajouterTache();
+        });
 
 
-        /* =====================================================
-           QUIZ
-        ===================================================== */
+        /* =========================
+           QUIZ : CONFIGURATION
+        ========================= */
 
         let quizEtat = {
-
             classe: "",
             etablissement: "",
             parcours: "",
             matiere: "",
             niveau: ""
-
         };
 
         let quizQuestions = [];
-
         let quizIndex = 0;
-
         let quizScore = 0;
-
         let quizRepondu = false;
 
         const NB_QUESTIONS = 10;
-
         const POINTS_PAR_REPONSE = 10;
 
-
-        function Q(
-            niveau,
-            question,
-            options,
-            answer
-        ) {
-
-            return {
-
-                niveau,
-                question,
-                options,
-                answer
-
-            };
+        function Q(niveau, question, options, answer) {
+            return { niveau, question, options, answer };
         }
 
 
-        /* =====================================================
-           BANQUE 6e / 5e
-        ===================================================== */
+        /* =========================
+           BANQUE DES QUIZ
+        ========================= */
 
         const banqueCollegeDebut = {
-
             "Mathématiques": [
-
-                Q(
-                    "facile",
-                    "Combien font 7 × 8 ?",
-                    ["54", "56", "58", "64"],
-                    1
-                ),
-
-                Q(
-                    "facile",
-                    "Combien font 125 + 75 ?",
-                    ["180", "190", "200", "210"],
-                    2
-                ),
-
-                Q(
-                    "facile",
-                    "Combien font 300 - 125 ?",
-                    ["165", "175", "185", "195"],
-                    1
-                ),
-
-                Q(
-                    "moyen",
-                    "Quel est le résultat de 84 ÷ 7 ?",
-                    ["10", "11", "12", "14"],
-                    2
-                ),
-
-                Q(
-                    "moyen",
-                    "Combien vaut 3/4 de 20 ?",
-                    ["10", "12", "15", "18"],
-                    2
-                ),
-
-                Q(
-                    "moyen",
-                    "Quel est le périmètre d'un carré de côté 5 cm ?",
-                    ["10 cm", "15 cm", "20 cm", "25 cm"],
-                    2
-                ),
-
-                Q(
-                    "difficile",
-                    "Un rectangle mesure 8 cm sur 5 cm. Quelle est son aire ?",
-                    ["13 cm²", "26 cm²", "40 cm²", "80 cm²"],
-                    2
-                ),
-
-                Q(
-                    "difficile",
-                    "Quel nombre est divisible par 3 ?",
-                    ["41", "52", "63", "70"],
-                    2
-                ),
-
-                Q(
-                    "difficile",
-                    "Combien vaut 2,5 + 1,75 ?",
-                    ["3,25", "4,25", "4,5", "5,25"],
-                    1
-                ),
-
-                Q(
-                    "difficile",
-                    "Quelle fraction est équivalente à 1/2 ?",
-                    ["2/3", "2/4", "3/5", "4/5"],
-                    1
-                )
-
+                Q("facile", "Combien font 7 × 8 ?", ["54", "56", "58", "64"], 1),
+                Q("facile", "Combien font 125 + 75 ?", ["180", "190", "200", "210"], 2),
+                Q("facile", "Combien font 300 - 125 ?", ["165", "175", "185", "195"], 1),
+                Q("moyen", "Quel est le résultat de 84 ÷ 7 ?", ["10", "11", "12", "14"], 2),
+                Q("moyen", "Combien vaut 3/4 de 20 ?", ["10", "12", "15", "18"], 2),
+                Q("moyen", "Quel est le périmètre d'un carré de côté 5 cm ?", ["10 cm", "15 cm", "20 cm", "25 cm"], 2),
+                Q("difficile", "Un rectangle mesure 8 cm sur 5 cm. Quelle est son aire ?", ["13 cm²", "26 cm²", "40 cm²", "80 cm²"], 2),
+                Q("difficile", "Quel nombre est divisible par 3 ?", ["41", "52", "63", "70"], 2),
+                Q("difficile", "Combien vaut 2,5 + 1,75 ?", ["3,25", "4,25", "4,5", "5,25"], 1),
+                Q("difficile", "Quelle fraction est équivalente à 1/2 ?", ["2/3", "2/4", "3/5", "4/5"], 1)
             ],
-
             "Français": [
-
-                Q(
-                    "facile",
-                    "Quel mot est un nom ?",
-                    ["Courir", "Maison", "Rapidement", "Manger"],
-                    1
-                ),
-
-                Q(
-                    "facile",
-                    "Quel est le contraire de « grand » ?",
-                    ["Fort", "Petit", "Long", "Large"],
-                    1
-                ),
-
-                Q(
-                    "facile",
-                    "Quel mot est un verbe ?",
-                    ["Chanson", "Courir", "Rapide", "Maison"],
-                    1
-                ),
-
-                Q(
-                    "moyen",
-                    "Dans « Les élèves travaillent », quel est le sujet ?",
-                    ["Les", "élèves", "travaillent", "aucun"],
-                    1
-                ),
-
-                Q(
-                    "moyen",
-                    "Quel temps est utilisé dans « Nous mangions » ?",
-                    ["Présent", "Imparfait", "Futur", "Passé simple"],
-                    1
-                ),
-
-                Q(
-                    "moyen",
-                    "Quel est le pluriel de « cheval » ?",
-                    ["Chevals", "Chevaux", "Chevaus", "Chevales"],
-                    1
-                ),
-
-                Q(
-                    "difficile",
-                    "Quel est le sujet dans « Ma sœur prépare le repas » ?",
-                    ["prépare", "repas", "Ma sœur", "le"],
-                    2
-                ),
-
-                Q(
-                    "difficile",
-                    "Quel mot est un adjectif qualificatif ?",
-                    ["rapidement", "maison", "grand", "courir"],
-                    2
-                ),
-
-                Q(
-                    "difficile",
-                    "Quel est le féminin de « heureux » ?",
-                    ["Heureuse", "Heureuxse", "Heureusee", "Heureuxe"],
-                    0
-                ),
-
-                Q(
-                    "difficile",
-                    "Quel signe termine normalement une question ?",
-                    [".", ",", "!", "?"],
-                    3
-                )
-
+                Q("facile", "Quel mot est un nom ?", ["Courir", "Maison", "Rapidement", "Manger"], 1),
+                Q("facile", "Quel est le contraire de « grand » ?", ["Fort", "Petit", "Long", "Large"], 1),
+                Q("facile", "Quel mot est un verbe ?", ["Chanson", "Courir", "Rapide", "Maison"], 1),
+                Q("moyen", "Dans « Les élèves travaillent », quel est le sujet ?", ["Les", "élèves", "travaillent", "aucun"], 1),
+                Q("moyen", "Quel temps est utilisé dans « Nous mangions » ?", ["Présent", "Imparfait", "Futur", "Passé simple"], 1),
+                Q("moyen", "Quel est le pluriel de « cheval » ?", ["Chevals", "Chevaux", "Chevaus", "Chevales"], 1),
+                Q("difficile", "Quel est le sujet dans « Ma sœur prépare le repas » ?", ["prépare", "repas", "Ma sœur", "le"], 2),
+                Q("difficile", "Quel mot est un adjectif qualificatif ?", ["rapidement", "maison", "grand", "courir"], 2),
+                Q("difficile", "Quel est le féminin de « heureux » ?", ["Heureuse", "Heureuxse", "Heureusee", "Heureuxe"], 0),
+                Q("difficile", "Quel signe termine normalement une question ?", [".", ",", "!", "?"], 3)
             ],
-
             "Anglais": [
-
-                Q(
-                    "facile",
-                    "Que signifie « book » ?",
-                    ["Table", "Livre", "Chaise", "École"],
-                    1
-                ),
-
-                Q(
-                    "facile",
-                    "Que signifie « school » ?",
-                    ["Maison", "École", "Rue", "Livre"],
-                    1
-                ),
-
-                Q(
-                    "facile",
-                    "Que signifie « cat » ?",
-                    ["Chien", "Chat", "Oiseau", "Cheval"],
-                    1
-                ),
-
-                Q(
-                    "moyen",
-                    "Quel est le pluriel de « child » ?",
-                    ["Childs", "Children", "Childes", "Childrens"],
-                    1
-                ),
-
-                Q(
-                    "moyen",
-                    "Complète : « She ___ happy. »",
-                    ["am", "are", "is", "be"],
-                    2
-                ),
-
-                Q(
-                    "moyen",
-                    "Quel est le contraire de « big » ?",
-                    ["Small", "Fast", "Old", "Tall"],
-                    0
-                ),
-
-                Q(
-                    "difficile",
-                    "Quel est le passé de « go » ?",
-                    ["goed", "went", "gone", "goes"],
-                    1
-                ),
-
-                Q(
-                    "difficile",
-                    "Quelle phrase est correcte ?",
-                    [
-                        "He are happy.",
-                        "He is happy.",
-                        "He am happy.",
-                        "He be happy."
-                    ],
-                    1
-                ),
-
-                Q(
-                    "difficile",
-                    "Que signifie « brother » ?",
-                    ["Sœur", "Frère", "Mère", "Père"],
-                    1
-                ),
-
-                Q(
-                    "difficile",
-                    "Complète : « They ___ students. »",
-                    ["is", "am", "are", "be"],
-                    2
-                )
-
+                Q("facile", "Que signifie « book » ?", ["Table", "Livre", "Chaise", "École"], 1),
+                Q("facile", "Que signifie « school » ?", ["Maison", "École", "Rue", "Livre"], 1),
+                Q("facile", "Que signifie « cat » ?", ["Chien", "Chat", "Oiseau", "Cheval"], 1),
+                Q("moyen", "Quel est le pluriel de « child » ?", ["Childs", "Children", "Childes", "Childrens"], 1),
+                Q("moyen", "Complète : « She ___ happy. »", ["am", "are", "is", "be"], 2),
+                Q("moyen", "Quel est le contraire de « big » ?", ["Small", "Fast", "Old", "Tall"], 0),
+                Q("difficile", "Quel est le passé de « go » ?", ["goed", "went", "gone", "goes"], 1),
+                Q("difficile", "Quelle phrase est correcte ?", ["He are happy.", "He is happy.", "He am happy.", "He be happy."], 1),
+                Q("difficile", "Que signifie « brother » ?", ["Sœur", "Frère", "Mère", "Père"], 1),
+                Q("difficile", "Complète : « They ___ students. »", ["is", "am", "are", "be"], 2)
             ],
-
             "Histoire": [
-
-                Q(
-                    "facile",
-                    "Quel peuple a construit les pyramides de Gizeh ?",
-                    ["Les Romains", "Les Égyptiens", "Les Grecs", "Les Vikings"],
-                    1
-                ),
-
-                Q(
-                    "facile",
-                    "Quelle civilisation a utilisé les hiéroglyphes ?",
-                    ["Égyptienne", "Romaine", "Maya", "Viking"],
-                    0
-                ),
-
-                Q(
-                    "facile",
-                    "Rome était la capitale de quel empire ?",
-                    ["Empire romain", "Empire maya", "Empire inca", "Empire ottoman"],
-                    0
-                ),
-
-                Q(
-                    "moyen",
-                    "Quel peuple vivait notamment à Athènes et Sparte ?",
-                    ["Les Grecs", "Les Vikings", "Les Mongols", "Les Incas"],
-                    0
-                ),
-
-                Q(
-                    "moyen",
-                    "Les pharaons appartiennent à quelle civilisation ?",
-                    ["Égypte ancienne", "Rome", "Grèce moderne", "Chine médiévale"],
-                    0
-                ),
-
-                Q(
-                    "moyen",
-                    "Quel monument est associé à l'Antiquité romaine ?",
-                    ["Le Colisée", "La tour Eiffel", "Le Taj Mahal", "La Statue de la Liberté"],
-                    0
-                ),
-
-                Q(
-                    "difficile",
-                    "Pourquoi l'écriture est-elle importante pour les historiens ?",
-                    [
-                        "Elle conserve des informations sur les sociétés",
-                        "Elle empêche les échanges",
-                        "Elle remplace toutes les fouilles",
-                        "Elle n'existe que dans les temps modernes"
-                    ],
-                    0
-                ),
-
-                Q(
-                    "difficile",
-                    "Quelle cité grecque est célèbre pour sa démocratie antique ?",
-                    ["Athènes", "Sparte", "Rome", "Carthage"],
-                    0
-                ),
-
-                Q(
-                    "difficile",
-                    "Comment appelle-t-on l'écriture utilisée dans l'Égypte ancienne ?",
-                    ["Hiéroglyphes", "Cyrillique", "Latin", "Runes"],
-                    0
-                ),
-
-                Q(
-                    "difficile",
-                    "Quel espace faisait partie du monde romain antique ?",
-                    ["Le bassin méditerranéen", "L'Antarctique", "Le Japon uniquement", "L'Australie uniquement"],
-                    0
-                )
-
+                Q("facile", "Quel peuple a construit les pyramides de Gizeh ?", ["Les Romains", "Les Égyptiens", "Les Grecs", "Les Vikings"], 1),
+                Q("facile", "Quelle civilisation a utilisé les hiéroglyphes ?", ["Égyptienne", "Romaine", "Maya", "Viking"], 0),
+                Q("facile", "Rome était la capitale de quel empire ?", ["Empire romain", "Empire maya", "Empire inca", "Empire ottoman"], 0),
+                Q("moyen", "Quel peuple vivait notamment à Athènes et Sparte ?", ["Les Grecs", "Les Vikings", "Les Mongols", "Les Incas"], 0),
+                Q("moyen", "Les pharaons appartiennent à quelle civilisation ?", ["Égypte ancienne", "Rome", "Grèce moderne", "Chine médiévale"], 0),
+                Q("moyen", "Quel monument est associé à l'Antiquité romaine ?", ["Le Colisée", "La tour Eiffel", "Le Taj Mahal", "La Statue de la Liberté"], 0),
+                Q("difficile", "Pourquoi l'écriture est-elle importante pour les historiens ?", ["Elle conserve des informations sur les sociétés", "Elle empêche les échanges", "Elle remplace toutes les fouilles", "Elle n'existe que dans les temps modernes"], 0),
+                Q("difficile", "Quelle cité grecque est célèbre pour sa démocratie antique ?", ["Athènes", "Sparte", "Rome", "Carthage"], 0),
+                Q("difficile", "Comment appelle-t-on l'écriture utilisée dans l'Égypte ancienne ?", ["Hiéroglyphes", "Cyrillique", "Latin", "Runes"], 0),
+                Q("difficile", "Quel espace faisait partie du monde romain antique ?", ["Le bassin méditerranéen", "L'Antarctique", "Le Japon uniquement", "L'Australie uniquement"], 0)
             ],
-
             "Géographie": [
-
-                Q(
-                    "facile",
-                    "Sur quel continent se trouve le Sénégal ?",
-                    ["Asie", "Afrique", "Europe", "Océanie"],
-                    1
-                ),
-
-                Q(
-                    "facile",
-                    "Quelle est la capitale du Sénégal ?",
-                    ["Thiès", "Dakar", "Saint-Louis", "Ziguinchor"],
-                    1
-                ),
-
-                Q(
-                    "facile",
-                    "Quel océan borde la côte ouest du Sénégal ?",
-                    ["Indien", "Atlantique", "Pacifique", "Arctique"],
-                    1
-                ),
-
-                Q(
-                    "moyen",
-                    "Quel est le plus grand océan du monde ?",
-                    ["Atlantique", "Indien", "Pacifique", "Arctique"],
-                    2
-                ),
-
-                Q(
-                    "moyen",
-                    "Comment appelle-t-on une grande étendue d'eau salée ?",
-                    ["Montagne", "Océan", "Désert", "Plaine"],
-                    1
-                ),
-
-                Q(
-                    "moyen",
-                    "Comment appelle-t-on une zone où vivent de nombreux habitants ?",
-                    ["Espace habité", "Océan", "Volcan", "Glacier"],
-                    0
-                ),
-
-                Q(
-                    "difficile",
-                    "Pourquoi les villes sont-elles souvent situées près des fleuves ou littoraux ?",
-                    [
-                        "Pour profiter notamment des ressources et des échanges",
-                        "Parce qu'elles sont toujours froides",
-                        "Parce qu'il n'y a aucune activité",
-                        "Parce qu'il n'y a jamais de risques"
-                    ],
-                    0
-                ),
-
-                Q(
-                    "difficile",
-                    "Quel terme désigne l'augmentation de la population urbaine ?",
-                    ["Urbanisation", "Déforestation", "Érosion", "Glaciation"],
-                    0
-                ),
-
-                Q(
-                    "difficile",
-                    "Quel espace est généralement très peu peuplé ?",
-                    ["Désert", "Centre-ville", "Métropole", "Port"],
-                    0
-                ),
-
-                Q(
-                    "difficile",
-                    "Quel élément facilite les déplacements entre villes ?",
-                    ["Réseau de transport", "Forêt dense", "Montagne seule", "Désert"],
-                    0
-                )
-
+                Q("facile", "Sur quel continent se trouve le Sénégal ?", ["Asie", "Afrique", "Europe", "Océanie"], 1),
+                Q("facile", "Quelle est la capitale du Sénégal ?", ["Thiès", "Dakar", "Saint-Louis", "Ziguinchor"], 1),
+                Q("facile", "Quel océan borde la côte ouest du Sénégal ?", ["Indien", "Atlantique", "Pacifique", "Arctique"], 1),
+                Q("moyen", "Quel est le plus grand océan du monde ?", ["Atlantique", "Indien", "Pacifique", "Arctique"], 2),
+                Q("moyen", "Comment appelle-t-on une grande étendue d'eau salée ?", ["Montagne", "Océan", "Désert", "Plaine"], 1),
+                Q("moyen", "Comment appelle-t-on une zone où vivent de nombreux habitants ?", ["Espace habité", "Océan", "Volcan", "Glacier"], 0),
+                Q("difficile", "Pourquoi les villes sont-elles souvent situées près des fleuves ou littoraux ?", ["Pour profiter notamment des ressources et des échanges", "Parce qu'elles sont toujours froides", "Parce qu'il n'y a aucune activité", "Parce qu'il n'y a jamais de risques"], 0),
+                Q("difficile", "Quel terme désigne l'augmentation de la population urbaine ?", ["Urbanisation", "Déforestation", "Érosion", "Glaciation"], 0),
+                Q("difficile", "Quel espace est généralement très peu peuplé ?", ["Désert", "Centre-ville", "Métropole", "Port"], 0),
+                Q("difficile", "Quel élément facilite les déplacements entre villes ?", ["Réseau de transport", "Forêt dense", "Montagne seule", "Désert"], 0)
             ],
-
             "SVT": [
-
-                Q(
-                    "facile",
-                    "Quel organe permet principalement de respirer ?",
-                    ["Le cœur", "Les poumons", "L'estomac", "Le foie"],
-                    1
-                ),
-
-                Q(
-                    "facile",
-                    "Quelle partie de la plante absorbe principalement l'eau du sol ?",
-                    ["La fleur", "Les racines", "Le fruit", "La graine"],
-                    1
-                ),
-
-                Q(
-                    "facile",
-                    "Quel organe pompe le sang ?",
-                    ["Le foie", "Le cœur", "Le poumon", "Le rein"],
-                    1
-                ),
-
-                Q(
-                    "moyen",
-                    "Quel gaz est principalement utilisé lors de la respiration ?",
-                    ["Azote", "Oxygène", "Hydrogène", "Hélium"],
-                    1
-                ),
-
-                Q(
-                    "moyen",
-                    "Quel liquide circule dans les vaisseaux sanguins ?",
-                    ["Sang", "Bile", "Sueur", "Salive"],
-                    0
-                ),
-
-                Q(
-                    "moyen",
-                    "Quel organe participe principalement à la digestion ?",
-                    ["Estomac", "Poumon", "Cœur", "Crâne"],
-                    0
-                ),
-
-                Q(
-                    "difficile",
-                    "Quel est le rôle des stomates des feuilles ?",
-                    [
-                        "Participer notamment aux échanges gazeux",
-                        "Pomper le sang",
-                        "Former les os",
-                        "Digérer les aliments"
-                    ],
-                    0
-                ),
-
-                Q(
-                    "difficile",
-                    "Quelle partie de la plante réalise principalement la photosynthèse ?",
-                    ["Les feuilles", "Les racines", "Les fleurs seulement", "Les graines seulement"],
-                    0
-                ),
-
-                Q(
-                    "difficile",
-                    "Quel système permet de faire circuler le sang ?",
-                    ["Système circulatoire", "Système osseux", "Système digestif uniquement", "Système cutané"],
-                    0
-                ),
-
-                Q(
-                    "difficile",
-                    "Quel organe permet les échanges entre l'air et le sang ?",
-                    ["Les poumons", "L'estomac", "Le foie", "Le rein"],
-                    0
-                )
-
+                Q("facile", "Quel organe permet principalement de respirer ?", ["Le cœur", "Les poumons", "L'estomac", "Le foie"], 1),
+                Q("facile", "Quelle partie de la plante absorbe principalement l'eau du sol ?", ["La fleur", "Les racines", "Le fruit", "La graine"], 1),
+                Q("facile", "Quel organe pompe le sang ?", ["Le foie", "Le cœur", "Le poumon", "Le rein"], 1),
+                Q("moyen", "Quel gaz est principalement utilisé lors de la respiration ?", ["Azote", "Oxygène", "Hydrogène", "Hélium"], 1),
+                Q("moyen", "Quel liquide circule dans les vaisseaux sanguins ?", ["Sang", "Bile", "Sueur", "Salive"], 0),
+                Q("moyen", "Quel organe participe principalement à la digestion ?", ["Estomac", "Poumon", "Cœur", "Crâne"], 0),
+                Q("difficile", "Quel est le rôle des stomates des feuilles ?", ["Participer notamment aux échanges gazeux", "Pomper le sang", "Former les os", "Digérer les aliments"], 0),
+                Q("difficile", "Quelle partie de la plante réalise principalement la photosynthèse ?", ["Les feuilles", "Les racines", "Les fleurs seulement", "Les graines seulement"], 0),
+                Q("difficile", "Quel système permet de faire circuler le sang ?", ["Système circulatoire", "Système osseux", "Système digestif uniquement", "Système cutané"], 0),
+                Q("difficile", "Quel organe permet les échanges entre l'air et le sang ?", ["Les poumons", "L'estomac", "Le foie", "Le rein"], 0)
             ]
-
         };
 
-
-        /* =====================================================
-           BANQUE 4e / 3e
-        ===================================================== */
+        /*
+          Les banques pour les classes avancées et le lycée
+          sont organisées séparément pour garder les matières
+          adaptées au niveau.
+        */
 
         const banqueCollegeAvance = {
-
             "Mathématiques": [
-
                 Q("facile", "Quel est le résultat de 5² ?", ["10", "15", "20", "25"], 3),
-
                 Q("facile", "Quel est le résultat de √81 ?", ["7", "8", "9", "10"], 2),
-
                 Q("facile", "Résous : 2x = 14.", ["x = 5", "x = 6", "x = 7", "x = 8"], 2),
-
                 Q("moyen", "Si 3x + 2 = 11, combien vaut x ?", ["2", "3", "4", "5"], 1),
-
                 Q("moyen", "Quel est le développement de (x + 3)² ?", ["x² + 3x + 9", "x² + 6x + 9", "x² + 9", "x² + 6x + 3"], 1),
-
                 Q("moyen", "Combien vaut 4² + 3² ?", ["12", "16", "25", "49"], 2),
-
                 Q("difficile", "Quelle est la solution de 5x - 10 = 0 ?", ["x = 1", "x = 2", "x = 5", "x = 10"], 1),
-
                 Q("difficile", "Quel est le développement de (x - 2)(x + 3) ?", ["x² + x - 6", "x² + 5x - 6", "x² - x + 6", "x² + x + 6"], 0),
-
                 Q("difficile", "Quel est le coefficient directeur de y = 4x + 1 ?", ["1", "4", "-1", "-4"], 1),
-
                 Q("difficile", "Quelle est l'aire d'un triangle de base 10 cm et de hauteur 6 cm ?", ["16 cm²", "30 cm²", "60 cm²", "120 cm²"], 1)
-
             ],
-
             "Français": [
-
                 Q("facile", "Quel est le verbe dans « Marième lit un livre » ?", ["Marième", "lit", "livre", "un"], 1),
-
                 Q("facile", "Quel est le contraire de « commencer » ?", ["Finir", "Débuter", "Entrer", "Avancer"], 0),
-
                 Q("facile", "Quel mot est un adjectif ?", ["rapidement", "grand", "courir", "maison"], 1),
-
                 Q("moyen", "Quel temps est utilisé dans « Il avait terminé » ?", ["Présent", "Imparfait", "Plus-que-parfait", "Futur simple"], 2),
-
                 Q("moyen", "Dans « Je voudrais réussir », « voudrais » est à quel temps ?", ["Conditionnel présent", "Présent", "Futur simple", "Imparfait"], 0),
-
                 Q("moyen", "Quel procédé rapproche deux éléments avec « comme » ?", ["Comparaison", "Métaphore", "Hyperbole", "Ellipse"], 0),
-
                 Q("difficile", "Quelle proposition contient une métaphore ?", ["Il est un lion sur le terrain.", "Il court rapidement.", "Il mange une pomme.", "Il ouvre la porte."], 0),
-
                 Q("difficile", "Quel procédé consiste à exagérer une idée ?", ["Hyperbole", "Comparaison", "Antithèse", "Ellipse"], 0),
-
                 Q("difficile", "Dans « Les grandes maisons blanches », quel mot est un adjectif ?", ["Les", "grandes", "maisons", "blanches uniquement"], 1),
-
                 Q("difficile", "Quel mode verbal exprime souvent un ordre ?", ["Indicatif", "Impératif", "Conditionnel", "Infinitif"], 1)
-
             ],
-
             "Anglais": [
-
                 Q("facile", "Quel est le prétérit de « go » ?", ["goed", "went", "gone", "goes"], 1),
-
                 Q("facile", "Quel est le contraire de « expensive » ?", ["Cheap", "Large", "Strong", "Late"], 0),
-
                 Q("facile", "Quel est le contraire de « old » ?", ["Young", "Tall", "Slow", "Dark"], 0),
-
                 Q("moyen", "Complète : « She ___ to school every day. »", ["go", "goes", "going", "gone"], 1),
-
                 Q("moyen", "Complète : « If I had time, I ___ travel. »", ["will", "would", "am", "have"], 1),
-
                 Q("moyen", "Quel est le prétérit de « see » ?", ["seed", "saw", "seen", "seeing"], 1),
-
                 Q("difficile", "Quelle phrase est correcte ?", ["I have lived here since 2020.", "I live here since 2020.", "I am live here since 2020.", "I living here since 2020."], 0),
-
                 Q("difficile", "Complète : « They ___ already finished. »", ["has", "have", "is", "was"], 1),
-
                 Q("difficile", "Quel mot signifie « cependant » ?", ["However", "Because", "Before", "During"], 0),
-
                 Q("difficile", "Quelle forme est correcte ?", ["He doesn't like tea.", "He don't like tea.", "He doesn't likes tea.", "He not like tea."], 0)
-
             ],
-
             "Histoire-Géographie": [
-
                 Q("facile", "Quel océan borde la côte ouest du Sénégal ?", ["Océan Indien", "Océan Atlantique", "Océan Arctique", "Océan Pacifique"], 1),
-
                 Q("facile", "Quelle est la capitale du Sénégal ?", ["Saint-Louis", "Thiès", "Dakar", "Ziguinchor"], 2),
-
                 Q("facile", "Quel phénomène désigne l'augmentation de la population vivant en ville ?", ["Urbanisation", "Déforestation", "Érosion", "Glaciation"], 0),
-
                 Q("moyen", "La traite atlantique concernait principalement quels espaces ?", ["Europe, Afrique et Amériques", "Asie et Océanie uniquement", "Afrique et Antarctique", "Europe et Australie uniquement"], 0),
-
                 Q("moyen", "Quel terme désigne la concentration des activités dans les grandes villes ?", ["Métropolisation", "Désertification", "Ruralisation", "Glaciation"], 0),
-
                 Q("moyen", "Quel grand océan sépare notamment l'Afrique et les Amériques ?", ["Atlantique", "Indien", "Pacifique", "Arctique"], 0),
-
                 Q("difficile", "Pourquoi les littoraux sont-ils souvent des espaces très peuplés ?", ["Ils concentrent notamment des activités, des échanges et des villes", "Ils ne présentent jamais de risques", "Ils sont toujours agricoles", "Ils sont toujours montagneux"], 0),
-
                 Q("difficile", "Quelle organisation a remplacé la SDN après la Seconde Guerre mondiale ?", ["ONU", "OTAN", "CEE", "UA"], 0),
-
                 Q("difficile", "En quelle année commence la Première Guerre mondiale ?", ["1912", "1914", "1916", "1918"], 1),
-
                 Q("difficile", "En quelle année se termine la Seconde Guerre mondiale ?", ["1942", "1945", "1947", "1950"], 1)
-
             ],
-
             "SVT": [
-
                 Q("facile", "Quel organe pompe le sang dans le corps ?", ["Le foie", "Le cœur", "Le poumon", "Le rein"], 1),
-
                 Q("facile", "Quel est le rôle principal de l'ADN ?", ["Stocker l'information génétique", "Pomper le sang", "Digérer les aliments", "Transporter l'oxygène"], 0),
-
                 Q("facile", "Quel gaz est principalement utilisé lors de la respiration ?", ["Azote", "Oxygène", "Hydrogène", "Hélium"], 1),
-
                 Q("moyen", "Quelle structure porte l'information génétique dans une cellule ?", ["ADN", "Eau", "Glucose", "Calcium"], 0),
-
                 Q("moyen", "Quel organe assure principalement les échanges gazeux ?", ["Les poumons", "Le foie", "Le cœur", "L'estomac"], 0),
-
                 Q("moyen", "Quel système transporte le sang ?", ["Système circulatoire", "Système osseux", "Système digestif", "Système nerveux"], 0),
-
                 Q("difficile", "Pourquoi les cellules ont-elles besoin de dioxygène ?", ["Il participe notamment à la production d'énergie lors de la respiration cellulaire", "Il fabrique les os directement", "Il remplace l'eau", "Il arrête toute activité cellulaire"], 0),
-
                 Q("difficile", "Une mutation touche principalement quelle molécule ?", ["ADN", "Eau", "Calcium", "Sodium"], 0),
-
                 Q("difficile", "Quel élément est transmis lors de la division cellulaire ?", ["Information génétique", "Uniquement l'eau", "Uniquement l'air", "Aucune information"], 0),
-
                 Q("difficile", "Quel mécanisme produit de l'énergie à partir de nutriments et de dioxygène ?", ["Respiration cellulaire", "Photosynthèse", "Digestion mécanique", "Transpiration"], 0)
-
             ],
-
             "Physique-Chimie": [
-
                 Q("facile", "Quelle unité mesure une durée ?", ["Le mètre", "La seconde", "Le kilogramme", "Le volt"], 1),
-
                 Q("facile", "Quel instrument mesure la température ?", ["Baromètre", "Thermomètre", "Balance", "Ampèremètre"], 1),
-
                 Q("facile", "Quelle unité mesure la masse ?", ["Kilogramme", "Volt", "Watt", "Newton"], 0),
-
                 Q("moyen", "Quelle grandeur se mesure en volt ?", ["Tension électrique", "Masse", "Durée", "Longueur"], 0),
-
                 Q("moyen", "Quelle grandeur se mesure en kilogramme ?", ["Masse", "Tension", "Puissance", "Température"], 0),
-
                 Q("moyen", "Quelle grandeur se mesure en newton ?", ["Force", "Masse", "Temps", "Énergie"], 0),
-
                 Q("difficile", "Quelle relation permet de calculer une vitesse ?", ["distance ÷ durée", "durée ÷ distance", "distance × durée", "distance + durée"], 0),
-
                 Q("difficile", "Quelle unité mesure une énergie ?", ["Joule", "Newton", "Volt", "Watt"], 0),
-
                 Q("difficile", "Quelle unité mesure une puissance ?", ["Watt", "Newton", "Joule", "Volt"], 0),
-
                 Q("difficile", "Quel instrument mesure une masse ?", ["Balance", "Thermomètre", "Voltmètre", "Chronomètre"], 0)
-
             ],
-
             "Technologie": [
-
                 Q("facile", "Quel objet permet de saisir du texte ?", ["Clavier", "Écran", "Webcam", "Haut-parleur"], 0),
-
                 Q("facile", "Quel composant sert à afficher des informations ?", ["Écran", "Clavier", "Souris", "Microphone"], 0),
-
                 Q("facile", "Quel périphérique permet de déplacer le pointeur ?", ["Souris", "Écran", "Imprimante", "Scanner"], 0),
-
                 Q("moyen", "Quel composant permet de stocker des données ?", ["Disque de stockage", "Écran", "Clavier", "Souris"], 0),
-
                 Q("moyen", "À quoi sert principalement un navigateur web ?", ["Consulter des sites internet", "Mesurer la température", "Charger une batterie", "Remplacer le clavier"], 0),
-
                 Q("moyen", "Quel appareil permet généralement d'imprimer un document ?", ["Imprimante", "Routeur", "Clavier", "Microphone"], 0),
-
                 Q("difficile", "Quel est le rôle général d'un système d'exploitation ?", ["Gérer notamment les ressources et les programmes de l'appareil", "Créer uniquement des images", "Mesurer la vitesse internet", "Remplacer le clavier"], 0),
-
                 Q("difficile", "Quel composant exécute principalement les instructions d'un ordinateur ?", ["Processeur", "Écran", "Clavier", "Souris"], 0),
-
                 Q("difficile", "Quel élément sert à connecter plusieurs appareils à un réseau ?", ["Routeur", "Clavier", "Écran", "Casque"], 0),
-
                 Q("difficile", "Quel format est couramment utilisé pour un document portable ?", ["PDF", "MP3", "PNG uniquement", "EXE uniquement"], 0)
-
             ],
-
             "Économie familiale": [
-
                 Q("facile", "Quel élément est essentiel pour une alimentation équilibrée ?", ["Une alimentation variée", "Uniquement des sucreries", "Uniquement des boissons", "Aucun légume"], 0),
-
                 Q("facile", "Pourquoi conserver correctement les aliments ?", ["Pour limiter leur dégradation", "Pour les rendre plus lourds", "Pour supprimer toute cuisson", "Pour changer leur couleur"], 0),
-
                 Q("facile", "Pourquoi se laver les mains avant de cuisiner ?", ["Pour réduire la transmission de microbes", "Pour refroidir les aliments", "Pour changer leur goût", "Pour augmenter leur quantité"], 0),
-
                 Q("moyen", "Quel est l'intérêt de lire la date limite d'un aliment ?", ["Vérifier sa durée de consommation prévue", "Connaître sa couleur", "Modifier son goût", "Calculer sa masse"], 0),
-
                 Q("moyen", "Pourquoi faut-il nettoyer les ustensiles de cuisine ?", ["Pour limiter les contaminations", "Pour les rendre plus lourds", "Pour changer les aliments", "Pour supprimer la cuisson"], 0),
-
                 Q("moyen", "Pourquoi varier les aliments ?", ["Pour apporter différents nutriments", "Pour supprimer l'eau", "Pour éviter tous les repas", "Pour manger uniquement des produits sucrés"], 0),
-
                 Q("difficile", "Pourquoi faut-il conserver certains aliments au réfrigérateur ?", ["La basse température ralentit notamment le développement de nombreux microbes", "Elle élimine toujours tous les microbes", "Elle transforme tous les aliments en eau", "Elle augmente automatiquement les vitamines"], 0),
-
                 Q("difficile", "Pourquoi séparer certains aliments crus des aliments cuits ?", ["Pour limiter les contaminations croisées", "Pour augmenter leur masse", "Pour changer leur couleur", "Pour supprimer le besoin de lavage"], 0),
-
                 Q("difficile", "Quelle habitude aide à maintenir une bonne hygiène alimentaire ?", ["Nettoyer les mains et les surfaces", "Laisser les aliments à température ambiante pendant des jours", "Ne jamais laver les ustensiles", "Mélanger tous les aliments sans précaution"], 0),
-
                 Q("difficile", "Quel élément aide à équilibrer un repas ?", ["Associer des aliments variés", "Supprimer toutes les protéines", "Manger uniquement du sucre", "Boire uniquement de l'eau"], 0)
-
             ]
-
         };
-
-
-        /* =====================================================
-           BANQUE LYCÉE
-        ===================================================== */
 
         const banqueLycee = {
-
             "Mathématiques": [
-
                 Q("facile", "Quel est le coefficient directeur de y = 3x + 2 ?", ["2", "3", "-2", "-3"], 1),
-
                 Q("facile", "La dérivée de x² est :", ["x", "2x", "x²", "2"], 1),
-
                 Q("facile", "Combien vaut sin(0) ?", ["0", "1", "-1", "2"], 0),
-
                 Q("moyen", "Quel est le développement de (x - 2)(x + 3) ?", ["x² + x - 6", "x² + 5x - 6", "x² - x + 6", "x² + x + 6"], 0),
-
                 Q("moyen", "Quelle est la dérivée de 3x ?", ["3", "x", "3x", "0"], 0),
-
                 Q("moyen", "Quelle est la dérivée de x³ ?", ["x²", "2x", "3x²", "3x"], 2),
-
                 Q("difficile", "Quelle est la dérivée de eˣ ?", ["eˣ", "xeˣ", "x²", "1"], 0),
-
                 Q("difficile", "Quelle est une primitive de 2x ?", ["x²", "2x²", "x + 2", "2"], 0),
-
                 Q("difficile", "Que vaut ln(1) ?", ["0", "1", "-1", "e"], 0),
-
                 Q("difficile", "Si f(x) = x², quelle est f(3) ?", ["3", "6", "9", "12"], 2)
-
             ],
-
             "Français": [
-
                 Q("facile", "Quel est l'objectif principal d'une dissertation ?", ["Développer une réflexion argumentée", "Raconter uniquement une histoire", "Faire une liste de mots", "Écrire seulement un dialogue"], 0),
-
                 Q("facile", "Quel genre littéraire raconte généralement des événements ?", ["Narratif", "Administratif", "Scientifique", "Juridique"], 0),
-
                 Q("facile", "Qu'est-ce qu'un argument ?", ["Une raison utilisée pour défendre une idée", "Un titre", "Une ponctuation", "Un mot isolé"], 0),
-
                 Q("moyen", "Quel procédé consiste à exagérer une idée ?", ["Hyperbole", "Comparaison", "Ellipse", "Antithèse"], 0),
-
                 Q("moyen", "Quel procédé rapproche deux éléments avec un outil comparatif ?", ["Comparaison", "Métaphore", "Ironie", "Ellipse"], 0),
-
                 Q("moyen", "Qu'est-ce qu'une problématique ?", ["Une question construite qui met en évidence un problème à examiner", "Une simple liste de mots", "Une conclusion", "Un titre sans rapport"], 0),
-
                 Q("difficile", "Quel est l'intérêt principal d'une introduction de dissertation ?", ["Présenter le sujet, la problématique et la démarche", "Donner toute la conclusion", "Ajouter seulement des citations", "Éviter le sujet"], 0),
-
                 Q("difficile", "Quel registre vise notamment à faire rire ?", ["Comique", "Tragique", "Épique", "Pathétique"], 0),
-
                 Q("difficile", "Quel registre cherche notamment à susciter la pitié ou la compassion ?", ["Pathétique", "Comique", "Ironique", "Épique"], 0),
-
                 Q("difficile", "Quel procédé oppose fortement deux idées ?", ["Antithèse", "Comparaison", "Hyperbole", "Personnification"], 0)
-
             ],
-
             "Anglais": [
-
                 Q("facile", "Quel auxiliaire utilise-t-on pour le présent continu ?", ["Be", "Have", "Do", "Will"], 0),
-
                 Q("facile", "Quel modal exprime généralement la possibilité ?", ["May", "Must", "Should", "Have to"], 0),
-
                 Q("facile", "Quel modal exprime généralement l'obligation ?", ["May", "Must", "Could", "Might"], 1),
-
                 Q("moyen", "Quel temps exprime souvent une action commencée dans le passé et liée au présent ?", ["Present perfect", "Simple past", "Future simple", "Past continuous"], 0),
-
                 Q("moyen", "Complète : « If I had money, I ___ travel. »", ["will", "would", "am", "have"], 1),
-
                 Q("moyen", "Quel est le participe passé de « write » ?", ["wrote", "written", "writing", "writes"], 1),
-
                 Q("difficile", "Quelle phrase est correcte ?", ["She has been studying for two hours.", "She is study for two hours.", "She has study since two hours.", "She been studying two hours."], 0),
-
                 Q("difficile", "Complète : « By tomorrow, I ___ finished. »", ["have", "will have", "am", "was"], 1),
-
                 Q("difficile", "Quelle phrase est correcte ?", ["He doesn't like coffee.", "He don't likes coffee.", "He doesn't likes coffee.", "He not like coffee."], 0),
-
                 Q("difficile", "Quel mot signifie « pourtant » ou « cependant » ?", ["However", "Because", "Before", "During"], 0)
-
             ],
-
             "Histoire": [
-
                 Q("facile", "En quelle année commence la Première Guerre mondiale ?", ["1912", "1914", "1916", "1918"], 1),
-
                 Q("facile", "En quelle année se termine la Seconde Guerre mondiale ?", ["1942", "1945", "1947", "1950"], 1),
-
                 Q("facile", "Quel événement est associé à la Révolution française en 1789 ?", ["Prise de la Bastille", "Chute de Rome", "Découverte de l'Amérique", "Traité de Versailles"], 0),
-
                 Q("moyen", "Quelle organisation internationale est créée en 1945 ?", ["ONU", "OTAN", "CEE", "UA"], 0),
-
                 Q("moyen", "Quel conflit oppose notamment les Alliés aux puissances de l'Axe ?", ["Seconde Guerre mondiale", "Guerre de Cent Ans", "Guerre froide", "Guerre de Crimée"], 0),
-
                 Q("moyen", "Quel événement marque la chute du mur de Berlin ?", ["1989", "1979", "1999", "1969"], 0),
-
                 Q("difficile", "La guerre froide oppose principalement quels deux grands blocs ?", ["États-Unis et URSS", "France et Espagne", "Chine et Japon", "Italie et Allemagne"], 0),
-
-                Q("difficile", "Quelle année est généralement associée à la fin de la guerre froide avec la disparition de l'URSS ?", ["1989", "1991", "1995", "2001"], 1),
-
-                Q("difficile", "Quel événement marque le début officiel de la Seconde Guerre mondiale en Europe ?", ["L'invasion de la Pologne en 1939", "La prise de la Bastille", "La chute du mur de Berlin", "Le traité de Rome"], 0),
-
+                Q("difficile", "Quelle année est associée à la disparition de l'URSS ?", ["1989", "1991", "1995", "2001"], 1),
+                Q("difficile", "Quel événement marque le début de la Seconde Guerre mondiale en Europe ?", ["L'invasion de la Pologne en 1939", "La prise de la Bastille", "La chute du mur de Berlin", "Le traité de Rome"], 0),
                 Q("difficile", "Quel événement historique a lieu en 1944 en France ?", ["Débarquement de Normandie", "Révolution française", "Prise de Rome par les Gaulois", "Création de l'ONU"], 0)
-
             ],
-
             "Géographie": [
-
                 Q("facile", "Qu'est-ce que la mondialisation ?", ["L'intensification des échanges à l'échelle mondiale", "La disparition des villes", "La fin du commerce", "L'isolement des États"], 0),
-
                 Q("facile", "Quel phénomène correspond à l'augmentation de la population urbaine ?", ["Urbanisation", "Déforestation", "Désertification", "Ruralisation"], 0),
-
-                Q("facile", "Quel continent compte la plus grande superficie ?", ["Afrique", "Asie", "Europe", "Océanie"], 1),
-
-                Q("moyen", "Quelle notion décrit la concentration croissante des activités dans les grandes villes ?", ["Métropolisation", "Désertification", "Ruralisation", "Glaciation"], 0),
-
+                Q("facile", "Quel continent a la plus grande superficie ?", ["Afrique", "Asie", "Europe", "Océanie"], 1),
+                Q("moyen", "Quelle notion décrit la concentration des activités dans les grandes villes ?", ["Métropolisation", "Désertification", "Ruralisation", "Glaciation"], 0),
                 Q("moyen", "Quel élément favorise les échanges internationaux ?", ["Les réseaux de transport et de communication", "La fermeture complète des frontières", "La disparition des ports", "L'absence de routes"], 0),
-
                 Q("moyen", "Qu'est-ce qu'une métropole ?", ["Une grande ville exerçant des fonctions importantes", "Un petit village isolé", "Un désert", "Une montagne"], 0),
-
                 Q("difficile", "Pourquoi les grandes métropoles jouent-elles un rôle important dans la mondialisation ?", ["Elles concentrent souvent des fonctions économiques et de commandement", "Elles sont toutes rurales", "Elles ne possèdent aucune activité", "Elles sont toutes isolées"], 0),
-
-                Q("difficile", "Quel espace est particulièrement important pour les échanges maritimes ?", ["Les grands ports", "Les sommets", "Les déserts", "Les glaciers"], 0),
-
+                Q("difficile", "Quel espace est important pour les échanges maritimes ?", ["Les grands ports", "Les sommets", "Les déserts", "Les glaciers"], 0),
                 Q("difficile", "Quel phénomène peut réduire la population de certaines campagnes ?", ["Exode rural", "Urbanisation", "Métropolisation", "Industrialisation uniquement"], 0),
-
                 Q("difficile", "Quelle activité est fortement liée aux littoraux ?", ["Commerce maritime", "Ski alpin uniquement", "Élevage de rennes uniquement", "Exploitation polaire uniquement"], 0)
-
             ],
-
             "SVT": [
-
                 Q("facile", "Quelle molécule porte l'information génétique ?", ["ADN", "ATP", "Eau", "Oxygène"], 0),
-
                 Q("facile", "Quel support contient l'information génétique ?", ["ADN", "Calcium", "Eau", "Lipide"], 0),
-
                 Q("facile", "Quel organe réalise principalement les échanges gazeux ?", ["Poumons", "Foie", "Estomac", "Reins"], 0),
-
-                Q("moyen", "Quel est le rôle général de l'ADN ?", ["Conserver l'information génétique", "Pomper le sang", "Digérer les aliments", "Transporter mécaniquement les os"], 0),
-
-                Q("moyen", "Quel processus permet aux cellules d'obtenir de l'énergie à partir notamment de nutriments ?", ["Respiration cellulaire", "Photosynthèse animale", "Digestion des os", "Filtration sanguine"], 0),
-
+                Q("moyen", "Quel est le rôle général de l'ADN ?", ["Conserver l'information génétique", "Pomper le sang", "Digérer les aliments", "Transporter les os"], 0),
+                Q("moyen", "Quel processus produit de l'énergie à partir de nutriments ?", ["Respiration cellulaire", "Photosynthèse animale", "Digestion des os", "Filtration sanguine"], 0),
                 Q("moyen", "Quel élément peut modifier une séquence d'ADN ?", ["Mutation", "Température seule", "Eau seule", "Sang uniquement"], 0),
-
-                Q("difficile", "Pourquoi une mutation peut-elle modifier un caractère ?", ["Elle peut modifier une information génétique et parfois le fonctionnement d'un organisme", "Elle détruit toujours toutes les cellules", "Elle transforme automatiquement toute cellule en muscle", "Elle ne peut jamais avoir d'effet"], 0),
-
-                Q("difficile", "Quel processus permet la transmission de l'information génétique lors de la division cellulaire ?", ["Duplication et partage de l'ADN", "Digestion", "Photosynthèse", "Transpiration"], 0),
-
-                Q("difficile", "Quel organite est souvent présenté comme le siège principal de l'ADN dans une cellule eucaryote ?", ["Noyau", "Membrane", "Vacuole", "Cytoplasme uniquement"], 0),
-
+                Q("difficile", "Pourquoi une mutation peut-elle modifier un caractère ?", ["Elle peut modifier une information génétique", "Elle détruit toujours toutes les cellules", "Elle transforme toute cellule en muscle", "Elle ne peut jamais avoir d'effet"], 0),
+                Q("difficile", "Quel processus transmet l'information génétique lors de la division cellulaire ?", ["Duplication et partage de l'ADN", "Digestion", "Photosynthèse", "Transpiration"], 0),
+                Q("difficile", "Où se trouve l'essentiel de l'ADN dans une cellule eucaryote ?", ["Noyau", "Membrane", "Vacuole", "Cytoplasme uniquement"], 0),
                 Q("difficile", "Quel facteur est indispensable à la respiration cellulaire aérobie ?", ["Dioxygène", "Hélium", "Azote seul", "Gaz carbonique uniquement"], 0)
-
             ],
-
             "Physique-Chimie": [
-
                 Q("facile", "Quelle unité est utilisée pour une force ?", ["Newton", "Joule", "Watt", "Volt"], 0),
-
                 Q("facile", "Quelle grandeur se mesure en joules ?", ["Énergie", "Masse", "Température", "Tension"], 0),
-
                 Q("facile", "Quelle unité mesure la puissance ?", ["Watt", "Newton", "Joule", "Volt"], 0),
-
                 Q("moyen", "Quelle grandeur se mesure en volts ?", ["Tension électrique", "Masse", "Énergie", "Durée"], 0),
-
                 Q("moyen", "Quelle relation permet de calculer une vitesse ?", ["distance ÷ durée", "durée ÷ distance", "distance + durée", "distance × durée"], 0),
-
                 Q("moyen", "Quelle unité mesure une charge électrique ?", ["Coulomb", "Newton", "Watt", "Joule"], 0),
-
                 Q("difficile", "Dans un mouvement uniforme, la vitesse reste :", ["Constante", "Toujours nulle", "Toujours croissante", "Toujours décroissante"], 0),
-
                 Q("difficile", "Quelle unité mesure une intensité électrique ?", ["Ampère", "Volt", "Ohm", "Watt"], 0),
-
                 Q("difficile", "Quelle relation est correcte pour une puissance électrique ?", ["P = U × I", "P = U + I", "P = U ÷ I", "P = U - I"], 0),
-
                 Q("difficile", "Quelle unité mesure une résistance électrique ?", ["Ohm", "Volt", "Ampère", "Joule"], 0)
-
             ],
-
             "Philosophie": [
-
                 Q("facile", "La philosophie cherche notamment à :", ["Réfléchir rationnellement sur les grandes questions", "Apprendre uniquement des dates", "Faire uniquement des calculs", "Mémoriser sans réfléchir"], 0),
-
                 Q("facile", "Une question philosophique porte souvent sur :", ["Les notions fondamentales de l'existence et de la pensée", "Uniquement les recettes", "Uniquement les horaires", "Uniquement les mesures"], 0),
-
-                Q("facile", "Qu'est-ce qu'une opinion ?", ["Une manière de considérer une idée ou une question", "Une preuve scientifique", "Une équation", "Une loi physique"], 0),
-
+                Q("facile", "Qu'est-ce qu'une opinion ?", ["Une manière de considérer une idée", "Une preuve scientifique", "Une équation", "Une loi physique"], 0),
                 Q("moyen", "À quoi sert un argument en philosophie ?", ["À justifier rationnellement une idée", "À remplacer toutes les preuves", "À éviter toute réflexion", "À donner uniquement son opinion"], 0),
-
                 Q("moyen", "Qu'est-ce qu'une problématique ?", ["Une question construite qui met en évidence un problème", "Une liste de mots", "Une conclusion", "Un titre"], 0),
-
-                Q("moyen", "Pourquoi faut-il définir les termes d'un sujet ?", ["Pour préciser le sens des notions étudiées", "Pour éviter toute réflexion", "Pour remplacer la conclusion", "Pour ajouter des exemples uniquement"], 0),
-
-                Q("difficile", "Pourquoi faut-il distinguer une opinion d'un argument ?", ["Une opinion affirme une position, tandis qu'un argument cherche à la justifier", "Ils sont toujours identiques", "Une opinion est toujours prouvée", "Un argument n'a aucun rapport avec une idée"], 0),
-
-                Q("difficile", "Quel rôle joue la problématique dans une dissertation ?", ["Elle organise le problème auquel la réflexion cherche à répondre", "Elle remplace tous les arguments", "Elle constitue uniquement la conclusion", "Elle n'a aucun rôle"], 0),
-
-                Q("difficile", "Qu'est-ce qu'une thèse ?", ["Une position défendue dans une réflexion", "Une date", "Une mesure", "Une définition de dictionnaire uniquement"], 0),
-
-                Q("difficile", "Pourquoi faut-il examiner plusieurs arguments ?", ["Pour confronter différentes positions et approfondir la réflexion", "Pour éviter de répondre au sujet", "Pour supprimer toute conclusion", "Pour ne garder qu'une opinion non justifiée"], 0)
-
+                Q("moyen", "Pourquoi définir les termes d'un sujet ?", ["Pour préciser le sens des notions étudiées", "Pour éviter toute réflexion", "Pour remplacer la conclusion", "Pour ajouter des exemples uniquement"], 0),
+                Q("difficile", "Pourquoi distinguer opinion et argument ?", ["L'argument cherche à justifier une position", "Ils sont toujours identiques", "Une opinion est toujours prouvée", "Un argument n'a aucun rapport avec une idée"], 0),
+                Q("difficile", "Quel rôle joue la problématique dans une dissertation ?", ["Elle organise le problème étudié", "Elle remplace tous les arguments", "Elle constitue uniquement la conclusion", "Elle n'a aucun rôle"], 0),
+                Q("difficile", "Qu'est-ce qu'une thèse ?", ["Une position défendue dans une réflexion", "Une date", "Une mesure", "Une définition uniquement"], 0),
+                Q("difficile", "Pourquoi examiner plusieurs arguments ?", ["Pour confronter différentes positions et approfondir la réflexion", "Pour éviter de répondre au sujet", "Pour supprimer toute conclusion", "Pour garder une opinion non justifiée"], 0)
             ]
-
         };
 
 
-        /* =====================================================
-           BANQUE UNIFIÉE
-        ===================================================== */
+        /* =========================
+           BANQUE PAR CLASSE
+        ========================= */
 
         function obtenirBanque(classe) {
-
-            if (
-                classe === "6e" ||
-                classe === "5e"
-            ) {
+            if (classe === "6e" || classe === "5e") {
                 return banqueCollegeDebut;
             }
 
-            if (
-                classe === "4e" ||
-                classe === "3e"
-            ) {
+            if (classe === "4e" || classe === "3e") {
                 return banqueCollegeAvance;
             }
 
             return banqueLycee;
         }
 
-
-        function matieresDisponibles(
-            classe,
-            parcours
-        ) {
-
-            const banque =
-                obtenirBanque(classe);
-
-            let liste =
-                Object.keys(banque);
+        function matieresDisponibles(classe, parcours) {
+            const banque = obtenirBanque(classe);
+            let liste = Object.keys(banque);
 
             if (
-                (classe === "4e" ||
-                 classe === "3e") &&
+                (classe === "4e" || classe === "3e") &&
                 parcours !== "BST"
             ) {
-
-                liste =
-                    liste.filter(
-                        matiere =>
-                            matiere !==
-                                "Technologie" &&
-                            matiere !==
-                                "Économie familiale"
-                    );
-
+                liste = liste.filter(matiere =>
+                    matiere !== "Technologie" &&
+                    matiere !== "Économie familiale"
+                );
             }
 
-            if (
-                classe === "2nde"
-            ) {
-
-                liste =
-                    liste.filter(
-                        matiere =>
-                            matiere !==
-                            "Philosophie"
-                    );
-
+            if (classe === "2nde") {
+                liste = liste.filter(
+                    matiere => matiere !== "Philosophie"
+                );
             }
 
             return liste;
         }
 
 
-        /* =====================================================
-           ÉTAPES
-        ===================================================== */
+        /* =========================
+           ÉTAPES DU QUIZ
+        ========================= */
 
         function montrerEtape(id) {
+            document.querySelectorAll(".etape").forEach(etape => {
+                etape.classList.remove("active");
+            });
 
-            document
-                .querySelectorAll(".etape")
-                .forEach(
-                    etape => {
-
-                        etape.classList.remove(
-                            "active"
-                        );
-
-                    }
-                );
-
-            const etape =
-                document.getElementById(id);
+            const etape = document.getElementById(id);
 
             if (etape) {
                 etape.classList.add("active");
             }
         }
 
-
         function choisirClasse(classe) {
-
-            quizEtat.classe =
-                classe;
-
-            montrerEtape(
-                "etapeEtablissement"
-            );
+            quizEtat.classe = classe;
+            montrerEtape("etapeEtablissement");
         }
 
-
-        function choisirEtablissement(
-            etablissement
-        ) {
-
-            quizEtat.etablissement =
-                etablissement;
-
-            montrerEtape(
-                "etapeParcours"
-            );
+        function choisirEtablissement(etablissement) {
+            quizEtat.etablissement = etablissement;
+            montrerEtape("etapeParcours");
         }
 
-
-        function choisirParcours(
-            parcours
-        ) {
-
-            quizEtat.parcours =
-                parcours;
-
+        function choisirParcours(parcours) {
+            quizEtat.parcours = parcours;
             afficherMatieresQuiz();
-
-            montrerEtape(
-                "etapeMatiere"
-            );
+            montrerEtape("etapeMatiere");
         }
-
 
         function afficherMatieresQuiz() {
-
-            const conteneur =
-                document.getElementById(
-                    "choixMatieresQuiz"
-                );
-
+            const conteneur = document.getElementById("choixMatieresQuiz");
             conteneur.innerHTML = "";
 
-            const matieres =
-                matieresDisponibles(
-                    quizEtat.classe,
-                    quizEtat.parcours
-                );
+            matieresDisponibles(
+                quizEtat.classe,
+                quizEtat.parcours
+            ).forEach(matiere => {
+                const bouton = document.createElement("button");
+                bouton.className = "choix";
+                bouton.textContent = matiere;
 
-            matieres.forEach(
-                matiere => {
+                bouton.onclick = () => {
+                    quizEtat.matiere = matiere;
+                    montrerEtape("etapeNiveau");
+                };
 
-                    const bouton =
-                        document.createElement(
-                            "button"
-                        );
-
-                    bouton.className =
-                        "choix";
-
-                    bouton.textContent =
-                        matiere;
-
-                    bouton.onclick =
-                        () => {
-
-                            quizEtat.matiere =
-                                matiere;
-
-                            montrerEtape(
-                                "etapeNiveau"
-                            );
-
-                        };
-
-                    conteneur.appendChild(
-                        bouton
-                    );
-
-                }
-            );
+                conteneur.appendChild(bouton);
+            });
         }
 
-
-        function choisirNiveau(
-            niveau
-        ) {
-
-            quizEtat.niveau =
-                niveau;
-
+        function choisirNiveau(niveau) {
+            quizEtat.niveau = niveau;
             commencerQuiz();
         }
 
+        function construireQuiz(questions, niveauChoisi) {
+            const choisies = melanger(
+                questions.filter(q => q.niveau === niveauChoisi)
+            );
 
-        /* =====================================================
-           CONSTRUIRE LES 10 QUESTIONS
-        ===================================================== */
+            const autres = melanger(
+                questions.filter(q => q.niveau !== niveauChoisi)
+            );
 
-        function construireQuiz(
-            questions,
-            niveauChoisi
-        ) {
-
-            const niveau =
-                melanger(
-                    questions.filter(
-                        question =>
-                            question.niveau ===
-                            niveauChoisi
-                    )
-                );
-
-            const autres =
-                melanger(
-                    questions.filter(
-                        question =>
-                            question.niveau !==
-                            niveauChoisi
-                    )
-                );
-
-            let resultat = [
-                ...niveau,
-                ...autres
-            ];
-
-            resultat =
-                resultat.slice(
-                    0,
-                    NB_QUESTIONS
-                );
-
-            /*
-                Sécurité : une matière possède
-                actuellement au moins 10 questions.
-            */
-
-            if (
-                resultat.length <
-                NB_QUESTIONS
-            ) {
-
-                const supplement =
-                    questions.filter(
-                        question =>
-                            !resultat.includes(
-                                question
-                            )
-                    );
-
-                resultat =
-                    [
-                        ...resultat,
-                        ...supplement
-                    ].slice(
-                        0,
-                        NB_QUESTIONS
-                    );
-            }
-
-            return melanger(resultat);
+            return melanger(
+                [...choisies, ...autres].slice(0, NB_QUESTIONS)
+            );
         }
 
-
-        /* =====================================================
-           COMMENCER
-        ===================================================== */
-
         function commencerQuiz() {
+            const banque = obtenirBanque(quizEtat.classe);
+            const questions = banque[quizEtat.matiere] || [];
 
-            const banque =
-                obtenirBanque(
-                    quizEtat.classe
-                );
-
-            const questions =
-                banque[
-                    quizEtat.matiere
-                ] || [];
-
-            if (
-                questions.length <
-                NB_QUESTIONS
-            ) {
-
+            if (questions.length < NB_QUESTIONS) {
                 afficherErreurQuiz();
-
                 return;
             }
 
-            quizQuestions =
-                construireQuiz(
-                    questions,
-                    quizEtat.niveau
-                );
+            quizQuestions = construireQuiz(questions, quizEtat.niveau);
+            quizIndex = 0;
+            quizScore = 0;
+            quizRepondu = false;
 
-            quizIndex =
-                0;
-
-            quizScore =
-                0;
-
-            quizRepondu =
-                false;
-
-            document.getElementById(
-                "quizInfo"
-            ).textContent =
-                quizEtat.classe +
-                " • " +
-                quizEtat.matiere +
-                " • " +
+            document.getElementById("quizInfo").textContent =
+                quizEtat.classe + " • " +
+                quizEtat.matiere + " • " +
                 quizEtat.niveau;
 
-            montrerEtape(
-                "etapeQuestion"
-            );
-
+            montrerEtape("etapeQuestion");
             afficherQuestionQuiz();
         }
 
-
-        /* =====================================================
-           AFFICHER QUESTION
-        ===================================================== */
-
         function afficherQuestionQuiz() {
+            quizRepondu = false;
 
-            quizRepondu =
-                false;
-
-            const question =
-                quizQuestions[
-                    quizIndex
-                ];
+            const question = quizQuestions[quizIndex];
 
             if (!question) {
-
                 terminerQuiz();
-
                 return;
             }
 
-            document.getElementById(
-                "questionNum"
-            ).textContent =
-                "Question " +
-                (quizIndex + 1) +
-                " / " +
-                NB_QUESTIONS;
+            document.getElementById("questionNum").textContent =
+                "Question " + (quizIndex + 1) + " / " + NB_QUESTIONS;
 
-            document.getElementById(
-                "questionTexte"
-            ).textContent =
+            document.getElementById("questionTexte").textContent =
                 question.question;
 
-            const conteneur =
-                document.getElementById(
-                    "optionsQuiz"
-                );
-
+            const conteneur = document.getElementById("optionsQuiz");
             conteneur.innerHTML = "";
 
-            question.options.forEach(
-                (option, index) => {
+            question.options.forEach((option, index) => {
+                const bouton = document.createElement("button");
+                bouton.className = "option-quiz";
+                bouton.textContent = option;
 
-                    const bouton =
-                        document.createElement(
-                            "button"
-                        );
+                bouton.onclick = () => repondreQuiz(index, bouton);
 
-                    bouton.className =
-                        "option-quiz";
+                conteneur.appendChild(bouton);
+            });
 
-                    bouton.textContent =
-                        option;
+            const feedback = document.getElementById("feedbackQuiz");
+            feedback.style.display = "none";
+            feedback.textContent = "";
 
-                    bouton.onclick =
-                        () => {
-
-                            repondreQuiz(
-                                index,
-                                bouton
-                            );
-
-                        };
-
-                    conteneur.appendChild(
-                        bouton
-                    );
-
-                }
-            );
-
-            const feedback =
-                document.getElementById(
-                    "feedbackQuiz"
-                );
-
-            feedback.style.display =
-                "none";
-
-            feedback.textContent =
-                "";
-
-            document.getElementById(
-                "boutonSuivant"
-            ).style.display =
-                "none";
+            document.getElementById("boutonSuivant").style.display = "none";
         }
 
+        function repondreQuiz(index, boutonClique) {
+            if (quizRepondu) return;
 
-        /* =====================================================
-           RÉPONDRE
-        ===================================================== */
+            quizRepondu = true;
 
-        function repondreQuiz(
-            index,
-            boutonClique
-        ) {
+            const question = quizQuestions[quizIndex];
+            const boutons = document.querySelectorAll(".option-quiz");
 
-            if (quizRepondu) {
-                return;
+            boutons.forEach(bouton => {
+                bouton.disabled = true;
+            });
+
+            if (index === question.answer) {
+                quizScore += POINTS_PAR_REPONSE;
+                boutonClique.classList.add("correct");
+            } else {
+                boutonClique.classList.add("incorrect");
+
+                if (boutons[question.answer]) {
+                    boutons[question.answer].classList.add("correct");
+                }
             }
 
-            quizRepondu =
-                true;
+            const feedback = document.getElementById("feedbackQuiz");
+            feedback.style.display = "block";
 
-            const question =
-                quizQuestions[
-                    quizIndex
-                ];
-
-            const boutons =
-                document.querySelectorAll(
-                    ".option-quiz"
-                );
-
-            boutons.forEach(
-                bouton => {
-
-                    bouton.disabled =
-                        true;
-
-                }
-            );
-
-            if (
-                index ===
-                question.answer
-            ) {
-
-                quizScore +=
-                    POINTS_PAR_REPONSE;
-
-                boutonClique.classList.add(
-                    "correct"
-                );
-
+            if (index === question.answer) {
+                feedback.textContent = "✅ Bonne réponse ! +10 points";
             } else {
-
-                boutonClique.classList.add(
-                    "incorrect"
-                );
-
-                if (
-                    boutons[
-                        question.answer
-                    ]
-                ) {
-
-                    boutons[
-                        question.answer
-                    ].classList.add(
-                        "correct"
-                    );
-
-                }
-
-            }
-
-            const feedback =
-                document.getElementById(
-                    "feedbackQuiz"
-                );
-
-            feedback.style.display =
-                "block";
-
-            if (
-                index ===
-                question.answer
-            ) {
-
-                feedback.textContent =
-                    "✅ Bonne réponse ! +10 points";
-
-            } else {
-
                 feedback.textContent =
                     "❌ Mauvaise réponse. La bonne réponse était : " +
-                    question.options[
-                        question.answer
-                    ];
-
+                    question.options[question.answer];
             }
 
-            document.getElementById(
-                "boutonSuivant"
-            ).style.display =
+            document.getElementById("boutonSuivant").style.display =
                 "inline-block";
         }
 
-
-        /* =====================================================
-           SUIVANT
-        ===================================================== */
-
         function questionSuivante() {
-
             quizIndex++;
 
-            if (
-                quizIndex >=
-                quizQuestions.length
-            ) {
-
+            if (quizIndex >= quizQuestions.length) {
                 terminerQuiz();
-
                 return;
             }
 
             afficherQuestionQuiz();
         }
 
-
-        /* =====================================================
-           FIN
-        ===================================================== */
-
         function terminerQuiz() {
+            document.getElementById("scoreFinal").textContent =
+                quizScore + " / 100";
 
-            const scoreSur100 =
-                quizScore;
+            let message;
 
-            document.getElementById(
-                "scoreFinal"
-            ).textContent =
-                scoreSur100 +
-                " / 100";
-
-            let message = "";
-
-            if (
-                scoreSur100 === 100
-            ) {
-
-                message =
-                    "Parfait ! 100/100 🎉";
-
-            } else if (
-                scoreSur100 >= 80
-            ) {
-
-                message =
-                    "Excellent travail !";
-
-            } else if (
-                scoreSur100 >= 60
-            ) {
-
-                message =
-                    "Très bien ! Continue comme ça.";
-
-            } else if (
-                scoreSur100 >= 40
-            ) {
-
-                message =
-                    "Pas mal ! Encore un peu de révision.";
-
+            if (quizScore === 100) {
+                message = "Parfait ! 100/100 🎉";
+            } else if (quizScore >= 80) {
+                message = "Excellent travail !";
+            } else if (quizScore >= 60) {
+                message = "Très bien ! Continue comme ça.";
+            } else if (quizScore >= 40) {
+                message = "Pas mal ! Encore un peu de révision.";
             } else {
-
-                message =
-                    "Continue à t'entraîner, tu vas progresser.";
-
+                message = "Continue à t'entraîner, tu vas progresser.";
             }
 
-            document.getElementById(
-                "messageFinal"
-            ).textContent =
-                message;
-
-            montrerEtape(
-                "etapeFinQuiz"
-            );
+            document.getElementById("messageFinal").textContent = message;
+            montrerEtape("etapeFinQuiz");
         }
 
-
         function recommencerQuiz() {
-
             quizEtat = {
-
                 classe: "",
                 etablissement: "",
                 parcours: "",
                 matiere: "",
                 niveau: ""
-
             };
 
             quizQuestions = [];
-
             quizIndex = 0;
-
             quizScore = 0;
-
             quizRepondu = false;
 
-            montrerEtape(
-                "etapeClasse"
-            );
+            montrerEtape("etapeClasse");
         }
-
 
         function afficherErreurQuiz() {
-
-            document.getElementById(
-                "questionTexte"
-            ).textContent =
+            document.getElementById("questionTexte").textContent =
                 "Impossible de charger ce quiz.";
 
-            montrerEtape(
-                "etapeQuestion"
-            );
+            montrerEtape("etapeQuestion");
         }
 
 
-        /* =====================================================
-           SAUVEGARDE
-        ===================================================== */
+        /* =========================
+           SAUVEGARDE AUTOMATIQUE
+        ========================= */
 
-        const CLE_SAUVEGARDE =
-            "studyspace_complete_state";
-
+        const CLE_SAUVEGARDE = "studyspace_complete_state";
 
         function sauvegarderEtat() {
-
             try {
-
                 const etat = {
-
                     pageActuelle:
-                        document.querySelector(
-                            ".page.active"
-                        )?.id ||
-                        "accueil",
-
-                    matieres:
-                        obtenirDonneesMatieres(),
-
-                    revisions:
-                        revisions,
-
-                    taches:
-                        taches,
-
-                    emploi:
-                        obtenirEmploi()
-
+                        document.querySelector(".page.active")?.id || "accueil",
+                    matieres: obtenirDonneesMatieres(),
+                    revisions: revisions,
+                    taches: taches,
+                    emploi: obtenirEmploi()
                 };
 
                 localStorage.setItem(
                     CLE_SAUVEGARDE,
                     JSON.stringify(etat)
                 );
-
             } catch (erreur) {
-
-                console.log(
-                    "Erreur de sauvegarde :",
-                    erreur
-                );
-
+                console.error("Erreur de sauvegarde :", erreur);
             }
         }
 
-
         function restaurerEtat() {
-
-            const sauvegarde =
-                localStorage.getItem(
-                    CLE_SAUVEGARDE
-                );
-
-            document.getElementById(
-                "listeMatieres"
-            ).innerHTML = "";
+            const sauvegarde = localStorage.getItem(CLE_SAUVEGARDE);
 
             if (!sauvegarde) {
-
                 ajouterMatiere();
-
                 afficherRevisions();
-
                 afficherTaches();
-
-                showPage(
-                    "accueil"
-                );
-
+                showPage("accueil");
                 return;
             }
 
             try {
+                const etat = JSON.parse(sauvegarde);
 
-                const etat =
-                    JSON.parse(
-                        sauvegarde
-                    );
+                document.getElementById("listeMatieres").innerHTML = "";
 
-                if (
-                    Array.isArray(
-                        etat.matieres
-                    ) &&
-                    etat.matieres.length
-                ) {
-
-                    etat.matieres.forEach(
-                        matiere => {
-
-                            ajouterMatiere(
-                                matiere.nom || "",
-                                matiere.d1 || "",
-                                matiere.d2 || "",
-                                matiere.composition || "",
-                                matiere.coefficient || ""
-                            );
-
-                        }
-                    );
-
+                if (Array.isArray(etat.matieres) && etat.matieres.length) {
+                    etat.matieres.forEach(matiere => {
+                        ajouterMatiere(
+                            matiere.nom || "",
+                            matiere.d1 || "",
+                            matiere.d2 || "",
+                            matiere.composition || "",
+                            matiere.coefficient || ""
+                        );
+                    });
                 } else {
-
                     ajouterMatiere();
-
                 }
 
-
-                revisions =
-                    Array.isArray(
-                        etat.revisions
-                    )
-                        ? etat.revisions
-                        : [];
-
+                revisions = Array.isArray(etat.revisions) ? etat.revisions : [];
                 afficherRevisions();
 
-
-                taches =
-                    Array.isArray(
-                        etat.taches
-                    )
-                        ? etat.taches
-                        : [];
-
+                taches = Array.isArray(etat.taches) ? etat.taches : [];
                 afficherTaches();
 
-
-                if (
-                    Array.isArray(
-                        etat.emploi
-                    )
-                ) {
-
-                    remplirEmploi(
-                        etat.emploi
-                    );
-
+                if (Array.isArray(etat.emploi)) {
+                    remplirEmploi(etat.emploi);
                 }
 
-
-                showPage(
-                    etat.pageActuelle ||
-                    "accueil"
-                );
-
+                showPage(etat.pageActuelle || "accueil");
             } catch (erreur) {
+                console.error("Erreur de restauration :", erreur);
 
-                console.log(
-                    "Erreur de restauration :",
-                    erreur
-                );
-
-                document.getElementById(
-                    "listeMatieres"
-                ).innerHTML = "";
-
+                document.getElementById("listeMatieres").innerHTML = "";
                 ajouterMatiere();
 
                 revisions = [];
@@ -3899,151 +2165,73 @@
                 afficherRevisions();
                 afficherTaches();
 
-                showPage(
-                    "accueil"
-                );
+                showPage("accueil");
             }
         }
 
+        document.addEventListener("input", sauvegarderEtat);
+        document.addEventListener("change", sauvegarderEtat);
 
-        document.addEventListener(
-            "input",
-            sauvegarderEtat
-        );
-
-        document.addEventListener(
-            "change",
-            sauvegarderEtat
-        );
-
-        window.addEventListener(
-            "beforeunload",
-            sauvegarderEtat
-        );
+        window.addEventListener("beforeunload", sauvegarderEtat);
 
 
-        /* =====================================================
-           INSTALLATION
-        ===================================================== */
+        /* =========================
+           INSTALLATION PWA
+        ========================= */
 
         let evenementInstallation = null;
 
         const boutonInstaller =
-            document.getElementById(
-                "boutonInstaller"
-            );
+            document.getElementById("boutonInstaller");
+
+        window.addEventListener("beforeinstallprompt", event => {
+            event.preventDefault();
+
+            evenementInstallation = event;
+
+            boutonInstaller.style.display = "inline-block";
+        });
+
+        boutonInstaller.addEventListener("click", async () => {
+            if (!evenementInstallation) return;
+
+            evenementInstallation.prompt();
+
+            await evenementInstallation.userChoice;
+
+            boutonInstaller.style.display = "none";
+            evenementInstallation = null;
+        });
+
+        window.addEventListener("appinstalled", () => {
+            boutonInstaller.style.display = "none";
+            evenementInstallation = null;
+        });
 
 
-        window.addEventListener(
-            "beforeinstallprompt",
-            event => {
-
-                event.preventDefault();
-
-                evenementInstallation =
-                    event;
-
-                boutonInstaller.style.display =
-                    "inline-block";
-
-            }
-        );
-
-
-        boutonInstaller.addEventListener(
-            "click",
-            async () => {
-
-                if (
-                    !evenementInstallation
-                ) {
-                    return;
-                }
-
-                evenementInstallation.prompt();
-
-                const resultat =
-                    await evenementInstallation.userChoice;
-
-                if (
-                    resultat.outcome ===
-                    "accepted"
-                ) {
-
-                    boutonInstaller.style.display =
-                        "none";
-
-                }
-
-                evenementInstallation =
-                    null;
-
-            }
-        );
-
-
-        window.addEventListener(
-            "appinstalled",
-            () => {
-
-                boutonInstaller.style.display =
-                    "none";
-
-                evenementInstallation =
-                    null;
-
-            }
-        );
-
-
-        /* =====================================================
+        /* =========================
            SERVICE WORKER
-        ===================================================== */
+        ========================= */
 
-        if (
-            "serviceWorker" in navigator
-        ) {
-
-            window.addEventListener(
-                "load",
-                () => {
-
-                    navigator.serviceWorker
-                        .register(
-                            "./sw.js"
-                        )
-                        .then(
-                            () => {
-
-                                console.log(
-                                    "StudySpace : service worker activé"
-                                );
-
-                            }
-                        )
-                        .catch(
-                            erreur => {
-
-                                console.error(
-                                    "Erreur service worker :",
-                                    erreur
-                                );
-
-                            }
-                        );
-
-                }
-            );
-
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker
+                    .register("./sw.js")
+                    .then(() => {
+                        console.log("StudySpace : service worker activé");
+                    })
+                    .catch(erreur => {
+                        console.error("Erreur service worker :", erreur);
+                    });
+            });
         }
 
 
-        /* =====================================================
+        /* =========================
            INITIALISATION
-        ===================================================== */
+        ========================= */
 
         creerEmploi();
-
         restaurerEtat();
 
     </script>
